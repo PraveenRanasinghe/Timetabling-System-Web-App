@@ -1,0 +1,84 @@
+
+body{
+    /*background-image: url('https://www.themely.com/wp-content/uploads/edd/2015/11/dark-blue-bg.png');*/
+    background-size: cover;
+    background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+}
+
+.cb{
+    background-color: #f5cfee;
+    border-color: #000;
+    border-style: double;
+    border-radius: 10px;
+}
+
+.cb1{
+    background-color: #9d9998;
+}
+
+.cb2{
+    background-color: #738a73;
+}
+
+.cb3{
+    background-color: #868669;
+}
+
+.cb4{
+    background-color: #a2b58a;
+}
+
+.contact{
+    padding: 4%;
+    height: 400px;
+    /*box-shadow: 10px 10px 20px black;*/
+    /*border-radius: 10px;"*/
+}
+.col-md-3{
+    background: #ff9b00;
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+    margin-top:10%;
+}
+.contact-info img{
+    margin-bottom: 15%;
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+.col-md-9{
+    background: #f3e7cf;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.contact-form label{
+    font-weight:600;
+}
+.contact-form button{
+    background: #4da76e;
+    color: #fff;
+    font-weight: 600;
+    width: 25%;
+}
+.contact-form button:focus{
+    box-shadow:none;
+}
+
+.cbcb{
+    background-color: #efecc7;
+
+}
+
+.contact-image{
+    text-align: center;
+}
+.contact-image img{
+    border-radius: 6rem;
+    width: 8%;
+    margin-top: -5%;
+}
+/*//////////////////////////////////*/
