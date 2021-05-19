@@ -59,7 +59,7 @@
                 <td>${modules.moduleID}</td>
                 <td>${modules.moduleName}</td>
                 <td>${modules.user.fName} ${modules.user.lName}</td>
-                <td>${modules.batch.batchID}</td>
+                <td>${modules.batches}</td>
                 <td> <a class="btn btn-danger" style="border-color: black;
                   width:150px; border-style: double" href="/deleteModule/${modules.moduleID}">Remove Module</a>
                 </td>

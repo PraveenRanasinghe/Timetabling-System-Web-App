@@ -29,20 +29,13 @@ public class EmailService {
     public void Email(String recepientEmail){
         try {
             Properties prop = new Properties();
-            prop.put("mail.smtp.auth", true);
-            prop.put("mail.smtp.starttls.enable", "true");
-            prop.put("mail.smtp.host", "smtp.mailtrap.io");
-            prop.put("mail.smtp.port", "25");
-            prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
+            prop.put("mail.smtp.auth", false);
+            prop.put("mail.smtp.starttls.enable", "false");
+            prop.put("mail.smtp.host", "localhost");
+            prop.put("mail.smtp.port", "2500");
+//            prop.put("mail.smtp.ssl.trust", "localhost");
 
-//            theAuthenticator= new Authenticator() {
-//                @Override
-//                protected PasswordAuthentication getPasswordAuthentication() {
-//                    return new PasswordAuthentication(companyEmail, password);
-//                }
-//            };
-//            session = Session.getInstance(property, theAuthenticator);
-            session.setDebug(true);
+
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(companyEmail));

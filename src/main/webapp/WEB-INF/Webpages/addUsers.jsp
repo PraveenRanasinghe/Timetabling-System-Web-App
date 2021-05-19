@@ -42,7 +42,7 @@
             <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
                 <div class="col-md-3">
                     <div class="contact-info">
-                        <h2>ADD NEW <b>USERS</b></h2>
+                        <h2>ADD NEW <b>STUDENTS</b></h2>
 
                     </div>
                 </div>
@@ -52,9 +52,9 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label class="control-label col">Select the User Type:</label>
+                                        <label class="control-label col">User Type:</label>
                                         <form:select path="userRole" name="userRole" id="userRole"
-                                                     class="form-control" style="color: black; border-color: black">
+                                                     class="form-control" style="color: black; border-color: black" readonly="true">
                                             <option value="student">Student</option>
                                         </form:select>
                                     </div>
@@ -105,7 +105,7 @@
 
                             <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-warning ">Create Account</button>
+                                    <button type="submit" class="btn btn-warning">Create Account</button>
                                 </div>
                             </div>
                         </div>

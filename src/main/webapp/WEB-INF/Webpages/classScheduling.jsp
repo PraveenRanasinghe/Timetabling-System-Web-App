@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Praveen
@@ -36,7 +37,7 @@
 <div class="container">
     <form:form class="mt-5" action="/adminAddTimetable" modelAttribute="AddTimetable" method="POST">
         <div style="box-shadow: 15px 15px 30px black; border-radius: 20px;
-         width: 900px; background-color: #f3f3bf; margin-left: 10%; border-color: #130a04;
+         width: 900px; background-color: #a4ef59; margin-left: 10%; border-color: #130a04;
           border-style: inset; border-radius: 10px;">
 
 
@@ -45,46 +46,64 @@
             </div>
             <hr style="background-color: black">
 
-            <div class="row mt-5">
+            <div class="row mt-5 ml-4 mr-4">
                 <div class="col-lg-4">
                     <label  class="form-label"><b>Batch ID</b></label>
-                    <form:input path="batch.batchID" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Com001"/>
+<%--                    <form:input path="batch.batchID" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Com001"/>--%>
+                    <form:select path="batches" type="text"  style="border-color: black" cssClass="form-control">
+                        <c:forEach var="batchList" items="${batchList}" varStatus="item">
+                            <form:option value="${batchList.batchID}">
+                                ${batchList.batchID} ${batchList.batchName}
+                            </form:option>
+                        </c:forEach>
+                    </form:select>
+
                 </div>
                 <div class="col-lg-4">
                     <label  class="form-label"><b>Name of the Module</b></label>
-                    <form:input path="moduleName" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Cloud Computing"/>
+                    <form:input path="modules.moduleID" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Cloud Computing"/>
                 </div>
                 <div class="col-lg-4">
-                    <label  class="form-label"><b>Select the Class Room</b></label>
-                    <form:input path="classRoom.classRoomID" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Lab01"/>
+                    <label  class="form-label"><b>Select the Class</b></label>
+<%--                    <form:input path="classRoom.classRoomID" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Lab01"/>--%>
+
+                    <form:select path="classRoom.classRoomID" type="text"  style="border-color: black" cssClass="form-control">
+
+                        <c:forEach var="classRoomList" items="${classRoomList}" varStatus="item">
+                            <form:option value="${classRoomList.classRoomID}">
+                               ${classRoomList.classRoomID}: ${classRoomList.capacity}
+                            </form:option>
+                        </c:forEach>
+                    </form:select>
+
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col ml-4">
-                    <label  class="form-label"><b>Lecturer Name</b></label>
-                    <form:input path="user.email" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Dr.John Doe"/>
+            <div class="row mt-5 ml-4 mr-4">
+                <div class="col">
+                    <label  class="form-label"><b>Lecturer:</b></label>
+                    <form:input path="modules.user.email" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" placeholder="Dr.John Doe"/>
                 </div>
-                <div class="col mr-4">
+                <div class="col">
                     <label  class="form-label"><b>Select the Date</b></label>
                     <form:input path="scheduledDate" Class="form-control" type="date" style="background-color: #e3e1e1; color: black; border-color: black"/>
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col ml-4">
+            <div class="row mt-5 ml-4 mr-4">
+                <div class="col">
                     <label  class="form-label"><b>Starting Time</b></label>
                     <form:input path="startTime" Class="form-control" style="background-color: #e3e1e1; color: black; border-color: black" type="time" placeholder="Dr.John Doe"/>
                 </div>
-                <div class="col mr-4">
+                <div class="col">
                     <label  class="form-label"><b>Ending Time</b></label>
                     <form:input path="endTime" Class="form-control" type="time" style="background-color: #e3e1e1; color: black; border-color: black"/>
                 </div>
             </div>
 
 
-            <div class="row justify-content-center mt-4">
-                <button type="submit" class="btn btn-success mb-4" style="border-color: black; border-style: double">Schedule The Class</button>
+            <div class="row justify-content-center mt-5">
+                <button type="submit" class="btn btn-primary mb-4" style="border-color: black; border-style: double">Schedule The Class</button>
             </div>
 
         </div>

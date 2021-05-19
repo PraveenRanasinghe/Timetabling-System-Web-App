@@ -3,17 +3,19 @@ package com.timetabling.demo.dto;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.User;
 
+import java.util.List;
+
 public class moduleDTO {
     private String moduleID;
     private String moduleName;
     private User user;
-    private Batch batch;
+    private List<Batch> batches;
 
-    public moduleDTO(String moduleID, String moduleName, User user, Batch batch) {
+    public moduleDTO(String moduleID, String moduleName, User user, List<Batch> batches) {
         this.moduleID = moduleID;
         this.moduleName = moduleName;
         this.user = user;
-        this.batch = batch;
+        this.batches = batches;
     }
 
     public moduleDTO(){
@@ -44,11 +46,11 @@ public class moduleDTO {
         this.user = user;
     }
 
-    public Batch getBatch() {
-        return batch;
+    public List<Batch> getBatches() {
+        return batches;
     }
 
-    public void setBatch(Batch batch) {
-        this.batch = batch;
+    public void setBatches(List<Batch> batches) {
+        this.batches = batches;
     }
 }

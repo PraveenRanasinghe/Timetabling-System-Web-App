@@ -4,41 +4,57 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
+@Table(name = "timetable")
 public class Timetable {
 
     @Id
+    @Column(name = "timetable_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int timetableId;
 
+    @Column(name = "start_time")
     private LocalTime startTime;
+    @Column(name = "end_time")
     private LocalTime endTime;
+    @Column(name = "scheduled_date")
     private Date scheduledDate;
-    private String moduleName;
+
+//
+//    @ManyToOne
+//    @JoinColumn(name = "batch_id")
+//    private Batch batch;
 
     @ManyToOne
-    @JoinColumn(name = "batch_id")
-    private Batch batch;
+    @JoinColumn(name="module_id")
+    private Module module;
 
-    @ManyToOne
-    @JoinColumn(name = "email")
-    private User user;
 
     @ManyToOne
     @JoinColumn(name = "class_roomid")
     private ClassRoom classRoom;
 
 
-    public Timetable(int timetableId, LocalTime startTime, LocalTime endTime, Date scheduledDate, String moduleName, Batch batch, User user, ClassRoom classRoom) {
+    @ManyToMany
+    @JoinTable(
+            name = "batch_timetable",
+            joinColumns = @JoinColumn(name = "timetable_id"),
+            inverseJoinColumns = @JoinColumn(name = "batch_id")
+    )
+
+    private List<Batch> batches;
+
+
+    public Timetable(int timetableId, LocalTime startTime, LocalTime endTime, Date scheduledDate, Module module, ClassRoom classRoom, List<Batch> batches) {
         this.timetableId = timetableId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.scheduledDate = scheduledDate;
-        this.moduleName = moduleName;
-        this.batch = batch;
-        this.user = user;
+        this.module = module;
         this.classRoom = classRoom;
+        this.batches = batches;
     }
 
     public Timetable() {
@@ -77,29 +93,21 @@ public class Timetable {
         this.scheduledDate = scheduledDate;
     }
 
-    public String getModuleName() {
-        return moduleName;
+
+    public List<Batch> getBatches() {
+        return batches;
     }
 
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
+    public void setBatches(List<Batch> batches) {
+        this.batches = batches;
     }
 
-    public Batch getBatch() {
-        return batch;
+    public Module getModule() {
+        return module;
     }
 
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     public ClassRoom getClassRoom() {

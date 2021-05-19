@@ -3,18 +3,25 @@ package com.timetabling.demo.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
     @Id
+    @Column(name = "email")
     private String email;
+    @Column(name = "f_name")
     private String fName;
+    @Column(name = "l_name")
     private String lName;
+    @Column(name = "contact_number")
     private String contactNumber;
+    @Column(name = "user_role")
     private String userRole;
 
     @ManyToOne
-    @JoinColumn(name = "batch_Id")
+    @JoinColumn(name = "batch_id")
     private Batch batch;
 
+    @Column(name = "password")
     private String password;
 
 

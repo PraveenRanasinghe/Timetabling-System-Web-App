@@ -2,9 +2,13 @@ package com.timetabling.demo.service;
 
 import com.timetabling.demo.auth.AppUser;
 import com.timetabling.demo.dto.batchDTO;
+import com.timetabling.demo.dto.timetableDTO;
 import com.timetabling.demo.dto.userDTO;
 import com.timetabling.demo.model.Batch;
+import com.timetabling.demo.model.Module;
+import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.model.User;
+import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.TimetableRepo;
 import com.timetabling.demo.repositary.UserRepo;
 import com.timetabling.demo.security.SecurityConfiguration;
@@ -36,6 +40,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private BatchRepo batchRepo;
 
     @Autowired
     private TimetableRepo timetableRepo;
@@ -116,6 +122,25 @@ public class UserService implements UserDetailsService {
     }
 
 
+//    public List<timetableDTO> getTimetableForStudents(timetableDTO timedto){
+//        List<Timetable> timetables= timetableRepo.findAll();
+//        List<timetableDTO> timetableList = new ArrayList<>();
+//
+//        if(timetables!=null){
+//            for (Timetable time:timetables){
+//                Optional<Module> byId = batchRepo.findById(timedto.getBatch());
+//
+//                if(byId.isPresent()){
+//                    timetableList=byId.get().getBatches();
+//                }
+//            }
+//        }
+//
+//
+//
+//        return timetableList;
+//    }
+
     public User registerUsers(userDTO dtoUser) {
         User users = new User();
         if (dtoUser != null) {
@@ -143,9 +168,7 @@ public class UserService implements UserDetailsService {
 
     public User updateUserInfo(User dtoUser) {
 
-//        Optional<User> user= userRepo.findById(dtoUser.getEmail());
         User users = new User();
-//        System.out.println(dtoUser.getBatchId().getBatchID());
         if (users != null) {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
@@ -158,21 +181,8 @@ public class UserService implements UserDetailsService {
         }
         return userRepo.save(users);
     }
-//    public List<batchDTO> getAllBatchesToList(){
-//        List<batchDTO> list = new ArrayList<>();
-//        for(Batch batch: batchRepo.findAll()){
-//            batchDTO dto= new batchDTO();
-//            dto.setBatchID(batch.getBatchID());
-//            dto.setBatchName(batch.getBatchName());
-//            list.add(dto);
-//        }
-//        return list;
-//    }
 
-//    public List<userDTO> getAllLecturersToList(String userRole){
-//        List<userDTO> list= new ArrayList<>();
-//        for (User user:userRepo.findAll());
-//
-//    }
+
+
 
 }

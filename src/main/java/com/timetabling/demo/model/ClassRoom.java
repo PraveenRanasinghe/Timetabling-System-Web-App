@@ -3,21 +3,25 @@ package com.timetabling.demo.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "class_room")
 public class ClassRoom {
     @Id
+    @Column(name = "class_roomid")
     private String classRoomID;
 
-    @OneToOne
-    @JoinColumn(name = "timetable_id")
-    private Timetable timetable;
+//    @OneToOne
+//    @JoinColumn(name = "timetable_id")
+//    private Timetable timetable;
 
+    @Column(name = "capacity")
     private String capacity;
+    @Column(name = "smart_board")
     private String smartBoard;
+    @Column(name = "ac")
     private String Ac;
 
-    public ClassRoom(String classRoomID, Timetable timetable, String capacity, String smartBoard, String ac) {
+    public ClassRoom(String classRoomID, String capacity, String smartBoard, String ac) {
         this.classRoomID = classRoomID;
-        this.timetable = timetable;
         this.capacity = capacity;
         this.smartBoard = smartBoard;
         Ac = ac;
@@ -33,14 +37,6 @@ public class ClassRoom {
 
     public void setClassRoomID(String classRoomID) {
         this.classRoomID = classRoomID;
-    }
-
-    public Timetable getTimetable() {
-        return timetable;
-    }
-
-    public void setTimetable(Timetable timetable) {
-        this.timetable = timetable;
     }
 
     public String getCapacity() {

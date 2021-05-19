@@ -51,11 +51,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="control-label col">Module ID</label>
-                                        <form:input path="moduleID" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Module ID"/>
+                                        <form:input path="moduleID" type="text" style="border-color: black"
+                                                    cssClass="form-control" placeholder="Enter the Module ID"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Module Name</label>
-                                        <form:input path="moduleName" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Module Name"/>
+                                        <form:input path="moduleName" type="text" style="border-color: black"
+                                                    cssClass="form-control" placeholder="Enter the Module Name"/>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +66,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="control-label col">Lecturer Name</label>
-                                        <form:select path="user.email"  style="border-color: black" cssClass="form-control">
+                                        <form:select path="user.email" style="border-color: black"
+                                                     cssClass="form-control">
                                             <c:forEach var="lecList" items="${lecList}" varStatus="item">
                                                 <form:option value="${lecList.email}">
                                                     ${lecList.fName} ${lecList.lName}
@@ -74,7 +77,9 @@
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Assign the batch</label>
-                                        <form:select path="batch.batchID"  style="border-color: black" cssClass="form-control">
+                                        <form:select path="batches"
+                                                     style="border-color: black" cssClass="form-control"
+                                                     multiple="true">
                                             <c:forEach var="batchList" items="${batchList}" varStatus="item">
                                                 <form:option value="${batchList.batchID}">
                                                     ${batchList.batchID} - ${batchList.batchName}
@@ -97,5 +102,6 @@
         </form:form>
     </div>
 </div>
+
 </body>
 </html>

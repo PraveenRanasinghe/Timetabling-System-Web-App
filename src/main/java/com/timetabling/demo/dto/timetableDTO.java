@@ -2,12 +2,14 @@ package com.timetabling.demo.dto;
 
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.ClassRoom;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.List;
 
 public class timetableDTO {
     private int timetableId;
@@ -20,20 +22,17 @@ public class timetableDTO {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date scheduledDate;
 
-    private String moduleName;
-    private Batch batch;
-    private User user;
+    private List<Batch> batches;
+    private Module modules;
     private ClassRoom classRoom;
 
-
-    public timetableDTO(int timetableId, String startTime, String endTime, Date scheduledDate, String moduleName, Batch batch, User user, ClassRoom classRoom) {
+    public timetableDTO(int timetableId, String startTime, String endTime, Date scheduledDate, List<Batch> batches, Module modules, ClassRoom classRoom) {
         this.timetableId = timetableId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.scheduledDate = scheduledDate;
-        this.moduleName = moduleName;
-        this.batch = batch;
-        this.user = user;
+        this.batches = batches;
+        this.modules = modules;
         this.classRoom = classRoom;
     }
 
@@ -73,28 +72,20 @@ public class timetableDTO {
         this.scheduledDate = scheduledDate;
     }
 
-    public String getModuleName() {
-        return moduleName;
+    public List<Batch> getBatches() {
+        return batches;
     }
 
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
+    public void setBatches(List<Batch> batches) {
+        this.batches = batches;
     }
 
-    public Batch getBatch() {
-        return batch;
+    public Module getModules() {
+        return modules;
     }
 
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setModules(Module modules) {
+        this.modules = modules;
     }
 
     public ClassRoom getClassRoom() {

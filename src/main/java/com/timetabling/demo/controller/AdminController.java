@@ -227,8 +227,8 @@ public class AdminController {
     @PostMapping("/adminUpdateModules")
     public String updateM(@ModelAttribute("getModule")moduleDTO dto, Model m){
         try{
-            m.addAttribute("success", "Module details has been updated successfully !");
             moduleService.updateModuleInfo(dto);
+            m.addAttribute("success", "Module details has been updated successfully !");
         }
         catch (Exception e){
             m.addAttribute("error", "Cannot Update the Module at this moment.Please try again later!");
@@ -247,45 +247,26 @@ public class AdminController {
             m.addAttribute("error", "Module cannot delete at this time.Please try again later !");
         }
 
-        return  "AdminHome";
+        return  "redirect:/viewAdminHome";
     }
 
     //----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/viewClassScheduling")
     public String addTimeTable(Model m) {
+
         List <batchDTO> allBatches= batchService.getAllBatchesToList();
         m.addAttribute("batchList", allBatches);
-        List<userDTO> allLecturers=userService.getAllLecturersToList();
-        m.addAttribute("lecList",allLecturers);
+
+        List<classRoomDTO> allClassRooms= classRoomService.getAllClassRoomsToList();
+        m.addAttribute("classRoomList", allClassRooms);
+
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
         m.addAttribute("AddTimetable", new timetableDTO());
         return "classScheduling";
     }
 
-//    @PostMapping("/adminAddTimetable")
-//    public String scheduleTimetable(HttpServletRequest req) {
-//        String batch = req.getParameter("batch");
-//        String moduleName = req.getParameter("moduleName");
-//        String classRoom = req.getParameter("classRoom");
-//        String user = req.getParameter("user");
-//        String scheduledDate = req.getParameter("scheduledDate");
-//        String startTime = req.getParameter("startTime");
-//        String endTime = req.getParameter("endTime");
-//
-//        timetableDTO dto = new timetableDTO();
-//
-//        dto.setBatch(batchRepo.getOne(batch));
-//        dto.setModuleName(moduleName);
-//        dto.setClassRoom(classroomRepo.getOne(classRoom));
-//        dto.setUser(userRepo.findUserByEmail(user));
-//        dto.setScheduledDate(Date.valueOf(scheduledDate));
-//        dto.setStartTime(LocalTime.parse(startTime));
-//        dto.setEndTime(LocalTime.parse(endTime));
-//        timetableService.createTimetable(dto);
-//        return "redirect:/viewAdminHome";
-//    }
 
     @PostMapping("/adminAddTimetable")
     public String scheduleTimetable(@ModelAttribute("AddTimetable") timetableDTO dto) {
@@ -330,6 +311,19 @@ public class AdminController {
         }
         classRoomService.updateClassRoom(dto);
         return "/updateClassRoom";
+    }
+
+    @RequestMapping("/deleteClassRoom/{classRoomId}")
+    public String deleteClass(@PathVariable( name = "classRoomId")ClassRoom classRoom, Model m){
+        try{
+            m.addAttribute("success","ClassRoom has been deleted Successfully!");
+            classRoomService.deleteClassRoom(classRoom);
+        }
+        catch (Exception ex){
+            m.addAttribute("error","Cannot delete the ClassRoom at this time. Please try again later!");
+        }
+
+        return "viewClassRooms";
     }
 
     //----------------------------------------------------------------------------------------------------------------
@@ -394,5 +388,29 @@ public class AdminController {
 //    @PostMapping("/adminUpdateModules")
 //    public String moduleUpdating(@ModelAttribute("updateModule") moduleDTO dto){
 //        userService.updateModule(dto);
+//        return "redirect:/viewAdminHome";
+//    }
+
+
+//    @PostMapping("/adminAddTimetable")
+//    public String scheduleTimetable(HttpServletRequest req) {
+//        String batch = req.getParameter("batch");
+//        String moduleName = req.getParameter("moduleName");
+//        String classRoom = req.getParameter("classRoom");
+//        String user = req.getParameter("user");
+//        String scheduledDate = req.getParameter("scheduledDate");
+//        String startTime = req.getParameter("startTime");
+//        String endTime = req.getParameter("endTime");
+//
+//        timetableDTO dto = new timetableDTO();
+//
+//        dto.setBatch(batchRepo.getOne(batch));
+//        dto.setModuleName(moduleName);
+//        dto.setClassRoom(classroomRepo.getOne(classRoom));
+//        dto.setUser(userRepo.findUserByEmail(user));
+//        dto.setScheduledDate(Date.valueOf(scheduledDate));
+//        dto.setStartTime(LocalTime.parse(startTime));
+//        dto.setEndTime(LocalTime.parse(endTime));
+//        timetableService.createTimetable(dto);
 //        return "redirect:/viewAdminHome";
 //    }

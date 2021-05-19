@@ -38,57 +38,74 @@
 <%--    ${successMessage}--%>
 <%--    ${errorMessage}--%>
 <%--</div>--%>
- <div class="row alert-success justify-content-center">
-     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
- </div>
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
 
-    <form:form  action="/adminAddBatches" modelAttribute="AddBatches" method="POST" class="mt-5">
-            <div class="container contact">
-                <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
-                    <div class="col-md-3">
-                        <div class="contact-info">
-                            <h2>CREATE NEW <b>BATCH</b></h2>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="contact-form">
-                            <div class="form-group">
-                                <label class="control-label">Batch ID:</label>
-                                <div class="col-sm-10">
-                                    <form:input type="text" path="batchID" style="border-color: black" cssClass="form-control" placeholder="Enter the Batch ID (EX:Computing_001)"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Batch Name:</label>
-                                <div class="col-sm-10">
-                                    <form:input path="batchName" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Batch Name (EX:Software Engineering Batch)"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="control-label">Date of Commencement:</label>
-                                        <form:input  path="startDate" style="color: black; border-color: black" type="date" pattern="yyyy-MM-dd" cssClass="form-control"/>
-                                    </div>
-                                    <div class="col">
-                                        <label class="control-label">Date of Termination:</label>
-                                        <form:input path="endDate" style="color: black; border-color: black" type="date" pattern="yyyy-MM-dd" cssClass="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default ">Create Batch</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <form:form action="/adminAddBatches" modelAttribute="AddBatches" method="POST" class="mt-5">
+    <div class="container contact">
+        <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
+            <div class="col-md-3">
+                <div class="contact-info">
+                    <h2>CREATE NEW <b>BATCH</b></h2>
                 </div>
             </div>
+            <div class="col-md-9">
+                <div class="contact-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="control-label">Batch ID:</label>
+                                <div class="col">
+                                    <form:input type="text" path="batchID" style="border-color: black"
+                                                cssClass="form-control"
+                                                placeholder="Enter the Batch ID (EX:Computing_001)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="control-label">Batch Name:</label>
+                                <div class="col">
+                                    <form:input path="batchName" type="text" style="border-color: black"
+                                                cssClass="form-control"
+                                                placeholder="Enter the Batch Name (EX:Software Engineering Batch)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="control-label">Date of Commencement:</label>
+                                <form:input path="startDate" style="color: black; border-color: black" type="date"
+                                            pattern="yyyy-MM-dd" cssClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="control-label">Date of Termination:</label>
+                                <form:input path="endDate" style="color: black; border-color: black" type="date"
+                                            pattern="yyyy-MM-dd" cssClass="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default ">Create Batch</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
         </form:form>
-</div>
+    </div>
 </body>
 </html>

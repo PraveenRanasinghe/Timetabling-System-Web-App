@@ -32,6 +32,10 @@
     </div>
 </nav>
 
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
+
 <div class="container">
     <h2 class="justify-content-center mt-5">Class Rooms in Academy:</h2>
     <div class="row justify-content-center mt-5">
@@ -56,7 +60,7 @@
                     <td>${ClassRooms.ac}</td>
                     <td>${ClassRooms.smartBoard}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:200px; border-style: double" href="${pageContext.request.contextPath}">Remove Class-Room</a>
+                  width:200px; border-style: double" href="/deleteClassRoom/${ClassRooms.classRoomID}">Remove Class-Room</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:200px; border-style: double" href="/getClassRoom/${ClassRooms.classRoomID}">Update Class-Room</a>

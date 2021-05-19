@@ -72,8 +72,8 @@
                                             cssClass="form-control" placeholder="" readonly="true"/>
                             </div>
                             <div class="col">
-                                <label class="control-label col"><b>Currently Learning Batch</b></label>
-                                <form:input path="batch.batchID" value="${findModule.batch.batchID}" type="text" style="border-color: black"
+                                <label class="control-label col"><b>Currently Learning Batches</b></label>
+                                <form:input path="batches" value="${findModule.batches}" type="" style="border-color: black"
                                             cssClass="form-control" placeholder="" readonly="true"/>
                             </div>
 

@@ -1,5 +1,6 @@
 package com.timetabling.demo.service;
 
+import com.timetabling.demo.dto.batchDTO;
 import com.timetabling.demo.dto.classRoomDTO;
 import com.timetabling.demo.dto.moduleDTO;
 import com.timetabling.demo.model.Batch;
@@ -9,6 +10,7 @@ import com.timetabling.demo.repositary.ClassroomRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +28,19 @@ public class ClassRoomService {
         }
         return cr;
     }
+
+
+    public List<classRoomDTO> getAllClassRoomsToList(){
+        List<classRoomDTO> list= new ArrayList<>();
+        for(ClassRoom classRoom: classroomRepo.findAll()){
+            classRoomDTO dto= new classRoomDTO();
+            dto.setClassRoomID(classRoom.getClassRoomID());
+            dto.setCapacity(classRoom.getCapacity());
+            list.add(dto);
+        }
+        return list;
+    }
+
 
     public List<ClassRoom> getAllClassRooms(){
         return classroomRepo.findAll();
@@ -49,5 +64,9 @@ public class ClassRoomService {
         room.setCapacity(dtoclass.getCapacity());
         room.setSmartBoard(dtoclass.getSmartBoard());
         return classroomRepo.save(room);
+    }
+
+    public void deleteClassRoom(ClassRoom classRoom){
+        classroomRepo.delete(classRoom);
     }
 }

@@ -40,7 +40,7 @@
             <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
                 <div class="col-md-3">
                     <div class="contact-info">
-                        <h2>ADD NEW <b>USERS</b></h2>
+                        <h2>ADD NEW <b>LECTURERS</b></h2>
 
                     </div>
                 </div>
