@@ -3,6 +3,12 @@ package com.timetabling.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * This class will be acting as an entity for the Module table.
+ *
+ * @author Praveen Ranasinghe
+ * @version 1.0
+ */
 @Entity
 @Table(name = "module")
 public class Module {
@@ -16,6 +22,9 @@ public class Module {
     @JoinColumn(name = "email")
     private User user;
 
+    @OneToMany(mappedBy = "module")
+    private List<Timetable> lectureList;
+
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(
@@ -23,9 +32,11 @@ public class Module {
             joinColumns = @JoinColumn(name = "module_id"),
             inverseJoinColumns = @JoinColumn(name = "batch_id")
     )
-
     private List<Batch> batches;
 
+    public Module() {
+
+    }
 
     public Module(String moduleID, String moduleName, User user, List<Batch> batches) {
         this.moduleID = moduleID;
@@ -34,8 +45,9 @@ public class Module {
         this.batches = batches;
     }
 
-    public Module() {
 
+    public List<Timetable> getLectureList() {
+        return lectureList;
     }
 
     public String getModuleID() {

@@ -19,20 +19,25 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -57,7 +62,7 @@
                 <td><fmt:formatDate value="${batches.startDate}" pattern="yyyy-MM-dd"/></td>
                 <td><fmt:formatDate value="${batches.endDate}" pattern="yyyy-MM-dd"/></td>
                 <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double">Remove Batch</a>
+                  width:150px; border-style: double" href="/deleteBatch/">Remove Batch</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getBatch/${batches.batchID}">Update Batch</a>

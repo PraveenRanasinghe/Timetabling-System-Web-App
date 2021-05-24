@@ -1,5 +1,8 @@
 package com.timetabling.demo.model;
 
+import org.hibernate.annotations.Cascade;
+import org.springframework.beans.Mergeable;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
@@ -27,8 +30,8 @@ public class Timetable {
 //    @JoinColumn(name = "batch_id")
 //    private Batch batch;
 
-    @ManyToOne
-    @JoinColumn(name="module_id")
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "module_id")
     private Module module;
 
 

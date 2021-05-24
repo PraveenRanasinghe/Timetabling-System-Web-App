@@ -17,16 +17,17 @@
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl" href="${pageContext.request.contextPath}/logout">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>

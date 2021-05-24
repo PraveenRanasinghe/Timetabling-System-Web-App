@@ -6,9 +6,9 @@ import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 public class timetableDTO {
@@ -19,8 +19,8 @@ public class timetableDTO {
     @DateTimeFormat(pattern = "HH:mm:ss")
     private String endTime;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date scheduledDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private java.util.Date scheduledDate;
 
     private List<Batch> batches;
     private Module modules;
@@ -36,7 +36,7 @@ public class timetableDTO {
         this.classRoom = classRoom;
     }
 
-    public timetableDTO(){
+    public timetableDTO() {
 
     }
 

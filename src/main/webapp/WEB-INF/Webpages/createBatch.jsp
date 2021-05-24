@@ -18,34 +18,36 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
 
 
-<%--<div class="alert-secondary mt-3" style="background-color: #efdc7a; color: black; width: 800px; height: 70px; font-size: xx-large; ">--%>
-<%--    ${successMessage}--%>
-<%--    ${errorMessage}--%>
-<%--</div>--%>
 <div class="row alert-success justify-content-center">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
 
-<div class="container">
-
-    <form:form action="/adminAddBatches" modelAttribute="AddBatches" method="POST" class="mt-5">
-    <div class="container contact">
+<div class="row justify-content-center">
+    <div>
+        <img src="${pageContext.request.contextPath}/images/students.png"
+             style="height: 350px;background-size: cover; border-radius: 30px;">
+    </div>
+</div>
+<div class="row justify-content-center mb-5">
+    <form:form action="/adminAddBatches" modelAttribute="AddBatches" method="POST">
+    <div class="contact">
         <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
             <div class="col-md-3">
                 <div class="contact-info">
@@ -107,5 +109,7 @@
         </div>
         </form:form>
     </div>
+</div>
+
 </body>
 </html>

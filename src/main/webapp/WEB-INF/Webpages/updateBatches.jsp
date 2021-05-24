@@ -20,20 +20,24 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+
+            <li class="nav-item ml-5" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewRemoveBatch">Back to List</a>
             </li>
+
         </ul>
     </div>
 </nav>
+
+<div class="row alert-success justify-content-center mt-4">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
     <form:form action="/adminUpdateBatches" modelAttribute="getBatch" method="post" cssClass="mt-5">

@@ -46,6 +46,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private TimetableRepo timetableRepo;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = auth.findUserByEmail(s);
@@ -152,7 +155,8 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
-        return userRepo.save(users);
+            emailService.Email(dtoUser.getEmail());
+            return userRepo.save(users);
     }
 
 
@@ -161,7 +165,6 @@ public class UserService implements UserDetailsService {
         User users = null;
         if (user.isPresent()) {
             users = user.get();
-//            System.out.println(users.getBatch().getBatchID());
         }
         return users;
     }
@@ -181,6 +184,13 @@ public class UserService implements UserDetailsService {
         }
         return userRepo.save(users);
     }
+
+
+    public User directUserType(String email){
+        return userRepo.findUserByEmail(email);
+    }
+
+
 
 
 

@@ -1,33 +1,29 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Praveen
-  Date: 4/30/2021
-  Time: 9:11 PM
+  Date: 5/24/2021
+  Time: 4:54 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Student Time Table</title>
+    <title>Update Account Details</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg"
-     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
                 <a class="nav-link active" href="${pageContext.request.contextPath}/viewStudentHome">Back to Home</a>
             </li>
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/viewUpdateStudAccount">Update
-                    Account</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewUpdateStudAccount">Update Account</a>
             </li>
 
         </ul>
@@ -48,8 +44,7 @@
 
 <div class="row justify-content-center">
 
-    <form:form action="${pageContext.request.contextPath}/adminUpdateStudent" modelAttribute="updateStudent"
-               method="post" cssClass="mt-5">
+    <form:form action="${pageContext.request.contextPath}/adminUpdateAdmin" modelAttribute="updateAdmin" method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-5">
             <div style="width: 500px; height: 550px; background-color: #d0ee94; border-radius: 20px; border-color: black; border-style:double;
                     box-shadow: 15px 15px 30px black; border-radius: 20px;">
@@ -100,17 +95,16 @@
             </div>
         </div>
     </form:form>
-
 </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 </body>
 </html>

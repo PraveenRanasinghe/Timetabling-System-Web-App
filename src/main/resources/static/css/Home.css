@@ -40,6 +40,21 @@ body{
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
+
+.header{
+    background: rgb(195,34,91);
+    background: linear-gradient(0deg, rgba(195,34,91,1) 0%, rgba(242,168,7,1) 100%);
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.header1{
+    background: rgb(34,181,195);
+    background: linear-gradient(0deg, rgba(34,181,195,1) 0%, rgba(242,239,7,1) 100%);
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
 .contact-info{
     margin-top:10%;
 }
@@ -51,6 +66,18 @@ body{
 }
 .col-md-9{
     background: #f3e7cf;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.footer{
+    background: #f3e7cf;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.footer1{
+    background: #e9d194;
     padding: 3%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -68,10 +95,10 @@ body{
     box-shadow:none;
 }
 
-.cbcb{
-    background-color: #efecc7;
+/*.cbcb{*/
+/*    background-color: #efecc7;*/
 
-}
+/*}*/
 
 .contact-image{
     text-align: center;
@@ -82,3 +109,54 @@ body{
     margin-top: -5%;
 }
 /*//////////////////////////////////*/
+
+.card{
+    height: 300px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 550px;
+    background-color: rgba(0,0,0,0.5) !important;
+
+}
+
+.card1{
+    height: 390px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 550px;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+
+/*input:focus{*/
+/*    outline: 0 0 0 0  !important;*/
+/*    box-shadow: 0 0 0 0 !important;*/
+
+/*}*/
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+/*---------------------------------------------------------------*/

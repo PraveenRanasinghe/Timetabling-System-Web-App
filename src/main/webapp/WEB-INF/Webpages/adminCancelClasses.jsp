@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>View,Cancel & Re-Scheduling Classes</title>
@@ -18,21 +19,21 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
-
 
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -40,8 +41,7 @@
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Batch ID</th>
-                <th scope="col">Batch Name</th>
+                <th scope="col">Batch</th>
                 <th scope="col">Module Name</th>
                 <th scope="col">Lecturer Name</th>
                 <th scope="col">Scheduled Date</th>
@@ -56,18 +56,21 @@
 <c:forEach var="timetables" items="${timetables}" varStatus="item">
             <tr>
                 <th scope="row">${item.index + 1}</th>
-                <td>${timetables.batch.batchID}</td>
-                <td>${timetables.batch.batchName}</td>
-                <td>${timetables.moduleName}</td>
-                <td>${timetables.user.fName} ${timetables.user.lName}</td>
+                <td>
+                        <c:forEach items="${timetables.batches}" var="batch">
+                            ${batch.batchID}
+                        </c:forEach>
+                </td>
+                <td>${timetables.module.moduleName}</td>
+                <td>${timetables.module.user.fName} ${timetables.module.user.lName}</td>
                 <td>${timetables.scheduledDate}</td>
                 <td>${timetables.startTime}</td>
                 <td>${timetables.endTime}</td>
                 <td>${timetables.classRoom.classRoomID}</td>
                 <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double; color: white" >Cancel Lecture</a></td>
+                  width:150px; border-style: double; color: white" href="/cancelTimetable/${timetables.timetableId}">Cancel Lecture</a></td>
                 <td><a class="btn btn-warning" style="border-color: black;
-                  width:150px; border-style: double; color: black" href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
+                  width:200px; border-style: double; color: black" href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
             </tr>
 </c:forEach>
             </tbody>

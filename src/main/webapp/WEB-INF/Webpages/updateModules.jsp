@@ -21,17 +21,17 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+
+            <li class="nav-item ml-5" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewRemoveModules">Back to List</a>
             </li>
+
         </ul>
     </div>
 </nav>
@@ -39,7 +39,7 @@
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
 <div class="container">
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-3">
         <form:form action="/adminUpdateModules" modelAttribute="getModule" method="post" cssClass="mt-5">
             <div class="row justify-content-center mt-5">
                 <div style="width: 500px; height: 550px; background-color: #bfa597; border-radius: 20px; border-color: black; border-style:double;
@@ -73,8 +73,11 @@
                             </div>
                             <div class="col">
                                 <label class="control-label col"><b>Currently Learning Batches</b></label>
-                                <form:input path="batches" value="${findModule.batches}" type="" style="border-color: black"
-                                            cssClass="form-control" placeholder="" readonly="true"/>
+                              <div class="row justify-content-center">
+                                    <c:forEach items="${findModule.batches}" var="batch">
+                                        ${batch.batchID}
+                                    </c:forEach>
+                              </div>
                             </div>
 
                         </div>

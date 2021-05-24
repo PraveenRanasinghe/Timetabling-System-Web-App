@@ -18,6 +18,21 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+    <div class="container">
+        <ul id="dropdown-animated" class="navbar-nav">
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
+            </li>
+
+            <li class="nav-item ml-5" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewClassRooms">Back to List</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
 <div class="row alert-success justify-content-center">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
@@ -43,7 +58,7 @@ box-shadow: 15px 15px 30px black; border-radius: 20px;">
                                     cssClass="form-control" readonly="true"/>
                     </div>
 
-                    <form:input path="timetable" value="${findClassRoom.timetable}" type="hidden"/>
+<%--                    <form:input path="timetable" value="${findClassRoom.timetable}" type="hidden"/>--%>
 
                      <div class="col">
                         <label class="control-label col"><b>Capacity of the Class</b></label>

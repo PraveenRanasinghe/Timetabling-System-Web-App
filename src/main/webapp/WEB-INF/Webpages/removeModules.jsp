@@ -19,16 +19,17 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -50,6 +51,7 @@
                 <th scope="col">Learning Batch</th>
                 <th scope="col">|Remove|</th>
                 <th scope="col">|Update|</th>
+                <th scope="col">|Schedule|</th>
             </tr>
             </thead>
             <tbody>
@@ -59,12 +61,19 @@
                 <td>${modules.moduleID}</td>
                 <td>${modules.moduleName}</td>
                 <td>${modules.user.fName} ${modules.user.lName}</td>
-                <td>${modules.batches}</td>
+                <td>
+                    <c:forEach items="${modules.batches}" var="batch">
+                        ${batch.batchID}
+                    </c:forEach>
+                </td>
                 <td> <a class="btn btn-danger" style="border-color: black;
                   width:150px; border-style: double" href="/deleteModule/${modules.moduleID}">Remove Module</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getModule/${modules.moduleID}">Update Module</a>
+                </td>
+                <td> <a class="btn btn-success" style="border-color: black;
+                  width:150px; border-style: double" href="/getModuleToTimetable/${modules.moduleID}">Schedule Class</a>
                 </td>
             </tr>
 </c:forEach>

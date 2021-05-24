@@ -17,16 +17,17 @@
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -35,12 +36,14 @@
 <div class="row alert-success justify-content-center">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
-<div class="container">
-    <div class="row justify-content-center">
-        <h1>Add New ClassRooms</h1>
+<div class="row justify-content-center">
+    <div>
+        <img src="${pageContext.request.contextPath}/images/clz.png"
+             style="height:350px; background-size: cover; border-radius: 30px;">
     </div>
+</div>
 
-    <div class="row justify-content-center">
+<div class="row justify-content-center mb-5 mt-1">
         <div>
             <form:form action="/adminAddClassRooms" modelAttribute="AddClasses" method="post" class="mt-5">
                 <div class="container contact">
@@ -92,7 +95,7 @@
 
                                 <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-warning ">Add Module</button>
+                                        <button type="submit" class="btn btn-warning ">Add Class-Room</button>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +105,6 @@
             </form:form>
         </div>
     </div>
-</div>
 
 </body>
 </html>
