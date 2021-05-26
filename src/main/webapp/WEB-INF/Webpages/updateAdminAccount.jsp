@@ -13,6 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/Home.css">
 </head>
 <body>
 
@@ -20,11 +21,9 @@
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/viewStudentHome">Back to Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
-            <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/viewUpdateStudAccount">Update Account</a>
-            </li>
+
 
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -45,8 +44,9 @@
 <div class="row justify-content-center">
 
     <form:form action="${pageContext.request.contextPath}/adminUpdateAdmin" modelAttribute="updateAdmin" method="post" cssClass="mt-5">
-        <div class="row justify-content-center mt-5">
-            <div style="width: 500px; height: 550px; background-color: #d0ee94; border-radius: 20px; border-color: black; border-style:double;
+        <div class="row justify-content-center mt-3">
+            <div style="width: 500px; height: 550px;background: rgb(212,177,128);
+background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51%, rgba(255,120,107,1) 100%); border-radius: 20px; border-color: black; border-style:double;
                     box-shadow: 15px 15px 30px black; border-radius: 20px;">
                 <div class="ml-2 mt-5 mr-2">
                     <div class="row justify-content-center">

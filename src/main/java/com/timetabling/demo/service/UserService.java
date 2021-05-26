@@ -155,7 +155,7 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
-            emailService.Email(dtoUser.getEmail());
+//            emailService.Email(dtoUser.getEmail());
             return userRepo.save(users);
     }
 
@@ -190,8 +190,9 @@ public class UserService implements UserDetailsService {
         return userRepo.findUserByEmail(email);
     }
 
-
-
+    public void removeUser(User user){
+        userRepo.delete(user);
+    }
 
 
 

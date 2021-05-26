@@ -67,13 +67,13 @@
                     </c:forEach>
                 </td>
                 <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="/deleteModule/${modules.moduleID}">Remove Module</a>
+                  width:150px; border-style: double" href="/deleteModule/${modules.moduleID}" id="demo" onclick="deleteModules()">Remove Module</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getModule/${modules.moduleID}">Update Module</a>
                 </td>
                 <td> <a class="btn btn-success" style="border-color: black;
-                  width:150px; border-style: double" href="/getModuleToTimetable/${modules.moduleID}">Schedule Class</a>
+                  width:150px; border-style: double" href="/getModuleToTimetable/${modules.moduleID}">Schedule Lecture</a>
                 </td>
             </tr>
 </c:forEach>
@@ -81,5 +81,20 @@
         </table>
     </div>
 </div>
+
+<script>
+    function deleteModules() {
+        var txt;
+        var r = confirm("Do You Really want to Remove this Module?");
+        if (r == true) {
+            txt = "Module has been removed successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
+
+
 </body>
 </html>

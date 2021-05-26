@@ -34,6 +34,11 @@
     </div>
 </nav>
 
+
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
+
 <div class="container">
     <h2 class="justify-content-center mt-5">List of Lecturers:</h2>
     <div class="row justify-content-center mt-5">
@@ -58,7 +63,7 @@
                     <td>${Lecturers.email}</td>
                     <td>${Lecturers.contactNumber}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="${pageContext.request.contextPath}/viewModal">Remove Lecturer</a>
+                  width:150px; border-style: double" href="/deleteLec/${Lecturers.email}">Remove Lecturer</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getUser/${Lecturers.email}">Update Lecturer</a>

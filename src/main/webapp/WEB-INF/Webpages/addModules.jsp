@@ -19,7 +19,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
@@ -57,12 +58,14 @@
                                     <div class="col">
                                         <label class="control-label col">Module ID</label>
                                         <form:input path="moduleID" type="text" style="border-color: black"
-                                                    cssClass="form-control" placeholder="Enter the Module ID"/>
+                                                    cssClass="form-control" placeholder="Enter the Module ID"
+                                                    required="required"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Module Name</label>
                                         <form:input path="moduleName" type="text" style="border-color: black"
-                                                    cssClass="form-control" placeholder="Enter the Module Name"/>
+                                                    cssClass="form-control" placeholder="Enter the Module Name"
+                                                    required="required"/>
                                     </div>
                                 </div>
                             </div>

@@ -62,7 +62,7 @@
                 <td><fmt:formatDate value="${batches.startDate}" pattern="yyyy-MM-dd"/></td>
                 <td><fmt:formatDate value="${batches.endDate}" pattern="yyyy-MM-dd"/></td>
                 <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="/deleteBatch/">Remove Batch</a>
+                  width:150px; border-style: double" href="/deleteBatch/${batches.batchID}">Remove Batch</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getBatch/${batches.batchID}">Update Batch</a>

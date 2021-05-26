@@ -20,19 +20,30 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background: rgb(18,123,131);
+background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100%); border-color: black; font-size:large; height: 85px;">
+
+    <div class="row float-right mt-1">
+        <ul>
+            <img src="${pageContext.request.contextPath}/images/My%20Post.jpg"
+                 style="height: 65px; width: 250px;margin-left: 100px; background-size: cover; border-radius: 10px;">
+        </ul>
+    </div>
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" style="color: black;" href="${pageContext.request.contextPath}/viewLecturerHome">Home</a>
+            </li>
+            <li>
+                <a></a>
             </li>
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link" href="${pageContext.request.contextPath}/getLecturer/">Update Account</a>
+                <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getLecturer/">Update Account</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link" href="/logout">Sign Out</a>
+                <a class="nav-link" style="color: black" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -79,7 +90,7 @@
                     <td>${timetables.endTime}</td>
                     <td>${timetables.classRoom.classRoomID}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double; color: white" >Cancel</a></td>
+                  width:150px; border-style: double; color: white" id="demo" onclick="deleteTimetables()">Cancel</a></td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double; color: black" href="/getTimetable/${timetables.timetableId}">Re-Schedule</a></td>
                 </tr>
@@ -89,5 +100,17 @@
     </div>
 
 </div>
+<script>
+    function deleteTimetables() {
+        var txt;
+        var r = confirm("Do You Really want to Cancel the Lecture?");
+        if (r == true) {
+            txt = "Lecture has been cancelled successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
 </body>
 </html>

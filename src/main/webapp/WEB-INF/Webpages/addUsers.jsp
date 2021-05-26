@@ -73,7 +73,8 @@
                                     <div class="col">
                                         <label class="control-label col">Email Address:</label>
                                         <form:input type="text" path="email" style="border-color: black"
-                                                    cssClass="form-control" placeholder="johnDoe@yahoo.com" required="required"/>
+                                                    cssClass="form-control" placeholder="any@gmail.com" required="required"
+                                                    pattern=".+@gmail.com" title="The email should be in the given pattern"/>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="control-label col" id="batchLable">Batch ID:</label>
-                                        <form:select path="batchId" type="text"  style="border-color: black" cssClass="form-control">
+                                        <form:select path="batchId" type="text"  style="border-color: black" cssClass="form-control" required="required">
                                                 <c:forEach var="batchList" items="${batchList}" varStatus="item">
                                                     <form:option value="${batchList.batchID}">
                                                     ${batchList.batchID} ${batchList.batchName}
@@ -110,7 +111,8 @@
                                     <div class="col">
                                         <label class="control-label col">Contact Number:</label>
                                         <form:input path="contactNumber" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="+94715385574" required="required"/>
+                                                    class="form-control" placeholder="+94715385574" required="required"
+                                                    maxlength="13" minlength="10"/>
                                     </div>
                                 </div>
                             </div>

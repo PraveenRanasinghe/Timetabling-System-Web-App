@@ -34,6 +34,10 @@
     </div>
 </nav>
 
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
+
 <div class="container">
     <h2 class="justify-content-center mt-5">List of Students:</h2>
     <div class="row justify-content-center mt-5">
@@ -60,7 +64,7 @@
                     <td>${users.batchId.batchID}</td>
                     <td>${users.contactNumber}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double">Remove Student</a>
+                  width:150px; border-style: double" href="/deleteStudent/${users.email}">Remove Student</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getUser/${users.email}">Update Student</a>

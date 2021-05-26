@@ -20,7 +20,8 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
@@ -41,49 +42,55 @@
 
 <div class="container">
     <form:form action="/adminUpdateBatches" modelAttribute="getBatch" method="post" cssClass="mt-5">
-    <div class="row justify-content-center mt-5">
-         <div style="width: 500px; height: 550px; background-color: #f3b7a4; border-radius: 20px; border-color: black; border-style:double;
+        <div class="row justify-content-center mt-5">
+            <div style="width: 500px; height: 550px; background: rgb(170,179,228);
+background: linear-gradient(90deg, rgba(170,179,228,1) 0%, rgba(167,171,100,1) 48%, rgba(191,232,139,0.8799894957983193) 100%); border-radius: 20px; border-color: black; border-style:double;
          box-shadow: 15px 15px 30px black; border-radius: 20px;">
-             <div class="ml-2 mt-5 mr-2">
-                 <div class="row justify-content-center">
-                     <img src="https://www.freeiconspng.com/uploads/computer-user-icon-27.png" style="width: 150px; height: 150px; background-size: cover;"/>
+                <div class="ml-2 mt-5 mr-2">
+                    <div class="row justify-content-center">
+                        <img src="https://www.freeiconspng.com/uploads/computer-user-icon-27.png"
+                             style="width: 150px; height: 150px; background-size: cover;"/>
 
-                     </img>
-                 </div>
-                 <div class="row justify-content-center">
-                     <h1>${findBatch.batchID}</h1>
-                 </div>
-                 <div class="row mt-3">
-                     <div class="col">
-                         <label class="control-label col"><b>Batch ID</b></label>
-                         <form:input path="batchID" value="${findBatch.batchID}" type="text" style="border-color: black"
-                                     cssClass="form-control" readonly="true"/>
-                     </div>
-                     <div class="col">
-                         <label class="control-label col"><b>Update Batch Name</b></label>
-                         <form:input path="batchName" value="${findBatch.batchName}" type="text" style="border-color: black"
-                                cssClass="form-control" placeholder="" readonly="false"/>
-                     </div>
-                 </div>
-                 <div class="row mt-4">
-                     <div class="col">
-                         <label class="control-label col"><b>Started Date</b></label>
-                         <form:input path="startDate" value="${findBatch.startDate}" pattern="yyyy-MM-dd" type="text" style="border-color: black"
-                                cssClass="form-control" placeholder="" readonly="true"/>
-                     </div>
-                     <div class="col">
-                         <label class="control-label col"><b>Ending date</b></label>
-                         <form:input path="endDate" value="${findBatch.endDate}" pattern="yyyy-MM-dd" type="text" style="border-color: black"
-                                cssClass="form-control" placeholder="" readonly="true"/>
-                     </div>
-                 </div>
+                        </img>
+                    </div>
+                    <div class="row justify-content-center">
+                        <h1>${findBatch.batchID}</h1>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label class="control-label col"><b>Batch ID</b></label>
+                            <form:input path="batchID" value="${findBatch.batchID}" type="text"
+                                        style="border-color: black"
+                                        cssClass="form-control" readonly="true"/>
+                        </div>
+                        <div class="col">
+                            <label class="control-label col"><b>Update Batch Name</b></label>
+                            <form:input path="batchName" value="${findBatch.batchName}" type="text"
+                                        style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="false"/>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <label class="control-label col"><b>Started Date</b></label>
+                            <form:input path="startDate" value="${findBatch.startDate}" pattern="yyyy-MM-dd" type="text"
+                                        style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="true"/>
+                        </div>
+                        <div class="col">
+                            <label class="control-label col"><b>Ending date</b></label>
+                            <form:input path="endDate" value="${findBatch.endDate}" pattern="yyyy-MM-dd" type="text"
+                                        style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="true"/>
+                        </div>
+                    </div>
 
-                 <div class="row justify-content-center mt-4">
-                     <button type="submit" class="btn btn-success">Save Changes</button>
-                 </div>
-             </div>
-         </div>
-    </div>
+                    <div class="row justify-content-center mt-4">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form:form>
 </div>
 

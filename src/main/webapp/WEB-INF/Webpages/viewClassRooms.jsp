@@ -61,7 +61,7 @@
                     <td>${ClassRooms.ac}</td>
                     <td>${ClassRooms.smartBoard}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:200px; border-style: double" href="/deleteClassRoom/${ClassRooms.classRoomID}">Remove Class-Room</a>
+                  width:200px; border-style: double" href="/deleteClassRoom/${ClassRooms.classRoomID}" id="demo" onclick="deleteClass()">Remove Class-Room</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:200px; border-style: double" href="/getClassRoom/${ClassRooms.classRoomID}">Update Class-Room</a>
@@ -74,6 +74,18 @@
     </div>
 </div>
 
+<script>
+    function deleteClass() {
+        var txt;
+        var r = confirm("Do You Really want to Remove the Class-Room From the Academy?");
+        if (r == true) {
+            txt = "Class-Room has been removed successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
 
 </body>
 </html>

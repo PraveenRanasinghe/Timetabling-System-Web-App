@@ -14,32 +14,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/Home.css">
 </head>
-<body style="background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png'); background-size: cover;">
+<body>
 
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
-    <div class="container">
-        <ul id="dropdown-animated" class="navbar-nav">
-            <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
-            </li>
-            <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link" href="${pageContext.request.contextPath}/getStudent/">Update Account</a>
-            </li>
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background: rgb(18,123,131);
+background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100%); font-size:large; height: 85px;">
+
+
+        <div class="row float-right mt-1">
+        <ul>
+            <img src="${pageContext.request.contextPath}/images/My%20Post.jpg"
+                 style="height: 65px; width: 250px;margin-left: 100px; background-size: cover; border-radius: 10px;">
         </ul>
-        <ul class="navbar-nav ml-auto">
+        </div>
+    <div class="container">
+        <div class="row ml-1">
+            <ul id="dropdown-animated" class="navbar-nav">
+                <li class="nav-item" style="cursor: pointer;">
+                    <a class="nav-link active" style="color: black" href="${pageContext.request.contextPath}/viewStudentHome"><b>Home</b></a>
+                </li>
+                <li class="nav-item" style="cursor: pointer;">
+                    <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getStudent/"><b>Update Account</b></a>
+                </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav ml-auto mr-5">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link" href="/logout">Sign Out</a>
+                <a class="nav-link" style="color: black" href="/logout"><b>Sign Out</b></a>
             </li>
         </ul>
     </div>
+
 </nav>
 <div class="container">
     <div class="row justify-content-center mt-4">
-
-        <h1 style="color: #292929"><b>Find Your Batch Time Table Here!</b></h1>
+        <h1 style="color: #292929"><b> Find Your Batch Time Table Here! </b></h1>
     </div>
-
 
     <hr style="background-color: black">
 

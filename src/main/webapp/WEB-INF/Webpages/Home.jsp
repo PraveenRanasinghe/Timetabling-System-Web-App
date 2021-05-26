@@ -18,31 +18,31 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
-    <div class="container">
+<%--<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">--%>
+<%--    <div class="container">--%>
 
-        <ul id="dropdown-animated" class="navbar-nav">
-            <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
-            </li>
-            <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link" href="${pageContext.request.contextPath}/viewStudentHome">Student Home</a>
-            </li>
-        </ul>
+<%--        <ul id="dropdown-animated" class="navbar-nav">--%>
+<%--            <li class="nav-item" style="cursor: pointer">--%>
+<%--                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>--%>
+<%--            </li>--%>
+<%--            <li class="nav-item" style="cursor: pointer">--%>
+<%--                <a class="nav-link" href="${pageContext.request.contextPath}/viewStudentHome">Student Home</a>--%>
+<%--            </li>--%>
+<%--        </ul>--%>
 
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewAdminHome">Admin Home</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewLecturerHome">Lecturer Home</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<%--        <ul class="navbar-nav ml-auto">--%>
+<%--            <li class="nav-item" style="cursor: pointer;">--%>
+<%--                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewAdminHome">Admin Home</a>--%>
+<%--            </li>--%>
+<%--        </ul>--%>
+<%--        <ul class="navbar-nav ml-auto">--%>
+<%--            <li class="nav-item" style="cursor: pointer;">--%>
+<%--                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewLecturerHome">Lecturer Home</a>--%>
+<%--            </li>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</nav>--%>
 
 
 <div class="container">
@@ -55,7 +55,7 @@
 
 
 
-            <div class="d-flex justify-content-center mt-3">
+            <div class="d-flex justify-content-center mt-5">
                 <div class="card card1" style="border-radius: 25px;">
                     <div class="row justify-content-center card-header">
                         <h3 style="color:#ffffff;">Sign In</h3>
@@ -65,14 +65,14 @@
                             <label  class="form-label" style="color: #ffffff">Email address</label>
                             <div class="input-group form-group">
 
-                                <input style="background-color: #cdc3c3" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com">
+                                <input style="background-color: #cdc3c3" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com" required="required">
 
                             </div>
 
                             <label  class="form-label mt-2" style="color: #ffffff">Password</label>
                             <div class="input-group form-group">
 
-                                <input style="background-color: #cdc3c3" name="password" type="password" class="form-control" placeholder="Password">
+                                <input style="background-color: #cdc3c3" name="password" type="password" class="form-control" placeholder="Password" required="required">
                             </div>
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me

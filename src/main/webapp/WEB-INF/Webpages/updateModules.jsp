@@ -41,8 +41,9 @@
 <div class="container">
     <div class="row justify-content-center mt-3">
         <form:form action="/adminUpdateModules" modelAttribute="getModule" method="post" cssClass="mt-5">
-            <div class="row justify-content-center mt-5">
-                <div style="width: 500px; height: 550px; background-color: #bfa597; border-radius: 20px; border-color: black; border-style:double;
+            <div class="row justify-content-center mt-1">
+                <div style="width: 500px; background: rgb(69,153,100);
+background: linear-gradient(0deg, rgba(69,153,100,1) 0%, rgba(226,166,75,1) 100%); border-radius: 20px; border-color: black; border-style:double;
                   box-shadow: 15px 15px 30px black; border-radius: 20px;">
                     <div class="ml-2 mt-5 mr-2">
                         <div class="row justify-content-center">
@@ -53,6 +54,24 @@
                         <div class="row justify-content-center">
                             <h1>${findModule.moduleName}</h1>
                         </div>
+                        <hr style="background-color: black;">
+                            <div class="row justify-content-center">
+                                <h3>Learning Batches:</h3>
+                            </div>
+                            <div class="row justify-content-center">
+                                <h2><c:forEach items="${findModule.batches}" var="batch">
+                                    ${batch.batchID}
+                                </c:forEach></h2>
+                            </div>
+
+                        <div class="row mt-4">
+                            <div class="col">
+                                <label class="control-label col"><b>Lecturer</b></label>
+                                <form:input path="user.email" value="${findModule.user.email}" type="text" style="border-color: black"
+                                            cssClass="form-control" placeholder="" readonly="true"/>
+                            </div>
+                        </div>
+
                         <div class="row mt-3">
                             <div class="col">
                                 <label class="control-label col"><b>Module ID</b></label>
@@ -65,25 +84,10 @@
                                             cssClass="form-control" placeholder="" readonly="false"/>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                <label class="control-label col"><b>Lecturer</b></label>
-                                <form:input path="user.email" value="${findModule.user.email}" type="text" style="border-color: black"
-                                            cssClass="form-control" placeholder="" readonly="true"/>
-                            </div>
-                            <div class="col">
-                                <label class="control-label col"><b>Currently Learning Batches</b></label>
-                              <div class="row justify-content-center">
-                                    <c:forEach items="${findModule.batches}" var="batch">
-                                        ${batch.batchID}
-                                    </c:forEach>
-                              </div>
-                            </div>
 
-                        </div>
 
                         <div class="row justify-content-center mt-4">
-                            <button type="submit" class="btn btn-success">Save Changes</button>
+                            <button type="submit" class="btn btn-warning mb-5">Save Changes</button>
                         </div>
                     </div>
                 </div>

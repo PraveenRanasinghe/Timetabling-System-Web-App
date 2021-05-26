@@ -72,7 +72,8 @@
                                     <div class="col">
                                         <label class="control-label col">Email Address:</label>
                                         <form:input type="text" path="email" style="border-color: black"
-                                                    cssClass="form-control" placeholder="johnDoe@yahoo.com"/>
+                                                    cssClass="form-control" placeholder="any@yahoo.com" required="required"
+                                                    pattern=".+@gmail.com" title="The email should be in the given pattern"/>
                                     </div>
                                 </div>
                             </div>
@@ -82,12 +83,12 @@
                                     <div class="col">
                                         <label class="control-label col">First Name:</label>
                                         <form:input path="fName" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="John"/>
+                                                    class="form-control" placeholder="John" required="required"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Last Name:</label>
                                         <form:input path="lName" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="Doe"/>
+                                                    class="form-control" placeholder="Doe" required="required"/>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,8 @@
                                     <div class="col">
                                         <label class="control-label col">Contact Number:</label>
                                         <form:input path="contactNumber" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="+94715385574"/>
+                                                    class="form-control" placeholder="+94715385574" required="required"
+                                                    maxlength="13" minlength="10"/>
                                     </div>
                                 </div>
                             </div>

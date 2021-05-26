@@ -96,7 +96,6 @@ public class userController {
 
     @GetMapping("/viewLecturerHome")
     public String getLecTimetables(Model m, Authentication auth) {
-//        System.out.println(auth.getName());
         List<Timetable> allTimetables = timetableService.getLecTimetables(auth.getName());
         m.addAttribute("timetables", allTimetables);
         return "lecturerHome";
@@ -104,11 +103,11 @@ public class userController {
 
 
     @GetMapping(path = "/viewStudentHome")
-    public String LecturerViewTimetable(Model m, Authentication auth) {
+    public String studentTimetable(Model m, Authentication auth) {
 
         List<Timetable> allTimetables = timetableService.getStudentTimetables(userService.getUserByID(auth.getName()).getBatch());
         m.addAttribute("timetables", allTimetables);
-        return "lecturerHome";
+        return "studentHome";
     }
 
 }
@@ -121,8 +120,7 @@ public class userController {
 //        m.addAttribute("timetables", allTimetables);
 //        return "studentHome";
 //    }
-//
-//
+
 
 
 //

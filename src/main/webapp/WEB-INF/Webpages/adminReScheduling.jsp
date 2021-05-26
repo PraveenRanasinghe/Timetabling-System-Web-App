@@ -41,7 +41,8 @@
 <div class="container">
     <form:form action="/classRescheduling" modelAttribute="findTimetable"  method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-5">
-            <div style="width: 700px; height: 450px; background-color: #ead85c; border-radius: 20px; border-color: black; border-style:double">
+            <div style="width: 700px; height: 450px; background: rgb(203,212,128);
+background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51%, rgba(179,218,198,1) 100%); border-radius: 20px; border-color: black; border-style:double">
                 <div class="ml-2 mt-5 mr-2">
                     <div class="row justify-content-center">
                         <h1>Re-Schedule Class</h1>
@@ -66,7 +67,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>Lecturer</b></label>
-                            <form:input path="modules.user.email" value="${findTimetable.modules.user.email}" type="text" style="border-color: black"
+                            <form:input path="modules.user.email" value="${findTimetable.modules.user.fName} ${findTimetable.modules.user.lName}" type="text" style="border-color: black"
                                         cssClass="form-control" placeholder="" readonly="true"/>
                         </div>
                         <div class="col-lg-4">
@@ -104,7 +105,7 @@
                     </div>
 
                     <div class="row justify-content-center mt-4">
-                        <button type="submit" class="btn btn-success">Re-Schedule Class</button>
+                        <button type="submit" class="btn btn-warning">Re-Schedule Class</button>
                     </div>
                 </div>
             </div>

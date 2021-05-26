@@ -176,6 +176,28 @@ public class AdminController {
         return "updateUser";
     }
 
+    @RequestMapping("/deleteLec/{email}")
+    public String removeLecturer(@PathVariable(name = "email") User email, Model m) {
+        try {
+            userService.removeUser(email);
+            m.addAttribute("success", "Lecturer has been removed from the system successfully!");
+        } catch (Exception ex) {
+            m.addAttribute("error", "Cannot remove the Lecturer at this time because this Lecturer is teaching some modules.Please try again later!");
+        }
+        return "viewLecturers";
+    }
+
+    @RequestMapping("/deleteStudent/{email}")
+    public String removeStudent(@PathVariable(name = "email") User email, Model m) {
+        try {
+            userService.removeUser(email);
+            m.addAttribute("success", "User has been removed from the system successfully!");
+        } catch (Exception ex) {
+            m.addAttribute("error", "Cannot remove the user at this time.Please try again later!");
+        }
+        return "viewStudents";
+    }
+
     //----------------------------------------------------------------------------------------------------------------
 
 

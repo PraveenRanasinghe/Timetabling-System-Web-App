@@ -63,7 +63,8 @@
                                 <div class="col">
                                     <form:input type="text" path="batchID" style="border-color: black"
                                                 cssClass="form-control"
-                                                placeholder="Enter the Batch ID (EX:Computing_001)"/>
+                                                placeholder="Enter the Batch ID (EX:APIIT_any)" required="required"
+                                                pattern="APIIT_.+" title="The Batch Id should be in the given pattern"/>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +74,7 @@
                                 <div class="col">
                                     <form:input path="batchName" type="text" style="border-color: black"
                                                 cssClass="form-control"
-                                                placeholder="Enter the Batch Name (EX:Software Engineering Batch)"/>
+                                                placeholder="Enter the Batch Name (EX:Software Engineering Batch)" required="required"/>
                                 </div>
                             </div>
                         </div>
@@ -85,14 +86,14 @@
                             <div class="form-group">
                                 <label class="control-label">Date of Commencement:</label>
                                 <form:input path="startDate" style="color: black; border-color: black" type="date"
-                                            pattern="yyyy-MM-dd" cssClass="form-control"/>
+                                            pattern="yyyy-MM-dd" cssClass="form-control" required="required"/>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="control-label">Date of Termination:</label>
                                 <form:input path="endDate" style="color: black; border-color: black" type="date"
-                                            pattern="yyyy-MM-dd" cssClass="form-control"/>
+                                            pattern="yyyy-MM-dd" cssClass="form-control" required="required"/>
                             </div>
                         </div>
                     </div>
@@ -102,7 +103,6 @@
                             <button type="submit" class="btn btn-default ">Create Batch</button>
                         </div>
                     </div>
-
 
                 </div>
             </div>
