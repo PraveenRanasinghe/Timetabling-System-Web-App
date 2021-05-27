@@ -113,32 +113,3 @@ public class userController {
 }
 
 
-//    @GetMapping(path = "/viewStudentHome")
-//    public String studentViewTimetable(Model m){
-//
-//        List<Timetable> allTimetables= timetableService.getAllTimetablesToStudent();
-//        m.addAttribute("timetables", allTimetables);
-//        return "studentHome";
-//    }
-
-
-
-//
-//    @GetMapping("/viewStudentHome")
-//    public String getStudentTimetable(Model m, Authentication auth){
-//        List<Timetable> allTimetables= timetableService.getStudentTimetables(auth.getName());
-//        m.addAttribute("timetables",allTimetables);
-//        return "studentHome";
-//    }
-
-
-//    public String updateUserAccount(Model model, Authentication authentication){
-//        model.addAttribute("loggedInUser",userService.updateUserInfo());
-//    }
-//
-//    @GetMapping(path = "/viewStudentHome")
-//    public String viewScheduledClasses(Model m){
-//        List<Timetable> allTimetables= timetableService.getAllTimetablesToStudent();
-//        m.addAttribute("timetables", allTimetables);
-//        return "studentHome";
-//    }

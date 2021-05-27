@@ -153,7 +153,7 @@ public class AdminController {
     @PostMapping("adminAddLecturers")
     public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m) {
         try {
-            userService.registerUsers(dto);
+            userService.registerLecturers(dto);
             m.addAttribute("success", "User has been added to the system successfully!");
 
         } catch (Exception ex) {

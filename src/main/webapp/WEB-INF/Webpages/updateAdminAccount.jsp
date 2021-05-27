@@ -45,7 +45,7 @@
 
     <form:form action="${pageContext.request.contextPath}/adminUpdateAdmin" modelAttribute="updateAdmin" method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-3">
-            <div style="width: 500px; height: 550px;background: rgb(212,177,128);
+            <div style="width: 500px;background: rgb(212,177,128);
 background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51%, rgba(255,120,107,1) 100%); border-radius: 20px; border-color: black; border-style:double;
                     box-shadow: 15px 15px 30px black; border-radius: 20px;">
                 <div class="ml-2 mt-5 mr-2">
@@ -67,14 +67,14 @@ background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51
                         <form:input path="userRole" value="${findUser.userRole}" type="hidden"/>
                         <form:input path="batch" value="${findUser.batch.batchID}" type="hidden" readonly="true"/>
                             <%--                    <form:input path="email" value="${findUser.email}" type="hidden"/>--%>
-                        <form:input path="password" value="${findUser.password}" type="hidden"/>
+<%--                        <form:input path="password" value="${findUser.password}" type="hidden"/>--%>
                         <div class="col">
                             <label class="control-label col"><b>Last Name</b></label>
                             <form:input path="lName" value="${findUser.lName}" type="text" style="border-color: black"
                                         cssClass="form-control" placeholder="" readonly="false"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col">
                             <label class="control-label col"><b>Email</b></label>
                             <form:input path="email" value="${findUser.email}" type="text" style="border-color: black"
@@ -85,6 +85,19 @@ background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51
                             <b><form:input path="contactNumber" value="${findUser.contactNumber}" type="text"
                                            style="border-color: black"
                                            cssClass="form-control" placeholder="" readonly="false"/></b>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label class="control-label col"><b>Enter new Password</b></label>
+                            <input  id="pass1" style="border-color: black" type="password"
+                                    class="form-control" placeholder="Enter New Password"/>
+                        </div>
+                        <div class="col">
+                            <label class="control-label col"><b>Confirm Password</b></label>
+                            <form:input path="password" id="pass2" type="password"  style="border-color: black"
+                                        cssClass="form-control" placeholder="Confirm Password" readonly="false"/>
                         </div>
                     </div>
 
@@ -105,6 +118,22 @@ background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var password = document.getElementById("pass1")
+        , confirm_password = document.getElementById("pass2");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Do Not Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 
 </body>
 </html>

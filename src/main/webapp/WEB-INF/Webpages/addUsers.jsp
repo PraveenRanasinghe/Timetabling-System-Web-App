@@ -112,7 +112,7 @@
                                         <label class="control-label col">Contact Number:</label>
                                         <form:input path="contactNumber" type="text" style="border-color: black"
                                                     class="form-control" placeholder="+94715385574" required="required"
-                                                    maxlength="13" minlength="10"/>
+                                                    maxlength="15" minlength="10"/>
                                     </div>
                                 </div>
                             </div>

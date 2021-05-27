@@ -39,7 +39,7 @@
      <div class="row justify-content-center">
          <form:form action="${pageContext.request.contextPath}/adminUpdateLecturer" modelAttribute="updateLec" method="post" cssClass="mt-5">
              <div class="row justify-content-center mt-5">
-                 <div style="width: 500px; height: 550px; background-color: #d0ee94; border-radius: 20px; border-color: black; border-style:double;
+                 <div style="width: 500px; background-color: #d0ee94; border-radius: 20px; border-color: black; border-style:double;
                     box-shadow: 15px 15px 30px black; border-radius: 20px;">
                      <div class="ml-2 mt-5 mr-2">
                          <div class="row justify-content-center">
@@ -59,14 +59,14 @@
                              </div>
                              <form:input path="userRole" value="${findUser.userRole}" type="hidden"/>
 
-                             <form:input path="password" value="${findUser.password}" type="hidden"/>
+
                              <div class="col">
                                  <label class="control-label col"><b>Last Name</b></label>
                                  <form:input path="lName" value="${findUser.lName}" type="text" style="border-color: black"
                                              cssClass="form-control" placeholder="" readonly="false"/>
                              </div>
                          </div>
-                         <div class="row">
+                         <div class="row mt-3">
                              <div class="col">
                                  <label class="control-label col"><b>Email</b></label>
                                  <form:input path="email" value="${findUser.email}" type="text" style="border-color: black"
@@ -80,8 +80,21 @@
                              </div>
                          </div>
 
+                         <div class="row mt-3">
+                             <div class="col">
+                                 <label class="control-label col"><b>Enter new Password</b></label>
+                                 <input  id="pass1" style="border-color: black" type="password"
+                                         class="form-control" placeholder="Enter New Password"/>
+                             </div>
+                             <div class="col">
+                                 <label class="control-label col"><b>Confirm Password</b></label>
+                                 <form:input path="password" id="pass2" type="password"  style="border-color: black"
+                                             cssClass="form-control" placeholder="Confirm Password" readonly="false"/>
+                             </div>
+                         </div>
+
                          <div class="row justify-content-center mt-4">
-                             <button type="submit" class="btn btn-success">Update User Info</button>
+                             <button type="submit" class="btn btn-success mb-4">Update User Info</button>
                          </div>
                      </div>
                  </div>
@@ -99,5 +112,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var password = document.getElementById("pass1")
+        , confirm_password = document.getElementById("pass2");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Do Not Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 </body>
 </html>

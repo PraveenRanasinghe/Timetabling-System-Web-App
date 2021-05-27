@@ -155,8 +155,23 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
-//            emailService.Email(dtoUser.getEmail());
+//            emailService.EmailToStudents(dtoUser.getEmail());
             return userRepo.save(users);
+    }
+
+    public User registerLecturers(userDTO dtoUser) {
+        User users = new User();
+        if (dtoUser != null) {
+            users.setfName(dtoUser.getfName());
+            users.setlName(dtoUser.getlName());
+            users.setEmail(dtoUser.getEmail());
+            users.setUserRole(dtoUser.getUserRole());
+            users.setPassword(passwordEncoder.encode("Lecturer1234"));
+            users.setContactNumber(dtoUser.getContactNumber());
+            users.setBatch(dtoUser.getBatchId());
+        }
+//        emailService.EmailToLecturers(dtoUser.getEmail());
+        return userRepo.save(users);
     }
 
 
@@ -177,7 +192,7 @@ public class UserService implements UserDetailsService {
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
             users.setUserRole(dtoUser.getUserRole());
-            users.setPassword(dtoUser.getPassword());
+            users.setPassword(passwordEncoder.encode(dtoUser.getPassword()));
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatch());
 
