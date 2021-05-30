@@ -27,7 +27,13 @@
 
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
+            <li class="mr-5">
+                <form action="${pageContext.request.contextPath}/searchUsers" method="get" class="d-flex">
+                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Lecturers" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item ml-5" style="cursor: pointer;">
                 <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>

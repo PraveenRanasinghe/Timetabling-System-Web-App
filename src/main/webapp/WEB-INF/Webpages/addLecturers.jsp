@@ -72,8 +72,8 @@
                                     <div class="col">
                                         <label class="control-label col">Email Address:</label>
                                         <form:input type="text" path="email" style="border-color: black"
-                                                    cssClass="form-control" placeholder="any@yahoo.com" required="required"
-                                                    pattern=".+@gmail.com" title="The email should be in the given pattern"/>
+                                                    cssClass="form-control" placeholder="any_lec@gmail.com" required="required"
+                                                    pattern=".+lec@gmail.com" title="The email should be in the given pattern"/>
                                     </div>
                                 </div>
                             </div>

@@ -87,6 +87,28 @@ public class ModuleService {
         moduleRepo.delete(module);
     }
 
+    public List<Module> getModulesInBatch(Batch batchId){
+        return moduleRepo.findModulesByBatchesEquals(batchId);
+    }
+
+    public List<Module> getLecturerModules(String email){
+        return moduleRepo.findModulesByUserEmail_Email(email);
+    }
 
 
+    public List<moduleDTO> searchModules(String modName){
+        List<Module> moduleList= new ArrayList<>();
+        moduleList.addAll(moduleRepo.getModuleName(modName));
+        List<moduleDTO> moduleDTOList= new ArrayList<>();
+
+        for (Module module:moduleList){
+            moduleDTO dto= new moduleDTO();
+            dto.setBatches(module.getBatches());
+            dto.setModuleName(module.getModuleName());
+            dto.setModuleID(module.getModuleID());
+            dto.setUser(module.getUser());
+            moduleDTOList.add(dto);
+        }
+        return moduleDTOList;
+    }
 }

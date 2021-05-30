@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,11 +61,23 @@ public class AdminController {
         this.classroomRepo = classroomRepo;
     }
 
-    //----------------------------------------------------------------------------------------------------------------
+    //=======================================  View Functions  =======================================================
+
+
+    //-------------------  View All Students ---------------------
+
     @GetMapping(path = "/viewStudents")
     public String viewAllStudents(Model m) {
         List<userDTO> allUsers = userService.getAllStudents();
         m.addAttribute("users", allUsers);
+        return "viewStudents";
+    }
+
+    @GetMapping("/searchUsers")
+    public String searchUser(HttpServletRequest req, Model m){
+        String name= req.getParameter("searchByName");
+        List<userDTO> userList= userService.searchUsers(name);
+        m.addAttribute("users",userList);
         return "viewStudents";
     }
 
@@ -94,11 +107,26 @@ public class AdminController {
         return "removeBatches";
     }
 
+    @GetMapping("/searchBatches")
+    public String searchBatches(HttpServletRequest req, Model m){
+        String name= req.getParameter("searchByName");
+        List<batchDTO> batches= batchService.searchBatches(name);
+        m.addAttribute("batches", batches);
+        return "removeBatches";
+    }
     //----------------------------------------------------------------------------------------------------------------
     @GetMapping(path = "/viewRemoveModules")
     public String viewAllModules(Model m) {
         List<Module> allModules = moduleService.getAllModules();
         m.addAttribute("modules", allModules);
+        return "removeModules";
+    }
+
+    @GetMapping("/searchModules")
+    public String searchModules(HttpServletRequest req, Model m){
+        String name= req.getParameter("searchByName");
+        List<moduleDTO>modules= moduleService.searchModules(name);
+        m.addAttribute("modules",modules);
         return "removeModules";
     }
 
@@ -130,10 +158,17 @@ public class AdminController {
     }
 
     @PostMapping("/adminAddUsers")
-    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m) {
+    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, BindingResult br) {
         try {
-            userService.registerUsers(dto);
+            if(br.hasErrors()){
+                return "addUsers";
+            }
+            User user= userService.registerUsers(dto);
+            if(user==null){
+                m.addAttribute("error","User email has been used! Please try with another email.");
+            }
             m.addAttribute("success", "Student has been added to the system successfully!");
+
 
         } catch (Exception ex) {
             m.addAttribute("error", "Cannot add the Student at this moment.Try again later!");
@@ -309,7 +344,7 @@ public class AdminController {
     public String deleteModules(@PathVariable(name = "moduleId") Module moduleId, Model m) {
         try {
             moduleService.deleteModules(moduleId);
-            m.addAttribute("success", "Module details has been deleted successfully !");
+            m.addAttribute("success", "Module has been deleted successfully !");
 
         } catch (Exception ex) {
             m.addAttribute("error", "Module cannot delete at this time.Please try again later !");

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,33 +19,6 @@
 </head>
 <body>
 
-<%--<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">--%>
-<%--    <div class="container">--%>
-
-<%--        <ul id="dropdown-animated" class="navbar-nav">--%>
-<%--            <li class="nav-item" style="cursor: pointer">--%>
-<%--                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>--%>
-<%--            </li>--%>
-<%--            <li class="nav-item" style="cursor: pointer">--%>
-<%--                <a class="nav-link" href="${pageContext.request.contextPath}/viewStudentHome">Student Home</a>--%>
-<%--            </li>--%>
-<%--        </ul>--%>
-
-
-<%--        <ul class="navbar-nav ml-auto">--%>
-<%--            <li class="nav-item" style="cursor: pointer;">--%>
-<%--                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewAdminHome">Admin Home</a>--%>
-<%--            </li>--%>
-<%--        </ul>--%>
-<%--        <ul class="navbar-nav ml-auto">--%>
-<%--            <li class="nav-item" style="cursor: pointer;">--%>
-<%--                <a class="nav-link nl" href="${pageContext.request.contextPath}/viewLecturerHome">Lecturer Home</a>--%>
-<%--            </li>--%>
-<%--        </ul>--%>
-<%--    </div>--%>
-<%--</nav>--%>
-
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -53,7 +27,14 @@
                      style="height: 250px; width: 900px;margin-left: 100px; background-size: cover; border-radius: 30px;">
             </div>
 
-
+<%--            <div class="row">--%>
+<%--                <c:if test="${pageContext.request.getParameter('error'==true)}"/>--%>
+<%--                <div class="row justify-content-center">--%>
+<%--                    <div class="alert-danger">--%>
+<%--                        Invalid Credentials--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <div class="d-flex justify-content-center mt-5">
                 <div class="card card1" style="border-radius: 25px;">

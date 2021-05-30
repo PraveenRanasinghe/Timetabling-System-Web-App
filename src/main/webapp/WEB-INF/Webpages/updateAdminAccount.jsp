@@ -96,7 +96,7 @@ background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51
                         </div>
                         <div class="col">
                             <label class="control-label col"><b>Confirm Password</b></label>
-                            <form:input path="password" id="pass2" type="password"  style="border-color: black"
+                            <form:input path="password" id="pass2" type="password" value="" style="border-color: black"
                                         cssClass="form-control" placeholder="Confirm Password" readonly="false"/>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ import com.timetabling.demo.model.Timetable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,5 +16,9 @@ public interface TimetableRepo extends JpaRepository<Timetable, Integer> {
     List<Timetable> findTimetablesByModule_User_Email(String email);
 
     List<Timetable> findTimetablesByBatchesEquals(Batch batch);
+
+    List<Timetable> findTimetablesByBatchesEqualsAndScheduledDate(Batch batchId, Date date);
+
+    List<Timetable> findTimetablesByModule_User_EmailAndScheduledDate(String email, Date date);
 
 }

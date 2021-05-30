@@ -51,6 +51,14 @@ public class TimetableService {
 
     }
 
+    public List<Timetable> getTodaysTimetableToStudent(Batch batchId, Date date){
+        return timetableRepo.findTimetablesByBatchesEqualsAndScheduledDate(batchId,date);
+    }
+
+    public List<Timetable> getTodaysTimetableToLec(String email, Date date){
+        return timetableRepo.findTimetablesByModule_User_EmailAndScheduledDate(email,date);
+    }
+
 
     public timetableDTO getTimetableById(int tId) {
         Optional<Timetable> timetable = timetableRepo.findById(tId);
@@ -106,20 +114,11 @@ public class TimetableService {
         timetableRepo.delete(timetable);
     }
 
+//    public List<Timetable> getTodaysTimetable(Date date, Batch batchId){
+//        return timetableRepo.findTimetablesByBatchesAndScheduledDate(batchId,date);
+//    }
 
 
 }
 
 
-//    public Timetable updateTimetableInfo(timetableDTO dtoTimetable){
-//        Timetable timetables= new Timetable();
-//        timetables.setTimetableId(dtoTimetable.getTimetableId());
-//        timetables.setBatch(dtoTimetable.getBatch());
-//        timetables.setModuleName(dtoTimetable.getModuleName());
-//        timetables.setClassRoom(dtoTimetable.getClassRoom());
-//        timetables.setUser(dtoTimetable.getUser());
-//        timetables.setScheduledDate(dtoTimetable.getScheduledDate());
-//        timetables.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
-//        timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
-//        return timetableRepo.save(timetables);
-//    }

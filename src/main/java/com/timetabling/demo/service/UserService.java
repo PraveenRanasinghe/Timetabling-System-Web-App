@@ -125,28 +125,12 @@ public class UserService implements UserDetailsService {
     }
 
 
-//    public List<timetableDTO> getTimetableForStudents(timetableDTO timedto){
-//        List<Timetable> timetables= timetableRepo.findAll();
-//        List<timetableDTO> timetableList = new ArrayList<>();
-//
-//        if(timetables!=null){
-//            for (Timetable time:timetables){
-//                Optional<Module> byId = batchRepo.findById(timedto.getBatch());
-//
-//                if(byId.isPresent()){
-//                    timetableList=byId.get().getBatches();
-//                }
-//            }
-//        }
-//
-//
-//
-//        return timetableList;
-//    }
-
     public User registerUsers(userDTO dtoUser) {
         User users = new User();
-        if (dtoUser != null) {
+        if(userRepo.findById(dtoUser.getEmail()).isPresent()){
+            return null;
+        }
+        else if (dtoUser != null) {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
@@ -209,6 +193,21 @@ public class UserService implements UserDetailsService {
         userRepo.delete(user);
     }
 
-
+    public List<userDTO> searchUsers(String name) {
+        List<User> userList = new ArrayList<>();
+        userList.addAll(userRepo.firstName(name));
+        userList.addAll(userRepo.lastName(name));
+        List<userDTO> userList2 = new ArrayList<>();
+        for (User user : userList) {
+            userDTO listUser = new userDTO();
+            listUser.setEmail(user.getEmail());
+            listUser.setfName(user.getfName());
+            listUser.setlName(user.getlName());
+            listUser.setBatchId(user.getBatch());
+            listUser.setContactNumber(user.getContactNumber());
+            userList2.add(listUser);
+        }
+        return userList2;
+    }
 
 }

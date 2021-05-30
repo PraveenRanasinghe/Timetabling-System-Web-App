@@ -58,8 +58,9 @@
                                     <div class="col">
                                         <label class="control-label col">Module ID</label>
                                         <form:input path="moduleID" type="text" style="border-color: black"
-                                                    cssClass="form-control" placeholder="Enter the Module ID"
-                                                    required="required"/>
+                                                    cssClass="form-control" placeholder="Enter the Module ID [MOD_any]"
+                                                    required="required" pattern="MOD_.+"
+                                                    title="The Module Id should be in the given pattern"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Module Name</label>

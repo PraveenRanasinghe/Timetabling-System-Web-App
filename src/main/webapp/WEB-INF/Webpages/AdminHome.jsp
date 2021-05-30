@@ -36,8 +36,14 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
                 <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getAdmin/">Update Account</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
+        <ul class="navbar-nav ml-auto mt-2">
+<%--            <li class="mr-5">--%>
+<%--                <form class="d-flex">--%>
+<%--                    <input class="form-control" style="width: 450px;" type="search" placeholder="Search" aria-label="Search">--%>
+<%--                    <button class="btn btn-primary" type="submit">Search</button>--%>
+<%--                </form>--%>
+<%--            </li>--%>
+            <li class="nav-item ml-5" style="cursor: pointer;">
                 <a class="nav-link" style="color: black" href="/logout">Sign Out</a>
             </li>
         </ul>

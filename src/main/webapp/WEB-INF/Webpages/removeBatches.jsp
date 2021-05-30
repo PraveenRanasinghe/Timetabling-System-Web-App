@@ -28,6 +28,13 @@
 
         </ul>
         <ul class="navbar-nav ml-auto">
+            <li class="mr-5 mt-1">
+                <form action="${pageContext.request.contextPath}/searchBatches" method="get" class="d-flex">
+                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Batches" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </li>
+
             <li class="nav-item" style="cursor: pointer;">
                 <a class="nav-link" href="/logout">Sign Out</a>
             </li>

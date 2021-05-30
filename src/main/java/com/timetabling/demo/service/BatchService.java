@@ -82,4 +82,19 @@ public class BatchService {
         batchRepo.delete(batch);
     }
 
+    public List<batchDTO> searchBatches(String batchName){
+        List<Batch> batchList= new ArrayList<>();
+        batchList.addAll(batchRepo.searchBatchName(batchName));
+        List<batchDTO> batchDTOS= new ArrayList<>();
+
+        for(Batch batch:batchList){
+            batchDTO dto= new batchDTO();
+            dto.setBatchName(batch.getBatchName());
+            dto.setBatchID(batch.getBatchID());
+            dto.setStartDate(batch.getStartDate());
+            dto.setEndDate(batch.getEndDate());
+            batchDTOS.add(dto);
+        }
+        return batchDTOS;
+    }
 }

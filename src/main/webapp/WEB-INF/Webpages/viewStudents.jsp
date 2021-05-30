@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>View & Delete Users</title>
@@ -26,8 +27,15 @@
             </li>
 
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
+        <ul class="navbar-nav ml-auto mt-2">
+            <li class="mr-5">
+                <form action="${pageContext.request.contextPath}/searchUsers" method="get" class="d-flex">
+                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Students" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </li>
+
+            <li class="nav-item ml-5" style="cursor: pointer;">
                 <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
