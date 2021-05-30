@@ -19,32 +19,45 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="container contact">
-            <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
-                <div class="col-md-3">
-                    <div class="contact-info">
-                        <h2>ADD NEW <b>USERS</b></h2>
+<div class="row justify-content-center mt-4">
 
+<div class="col-lg-4 mt-5">
+    <div>
+        <img src="${pageContext.request.contextPath}/images/lec.png"
+             style="background-size: cover; border-radius: 30px;">
+    </div>
+</div>
+
+    <div class="col-lg-6">
+        <div class="contact">
+
+                <div class="row header1" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
+                    <div class="col contact-info">
+                        <hr style="background-color: black">
+                        <h2 class="justify-content-center">ADD NEW <b>LECTURERS</b></h2>
+                        <hr style="background-color: black">
+                    </div>
+                    <div class="col">
+                        <h3>Add new Lecturers to the university here!</h3>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="row footer1"  style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
                     <form:form action="/adminAddLecturers" modelAttribute="addLecturers" method="POST">
                         <div class="contact-form">
                             <div class="form-group">
@@ -59,7 +72,8 @@
                                     <div class="col">
                                         <label class="control-label col">Email Address:</label>
                                         <form:input type="text" path="email" style="border-color: black"
-                                                    cssClass="form-control" placeholder="johnDoe@yahoo.com"/>
+                                                    cssClass="form-control" placeholder="any_lec@gmail.com" required="required"
+                                                    pattern=".+lec@gmail.com" title="The email should be in the given pattern"/>
                                     </div>
                                 </div>
                             </div>
@@ -69,34 +83,23 @@
                                     <div class="col">
                                         <label class="control-label col">First Name:</label>
                                         <form:input path="fName" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="John"/>
+                                                    class="form-control" placeholder="John" required="required"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Last Name:</label>
                                         <form:input path="lName" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="Doe"/>
+                                                    class="form-control" placeholder="Doe" required="required"/>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-<%--                                    <div class="col">--%>
-<%--                                        <label class="control-label col" id="batchLable">Batch ID:</label>--%>
-<%--                                        <form:select path="batchId" type="text"  style="border-color: black" cssClass="form-control">--%>
-<%--                                            <c:forEach var="batchList" items="${batchList}" varStatus="item">--%>
-<%--                                                <form:option value="${batchList.batchID}">--%>
-<%--                                                    ${batchList.batchID} ${batchList.batchName}--%>
-<%--                                                </form:option>--%>
-<%--                                            </c:forEach>--%>
-<%--                                        </form:select>--%>
-<%--                                    </div>--%>
-
-
                                     <div class="col">
                                         <label class="control-label col">Contact Number:</label>
                                         <form:input path="contactNumber" type="text" style="border-color: black"
-                                                    class="form-control" placeholder="+94715385574"/>
+                                                    class="form-control" placeholder="+94715385574" required="required"
+                                                    maxlength="15" minlength="10"/>
                                     </div>
                                 </div>
                             </div>
@@ -109,10 +112,14 @@
                         </div>
                     </form:form>
                 </div>
-            </div>
+
         </div>
 
     </div>
+    <div class="col-lg-2">
+
+    </div>
 </div>
+
 </body>
 </html>

@@ -1,34 +1,53 @@
 package com.timetabling.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
+/**
+ * This class will be acting as an entity for the Module table.
+ *
+ * @author Praveen Ranasinghe
+ * @version 1.0
+ */
 @Entity
+@Table(name = "module")
 public class Module {
     @Id
+    @Column(name = "module_id")
     private String moduleID;
+    @Column(name = "module_name")
     private String moduleName;
 
     @ManyToOne
     @JoinColumn(name = "email")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "batch_Id")
-    private Batch batch;
+    @OneToMany(mappedBy = "module")
+    private List<Timetable> lectureList;
 
 
-    public Module(String moduleID, String moduleName, User user, Batch batch) {
-        this.moduleID = moduleID;
-        this.moduleName = moduleName;
-        this.user = user;
-        this.batch = batch;
-    }
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(
+            name = "batch_module",
+            joinColumns = @JoinColumn(name = "module_id"),
+            inverseJoinColumns = @JoinColumn(name = "batch_id")
+    )
+    private List<Batch> batches;
 
     public Module() {
 
+    }
+
+    public Module(String moduleID, String moduleName, User user, List<Batch> batches) {
+        this.moduleID = moduleID;
+        this.moduleName = moduleName;
+        this.user = user;
+        this.batches = batches;
+    }
+
+
+    public List<Timetable> getLectureList() {
+        return lectureList;
     }
 
     public String getModuleID() {
@@ -55,11 +74,11 @@ public class Module {
         this.user = user;
     }
 
-    public Batch getBatch() {
-        return batch;
+    public List<Batch> getBatches() {
+        return batches;
     }
 
-    public void setBatch(Batch batch) {
-        this.batch = batch;
+    public void setBatches(List<Batch> batches) {
+        this.batches = batches;
     }
 }

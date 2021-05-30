@@ -19,16 +19,32 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background: rgb(18,123,131);
+background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100%); border-color: black; font-size:large; height: 85px;">
+    <div class="row float-right mt-1">
+        <ul>
+            <img src="${pageContext.request.contextPath}/images/My%20Post.jpg"
+                 style="height: 65px; width: 250px;margin-left: 100px; background-size: cover; border-radius: 10px;">
+        </ul>
+    </div>
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" style="color: black" href="${pageContext.request.contextPath}/viewAdminHome">Home</a>
+            </li>
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getAdmin/">Update Account</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl" href="${pageContext.request.contextPath}/logout">Sign Out</a>
+        <ul class="navbar-nav ml-auto mt-2">
+<%--            <li class="mr-5">--%>
+<%--                <form class="d-flex">--%>
+<%--                    <input class="form-control" style="width: 450px;" type="search" placeholder="Search" aria-label="Search">--%>
+<%--                    <button class="btn btn-primary" type="submit">Search</button>--%>
+<%--                </form>--%>
+<%--            </li>--%>
+            <li class="nav-item ml-5" style="cursor: pointer;">
+                <a class="nav-link" style="color: black" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -40,113 +56,132 @@
 
 <div class="row justify-content-center mt-5">
 
-        <div class="card" style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem;border-radius: 20px;">
+    <div class="card"
+         style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
+        <%--            <div style="background-image: url('https://mpng.subpng.com/20180528/ccc/kisspng-computer-icons-user-avatar-woman-avatar-5b0c5b2f6ecaa1.2446433615275364314538.jpg'); background-size: cover; height: 15rem;border-radius: 20px;">--%>
+        <%--            </div>--%>
+        <div class="card-body cbcb" style="border-radius: 20px;">
+            <div class="row justify-content-center">
+                <h2 class="card-title" style="color: #f3da07">User Operations</h2>
             </div>
-              <div class="card-body cbcb" style="border-radius: 20px;">
-                  <div class="row justify-content-center">
-                      <h3 class="card-title">User Operations</h3>
-                  </div>
-                      <div class="row justify-content-center">
-                          <a class="btn btn-primary" style="color: black; background-color: #61e728; width:250px; border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewAddUsers">Add Students </a>
-                      </div>
-                  <div class="row justify-content-center mt-2">
-                      <a class="btn btn-primary" style="color: black; background-color: #61e728; width:250px; border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewAddLecturers">Add Lecturers </a>
-                  </div>
-                      <div  class="row justify-content-center mt-2">
-                          <a class="btn btn-warning" style="color: black; background-color: #3d67e3; width:250px;
-                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewStudents">Student Operations</a>
-                      </div>
-                  <div  class="row justify-content-center mt-2">
-                      <a class="btn btn-warning" style="color: black; background-color: #3d67e3; width:250px;
-                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewLecturers">Lecturer Operations</a>
-                  </div>
+            <div class="row justify-content-center">
+                <a class="btn btn-primary"
+                   style="color: black; background-color: #61e728; width:250px; border-color: black; border-style: double"
+                   href="${pageContext.request.contextPath}/viewAddUsers">Add Students </a>
             </div>
-        </div>
-
-        <div class="card ml-5" style="width: 25rem;border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-            <div style="background-image: url('https://cdn.dribbble.com/users/1162077/screenshots/5388344/gears-animation.gif'); background-size: cover; height: 15rem; border-radius: 20px;">
+            <div class="row justify-content-center mt-2">
+                <a class="btn btn-primary"
+                   style="color: black; background-color: #61e728; width:250px; border-color: black; border-style: double"
+                   href="${pageContext.request.contextPath}/viewAddLecturers">Add Lecturers </a>
             </div>
-             <div class="card-body cbcb" style="border-radius: 20px;">
-                 <div class="row justify-content-center">
-                     <h3 class="card-title">Batch Operations</h3>
-                 </div>
-
-                 <div  class="row justify-content-center">
-                     <a class="btn btn-primary" style="border-color: black; width:250px; border-style: double" href="${pageContext.request.contextPath}/viewCreateBatch">Create Batch</a>
-                 </div>
-                 <div  class="row justify-content-center mt-2">
-                     <a class="btn btn-warning" style="border-color: black;  width:250px; border-style: double" href="${pageContext.request.contextPath}/viewRemoveBatch">View Update & Remove Batches</a>
-                 </div>
-                 <div  class="row justify-content-center mt-2">
-<%--                     <a class="btn btn-warning" style="border-color: black;  width:250px; border-style: double" href="${pageContext.request.contextPath}/viewUpdateBatch">Update Batches</a>--%>
-                 </div>
+            <div class="row justify-content-center mt-2">
+                <a class="btn btn-warning" style="color: black; background-color: #3d67e3; width:250px;
+                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewStudents">Student
+                    Operations</a>
+            </div>
+            <div class="row justify-content-center mt-2">
+                <a class="btn btn-warning" style="color: black; background-color: #3d67e3; width:250px;
+                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewLecturers">Lecturer
+                    Operations</a>
             </div>
         </div>
+    </div>
 
-
-        <div class="card ml-5" style="width: 25rem; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem; border-radius: 20px;">
+    <div class="card ml-5"
+         style="width: 25rem;border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
+        <%--            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem; border-radius: 20px;">--%>
+        <%--            </div>--%>
+        <div class="card-body cbcb" style="border-radius: 20px;">
+            <div class="row justify-content-center">
+                <h2 class="card-title" style="color: #f3da07">Batch Operations</h2>
             </div>
-              <div class="card-body cbcb" style="border-radius: 20px;">
-                  <div class="row justify-content-center">
-                      <h3 class="card-title">Time-Table Scheduling</h3>
-                  </div>
-                  <div class="row justify-content-center mt-2">
-                      <a class="btn btn-primary" style="width: 250px;
-                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewClassScheduling">Schedule a Class</a>
-                  </div>
 
-                  <div class="row justify-content-center mt-2">
-                      <a class="btn btn-dark" style="width: 250px;
-                  border-color: black; border-style: double " href="${pageContext.request.contextPath}/viewAdminCancelClasses">View Cancel & Re-Scheduling Classes</a>
-                  </div>
+            <div class="row justify-content-center mt-3">
+                <a class="btn btn-primary" style="border-color: black; width:250px; border-style: double"
+                   href="${pageContext.request.contextPath}/viewCreateBatch">Create Batch</a>
             </div>
+            <div class="row justify-content-center mt-4">
+                <a class="btn btn-warning" style="border-color: black;  width:250px; border-style: double"
+                   href="${pageContext.request.contextPath}/viewRemoveBatch">View Update & Remove Batches</a>
+            </div>
+
         </div>
+    </div>
+
+
+    <%--        <div class="card ml-5" style="width: 25rem; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">--%>
+    <%--&lt;%&ndash;            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem; border-radius: 20px;">&ndash;%&gt;--%>
+    <%--&lt;%&ndash;            </div>&ndash;%&gt;--%>
+    <%--              <div class="card-body cbcb" style="border-radius: 20px;">--%>
+    <%--                  <div class="row justify-content-center">--%>
+    <%--                      <h2 class="card-title" style="color: #f3da07">Time-Table Scheduling</h2>--%>
+    <%--                  </div>--%>
+    <%--                  <div class="row justify-content-center mt-3">--%>
+    <%--                      <a class="btn btn-primary" style="width: 250px;--%>
+    <%--                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewClassScheduling">Schedule a Class</a>--%>
+    <%--                  </div>--%>
+
+    <%--                  <div class="row justify-content-center mt-4">--%>
+    <%--                      <a class="btn btn-danger" style="width: 250px;--%>
+    <%--                  border-color: black; border-style: double " href="${pageContext.request.contextPath}/viewAdminCancelClasses">View Cancel & Re-Scheduling Classes</a>--%>
+    <%--                  </div>--%>
+    <%--            </div>--%>
+    <%--        </div>--%>
 
 </div>
 
 <div class="row justify-content-center mt-5 mb-5">
-    <div class="card" style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-        <div style="background-image: url('https://cdn.dribbble.com/users/43718/screenshots/1137873/loadinganimation1.gif'); background-size: cover; height: 15rem; border-radius: 20px;">
-        </div>
+    <div class="card"
+         style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
+        <%--        <div style="background-image: url('https://icon-library.com/images/settings-icon-flat/settings-icon-flat-19.jpg'); background-size: cover; height: 15rem; border-radius: 20px;">--%>
+        <%--        </div>--%>
         <div class="card-body cbcb" style="border-radius: 20px;">
             <div class="row justify-content-center ">
-                <h3 class="card-title">Module Operations</h3>
+                <h2 class="card-title" style="color: #f3da07">Module Operations</h2>
             </div>
-            <div class="row justify-content-center mt-2">
+            <div class="row justify-content-center mt-3">
                 <a class="btn btn-primary" style="width: 250px;
-                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewAddModules">Add Modules</a>
+                  border-color: black; border-style: double;" href="${pageContext.request.contextPath}/viewAddModules">Add
+                    Modules</a>
             </div>
 
-            <div class="row justify-content-center mt-2">
-                <a class="btn btn-warning" style="width: 250px; background-color: #ff3300;
-                  border-color: black; border-style: double " href="${pageContext.request.contextPath}/viewRemoveModules">View Update & Remove Modules</a>
+            <div class="row justify-content-center mt-3">
+                <a class="btn btn-warning" style="width: 250px; background-color: #ea8232;
+                  border-color: black; border-style: double; color: white"
+                   href="${pageContext.request.contextPath}/viewRemoveModules">View Update & Remove Modules & Schedule
+                    Lectures</a>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <a class="btn btn-success" style="width: 250px;
+                  border-color: black; border-style: double "
+                   href="${pageContext.request.contextPath}/viewAdminCancelClasses">View Cancel & Re-Scheduling
+                    Lectures</a>
             </div>
         </div>
     </div>
 
-    <div class="card ml-5" style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-        <div style="background-image: url('https://cdn.dribbble.com/users/1162077/screenshots/5388344/gears-animation.gif'); background-size: cover; height: 15rem; border-radius: 20px;">
-        </div>
+    <div class="card ml-5"
+         style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
+
         <div class="card-body cbcb" style="border-radius: 20px;">
             <div class="row justify-content-center ">
-                <h3 class="card-title">Class-Room Operations</h3>
-            </div>
-            <div class="row justify-content-center mt-2">
-                <a class="btn btn-primary" style="width: 250px;
-                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewAddClassRoom">Add New Class-Room</a>
+                <h2 class="card-title" style="color: #f3da07">Class-Room Operations</h2>
             </div>
 
-            <div class="row justify-content-center mt-2">
-                <a class="btn btn-secondary" style="width: 250px;
-                  border-color: black; border-style: double; background-color: #ff3300; " href="${pageContext.request.contextPath}/viewClassRooms">View Update & Remove Class-Rooms</a>
+            <div class="row justify-content-center mt-3">
+                <a class="btn btn-primary" style="width: 250px;
+                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewAddClassRoom">Add
+                    New Class-Room</a>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+                <a class="btn btn-danger" style="width: 250px;
+                  border-color: black; border-style: double; background-color: #f12121; "
+                   href="${pageContext.request.contextPath}/viewClassRooms">View Update & Remove Class-Rooms</a>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 </body>

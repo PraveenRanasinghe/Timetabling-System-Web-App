@@ -19,19 +19,23 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+    <div class="container">
+        <ul id="dropdown-animated" class="navbar-nav">
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</nav>
+
 <div class="row alert-success justify-content-center mt-4">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
-<%--<form:form action="/adminAddModules" modelAttribute="upUser" method="post" class="mt-5">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row justify-content-center">--%>
-<%--            <div class="col">--%>
-<%--                <label class="control-label col">Module ID</label>--%>
-<%--                <form:input path="fName" type="text" value="${findUser.fName}" style="border-color: black" cssClass="form-control" placeholder="Enter the Module ID"/>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</form:form>--%>
+
 <form:form action="/adminUpdateUsers" modelAttribute="upUser" method="post" cssClass="mt-5">
     <div class="row justify-content-center mt-5">
         <div style="width: 500px; height: 550px; background-color: #d0ee94; border-radius: 20px; border-color: black; border-style:double;

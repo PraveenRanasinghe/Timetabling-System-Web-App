@@ -18,74 +18,94 @@
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+
+            <li class="nav-item ml-5" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminCancelClasses">Back to List</a>
             </li>
+
         </ul>
     </div>
 </nav>
 
+<div class="row alert-success justify-content-center mt-4">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
+
 <div class="container">
-    <form:form action="/adminAddModules" modelAttribute="getTimetable"  method="post" cssClass="mt-5">
+    <form:form action="/classRescheduling" modelAttribute="findTimetable"  method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-5">
-            <div style="width: 700px; height: 450px; background-color: #ead85c; border-radius: 20px; border-color: black; border-style:double">
+            <div style="width: 700px; height: 450px; background: rgb(203,212,128);
+background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51%, rgba(179,218,198,1) 100%); border-radius: 20px; border-color: black; border-style:double">
                 <div class="ml-2 mt-5 mr-2">
                     <div class="row justify-content-center">
                         <h1>Re-Schedule Class</h1>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <label class="control-label col"><b>Batch ID</b></label>
-                            <form:input path="batch.batchID" value="${findTimetable.batch.batchID}" type="text" style="border-color: black"
-                                        cssClass="form-control"/>
+
+                    <form:input path="timetableId" value="${findTimetable.timetableId}" type="hidden"/>
+
+<%--                    <form:input path="batches" value="${findTimetable.timetableId}" type="hidden"/>--%>
+
+                        <div class="row justify-content-center mt-3">
+                                <h3><b>Batch ID : <c:forEach items="${findTimetable.batches}" var="batch">
+                                    ${batch.batchID}
+                                </c:forEach>
+                                </b></h3>
                         </div>
-                        <div class="col">
-                            <label class="control-label col"><b>Batch Name</b></label>
-                            <form:input path="batch.batchName" value="${findTimetable.batch.batchName}" type="text" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="true"/>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col">
+
+                    <div class="row mt-4">
+                        <div class="col-lg-4">
                             <label class="control-label col"><b>Module Name</b></label>
-                            <form:input path="moduleName" value="${findTimetable.moduleName}" type="text" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="false"/>
+                            <form:input path="modules.moduleName" value="${findTimetable.modules.moduleName}" type="text" style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="true"/>
                         </div>
-                        <div class="col">
+                        <div class="col-lg-4">
                             <label class="control-label col"><b>Lecturer</b></label>
-                            <form:input path="user.email" value="${findTimetable.user.email}" type="text" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="false"/>
+                            <form:input path="modules.user.email" value="${findTimetable.modules.user.fName} ${findTimetable.modules.user.lName}" type="text" style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="true"/>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="control-label col"><b>Class-Room</b></label>
+                            <form:input path="classRoom.classRoomID" value="${findTimetable.classRoom.classRoomID}" type="text" style="border-color: black"
+                                        cssClass="form-control" placeholder="" readonly="true"/>
+<%--                            <form:select path="classRoom.classRoomID" type="text" style="border-color: black"--%>
+<%--                                         cssClass="form-control">--%>
+
+<%--                                <c:forEach var="classRoomList" items="${findTimetable.classRoom}" varStatus="item">--%>
+<%--                                    <form:option value="${findTimetable.classRoomID}">--%>
+<%--                                        ${findTimetable.classRoomID}--%>
+<%--                                    </form:option>--%>
+<%--                                </c:forEach>--%>
+<%--                            </form:select>--%>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-lg-4">
+                            <label class="control-label col"><b>Scheduled Date</b></label>
+                            <form:input path="scheduledDate" value="${findTimetable.scheduledDate}" type="date" style="border-color: black"
+                                        cssClass="form-control"/>
+                        </div>
+                        <div class="col-lg-4">
                             <label class="control-label col"><b>Start Time</b></label>
                             <form:input path="startTime" value="${findTimetable.startTime}" type="time" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="true"/>
+                                        cssClass="form-control"/>
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>End Time</b></label>
                             <form:input path="endTime" value="${findTimetable.endTime}" type="time" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="true"/>
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="control-label col"><b>Scheduled Date</b></label>
-                            <form:input path="scheduledDate" value="${findTimetable.scheduledDate}" type="date" style="border-color: black"
-                                        cssClass="form-control" placeholder="" contenteditable="true"/>
+                                        cssClass="form-control"/>
                         </div>
                     </div>
 
                     <div class="row justify-content-center mt-4">
-                        <button type="submit" class="btn btn-success">Re-Schedule Class</button>
+                        <button type="submit" class="btn btn-warning">Re-Schedule Class</button>
                     </div>
                 </div>
             </div>

@@ -18,20 +18,32 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+            <li class="mr-5">
+                <form action="${pageContext.request.contextPath}/searchUsers" method="get" class="d-flex">
+                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Lecturers" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item ml-5" style="cursor: pointer;">
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
+
+
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
     <h2 class="justify-content-center mt-5">List of Lecturers:</h2>
@@ -57,7 +69,7 @@
                     <td>${Lecturers.email}</td>
                     <td>${Lecturers.contactNumber}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="${pageContext.request.contextPath}/viewModal">Remove Lecturer</a>
+                  width:150px; border-style: double" href="/deleteLec/${Lecturers.email}">Remove Lecturer</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getUser/${Lecturers.email}">Update Lecturer</a>

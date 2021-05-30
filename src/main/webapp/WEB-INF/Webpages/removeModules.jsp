@@ -19,16 +19,23 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mt-2">
+            <li class="mr-5 mt-1">
+                <form action="${pageContext.request.contextPath}/searchModules" method="get" class="d-flex">
+                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Modules" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </li>
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -50,6 +57,7 @@
                 <th scope="col">Learning Batch</th>
                 <th scope="col">|Remove|</th>
                 <th scope="col">|Update|</th>
+                <th scope="col">|Schedule|</th>
             </tr>
             </thead>
             <tbody>
@@ -59,12 +67,19 @@
                 <td>${modules.moduleID}</td>
                 <td>${modules.moduleName}</td>
                 <td>${modules.user.fName} ${modules.user.lName}</td>
-                <td>${modules.batch.batchID}</td>
+                <td>
+                    <c:forEach items="${modules.batches}" var="batch">
+                        ${batch.batchID}
+                    </c:forEach>
+                </td>
                 <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="/deleteModule/${modules.moduleID}">Remove Module</a>
+                  width:150px; border-style: double" href="/deleteModule/${modules.moduleID}" id="demo" onclick="deleteModules()">Remove Module</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getModule/${modules.moduleID}">Update Module</a>
+                </td>
+                <td> <a class="btn btn-success" style="border-color: black;
+                  width:150px; border-style: double" href="/getModuleToTimetable/${modules.moduleID}">Schedule Lecture</a>
                 </td>
             </tr>
 </c:forEach>
@@ -72,5 +87,20 @@
         </table>
     </div>
 </div>
+
+<script>
+    function deleteModules() {
+        var txt;
+        var r = confirm("Do You Really want to Remove this Module?");
+        if (r == true) {
+            txt = "Module has been removed successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
+
+
 </body>
 </html>

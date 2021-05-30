@@ -2,9 +2,17 @@ package com.timetabling.demo.dto;
 
 import com.timetabling.demo.model.Batch;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+
 public class userDTO {
+
+    @Email(message = "Last name is not completed")
     private String email;
+    @NotEmpty
     private String fName;
+    @NotEmpty(message = "Last name is not completed")
     private String lName;
     private String contactNumber;
     private String userRole;

@@ -17,16 +17,18 @@
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
@@ -35,78 +37,81 @@
 <div class="row alert-success justify-content-center">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
 </div>
+
+
 <div class="container">
-    <div class="row justify-content-center">
-        <h1>Add New ClassRooms</h1>
-    </div>
+    <div class="row justify-content-center mb-5 mt-1">
 
-    <div class="row justify-content-center">
-        <div>
-            <form:form action="/adminAddClassRooms" modelAttribute="AddClasses" method="post" class="mt-5">
-                <div class="container contact">
-                    <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
-                        <div class="col-md-3">
-                            <div class="contact-info">
-                                <h2>ADD NEW <b>CLASS-ROOM</b></h2>
+        <form:form action="/adminAddClassRooms" modelAttribute="AddClasses" method="post" class="mt-5">
+            <div class="container contact">
+                <div class="row" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
+                    <div class="col-md-3">
+                        <div class="contact-info">
+                            <h2>ADD NEW <b>CLASS-ROOM</b></h2>
 
-                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <div class="contact-form">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label class="control-label col">ClassRoom ID</label>
-                                            <form:input path="classRoomID" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the ClassRoom ID"/>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label col">ClassRoom ID</label>
+                                        <form:input path="classRoomID" type="text" style="border-color: black"
+                                                    cssClass="form-control"
+                                                    placeholder="Enter the ClassRoom ID :(CLZ_any)" required="required"
+                                                    pattern="CLZ_.+" title="The Class-Room Id should be in the given pattern"/>
+                                    </div>
+                                    <div class="col">
+                                        <label class="control-label col">Capacity of the Room</label>
+                                        <form:input path="capacity" type="text" style="border-color: black"
+                                                    cssClass="form-control"
+                                                    placeholder="Enter the capacity of the Class" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label">Air Conditioned: </label>
+                                        <div class="form-check">
+                                            <form:select path="ac" style="border-color: black" class="form-control"
+                                                         value="" id="flexCheckDefault">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </form:select>
+
                                         </div>
-                                        <div class="col">
-                                            <label class="control-label col">Capacity of the Room</label>
-                                            <form:input path="capacity" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Module Name"/>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="control-label">Smart Board :</label>
+                                            <form:select path="smartBoard" style="border-color: black"
+                                                         class="form-control" value="" id="flexCheckDefault">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </form:select>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label class="control-label">Air Conditioned: </label>
-                                            <div class="form-check">
-                                                <form:select path="ac" style="border-color: black" class="form-control" value="" id="flexCheckDefault">
-                                                    <option>Yes</option>
-                                                    <option>No</option>
-                                                </form:select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <label class="control-label">Smart Board :</label>
-                                                <form:select path="smartBoard" style="border-color: black" class="form-control" value="" id="flexCheckDefault">
-                                                    <option>Yes</option>
-                                                    <option>No</option>
-                                                </form:select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-warning ">Add Module</button>
-                                    </div>
+                            <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-warning ">Add Class-Room</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form:form>
-        </div>
+            </div>
+        </form:form>
     </div>
 </div>
 
 </body>
 </html>
-
 
 
 <%--<form:input path="ac" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Lecturer Name"/>&ndash;%&gt;--%>

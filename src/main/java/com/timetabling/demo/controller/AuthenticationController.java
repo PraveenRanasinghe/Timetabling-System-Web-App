@@ -1,47 +1,62 @@
 package com.timetabling.demo.controller;
 
+import com.timetabling.demo.model.Timetable;
+import com.timetabling.demo.model.User;
+import com.timetabling.demo.service.TimetableService;
+import com.timetabling.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class AuthenticationController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private TimetableService timetableService;
+
     @GetMapping("/home")
     public String getLogin(){
         return "Home";
     }
 
-    @GetMapping("/viewTimeTable")
-    public String getTimeTable(){
-        return "studentHome";
-    }
-
-    @GetMapping("/viewReScheduling")
-    public String getContactAdmin(){
-        return "lecturerReScheduling";
-    }
-
     @GetMapping("/viewAdminHome")
-    public String getAdminHome(){return "AdminHome";}
+    public String getAdminHome(){
+        return "AdminHome";
+    }
 
 
-    @GetMapping("/viewLecturerHome")
-    public String getViewLecturerHome(){return "lecturerHome";}
+    @GetMapping("/successfulLogin")
+    public String successfulLogin(Authentication auth, Model model){
+        User user= userService.directUserType(auth.getName());
+//        System.out.println(user.getEmail());
+        System.out.println(user.getUserRole());
 
-    @GetMapping("/viewUpdateLecAccount")
-    public String getViewUpdateLecAccount(){return "updateLecAccount";}
+        if(user.getUserRole().equals("student")){
+            model.addAttribute("studentDetails", user);
+            return "redirect:/viewStudentHome";
+        }
 
-    @GetMapping("/viewUpdateStudAccount")
-    public String getViewUpdateStudAccount(){return "updateStudAccount";}
+        if(user.getUserRole().equals("lecturer")){
+            model.addAttribute("LecDetails", user);
+            return "redirect:/viewLecturerHome";
+        }
 
-//    @GetMapping("/viewAdminReScheduling")
-//    public String getViewAdminRescheduling(){return "adminReScheduling";}
+        if(user.getUserRole().equals("admin")){
+//            userService.updateUserInfo(auth.getName());
+            model.addAttribute("adminDetails", user);
+            return "redirect:/viewAdminHome";
+        }
 
-
-    @GetMapping("/viewLecCancelClasses")
-    public String getViewLecCancelClasses(){return "lecturerCancelClasses";}
-
-//
-//    @GetMapping("/viewUpdateModules")
-//    public String getViewUpdateModules(){return "updateModules";}
+        return "Admin";
+    }
 
 }

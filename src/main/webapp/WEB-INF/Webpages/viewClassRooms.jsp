@@ -17,20 +17,25 @@
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl" href="${pageContext.request.contextPath}/logout">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
     <h2 class="justify-content-center mt-5">Class Rooms in Academy:</h2>
@@ -56,7 +61,7 @@
                     <td>${ClassRooms.ac}</td>
                     <td>${ClassRooms.smartBoard}</td>
                     <td><a class="btn btn-danger" style="border-color: black;
-                  width:200px; border-style: double" href="${pageContext.request.contextPath}">Remove Class-Room</a>
+                  width:200px; border-style: double" href="/deleteClassRoom/${ClassRooms.classRoomID}" id="demo" onclick="deleteClass()">Remove Class-Room</a>
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:200px; border-style: double" href="/getClassRoom/${ClassRooms.classRoomID}">Update Class-Room</a>
@@ -69,6 +74,18 @@
     </div>
 </div>
 
+<script>
+    function deleteClass() {
+        var txt;
+        var r = confirm("Do You Really want to Remove the Class-Room From the Academy?");
+        if (r == true) {
+            txt = "Class-Room has been removed successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
 
 </body>
 </html>

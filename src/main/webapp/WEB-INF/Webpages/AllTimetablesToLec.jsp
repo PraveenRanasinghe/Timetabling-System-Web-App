@@ -2,24 +2,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: Praveen
-  Date: 4/30/2021
-  Time: 4:05 PM
+  Date: 5/30/2021
+  Time: 1:51 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Lecturer Home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/Home.css">
+    <title>Today's Lectures</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="/css/Home.css">
 </head>
-
 <body>
-
 <nav class="navbar navbar-expand-lg" style="padding: 10px; background: rgb(18,123,131);
 background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100%); border-color: black; font-size:large; height: 85px;">
 
@@ -33,6 +29,9 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
                 <a class="nav-link active" style="color: black;" href="${pageContext.request.contextPath}/viewLecturerHome">Home</a>
+            </li>
+            <li>
+                <a></a>
             </li>
             <li class="nav-item" style="cursor: pointer">
                 <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getLecturer/">Update Account</a>
@@ -54,9 +53,9 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 
 <div class="container">
     <div class="row justify-content-center mt-4">
-        <h1 style="color: #292929"><b>Find Your Time Table Here!</b></h1>
+        <h1 style="color: #292929"><b>Find Your Weekly Time Table Here!</b></h1>
     </div>
-    <h2 style="color: #292929"><b> Today's Lectures </b></h2>
+
     <hr style="background-color: black">
 
     <div class="row justify-content-center">
@@ -102,17 +101,6 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
     </div>
 
 </div>
-<script>
-    function deleteTimetables() {
-        var txt;
-        var r = confirm("Do You Really want to Cancel the Lecture?");
-        if (r == true) {
-            txt = "Lecture has been cancelled successfully!";
-        } else {
-            txt = "Cancelled";
-        }
-        document.getElementById("demo").innerHTML = txt;
-    }
-</script>
+
 </body>
 </html>

@@ -19,20 +19,26 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
-                <a class="nav-link nl">Sign Out</a>
+                <a class="nav-link" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div class="row alert-success justify-content-center">
+    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+</div>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -51,11 +57,16 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="control-label col">Module ID</label>
-                                        <form:input path="moduleID" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Module ID"/>
+                                        <form:input path="moduleID" type="text" style="border-color: black"
+                                                    cssClass="form-control" placeholder="Enter the Module ID [MOD_any]"
+                                                    required="required" pattern="MOD_.+"
+                                                    title="The Module Id should be in the given pattern"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Module Name</label>
-                                        <form:input path="moduleName" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Module Name"/>
+                                        <form:input path="moduleName" type="text" style="border-color: black"
+                                                    cssClass="form-control" placeholder="Enter the Module Name"
+                                                    required="required"/>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +75,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="control-label col">Lecturer Name</label>
-                                        <form:select path="user.email"  style="border-color: black" cssClass="form-control">
+                                        <form:select path="user.email" style="border-color: black"
+                                                     cssClass="form-control">
                                             <c:forEach var="lecList" items="${lecList}" varStatus="item">
                                                 <form:option value="${lecList.email}">
                                                     ${lecList.fName} ${lecList.lName}
@@ -74,7 +86,9 @@
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Assign the batch</label>
-                                        <form:select path="batch.batchID"  style="border-color: black" cssClass="form-control">
+                                        <form:select path="batches"
+                                                     style="border-color: black" cssClass="form-control"
+                                                     multiple="true">
                                             <c:forEach var="batchList" items="${batchList}" varStatus="item">
                                                 <form:option value="${batchList.batchID}">
                                                     ${batchList.batchID} - ${batchList.batchName}
@@ -97,5 +111,6 @@
         </form:form>
     </div>
 </div>
+
 </body>
 </html>

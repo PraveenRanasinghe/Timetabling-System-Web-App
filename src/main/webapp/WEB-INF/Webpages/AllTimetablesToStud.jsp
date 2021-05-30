@@ -2,14 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: Praveen
-  Date: 4/26/2021
-  Time: 2:03 PM
+  Date: 5/30/2021
+  Time: 1:11 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Student Time Table</title>
+    <title>Today's Lectures</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
@@ -22,12 +22,12 @@
 background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100%); font-size:large; height: 85px;">
 
 
-        <div class="row float-right mt-1">
+    <div class="row float-right mt-1">
         <ul>
             <img src="${pageContext.request.contextPath}/images/My%20Post.jpg"
                  style="height: 65px; width: 250px;margin-left: 100px; background-size: cover; border-radius: 10px;">
         </ul>
-        </div>
+    </div>
     <div class="container">
         <div class="row ml-1">
             <ul id="dropdown-animated" class="navbar-nav">
@@ -56,12 +56,12 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 <div class="container">
     <div class="row justify-content-center mt-4">
         <h1 style="color: #292929"><b> Find Your Batch Time Table Here! </b></h1>
-
     </div>
-    <h2 style="color: #292929"><b> Today's Lectures </b></h2>
+
     <hr style="background-color: black">
 
-    <div class="row justify-content-center mt-5">
+
+    <div class="row justify-content-center">
 
         <table class="table table-success table-striped table-hover" style="border-color: black; border-radius: 15px; width: 1200px;">
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">

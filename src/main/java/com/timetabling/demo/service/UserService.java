@@ -2,9 +2,13 @@ package com.timetabling.demo.service;
 
 import com.timetabling.demo.auth.AppUser;
 import com.timetabling.demo.dto.batchDTO;
+import com.timetabling.demo.dto.timetableDTO;
 import com.timetabling.demo.dto.userDTO;
 import com.timetabling.demo.model.Batch;
+import com.timetabling.demo.model.Module;
+import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.model.User;
+import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.TimetableRepo;
 import com.timetabling.demo.repositary.UserRepo;
 import com.timetabling.demo.security.SecurityConfiguration;
@@ -36,9 +40,14 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private BatchRepo batchRepo;
 
     @Autowired
     private TimetableRepo timetableRepo;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -118,7 +127,10 @@ public class UserService implements UserDetailsService {
 
     public User registerUsers(userDTO dtoUser) {
         User users = new User();
-        if (dtoUser != null) {
+        if(userRepo.findById(dtoUser.getEmail()).isPresent()){
+            return null;
+        }
+        else if (dtoUser != null) {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
@@ -127,6 +139,22 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
+//            emailService.EmailToStudents(dtoUser.getEmail());
+            return userRepo.save(users);
+    }
+
+    public User registerLecturers(userDTO dtoUser) {
+        User users = new User();
+        if (dtoUser != null) {
+            users.setfName(dtoUser.getfName());
+            users.setlName(dtoUser.getlName());
+            users.setEmail(dtoUser.getEmail());
+            users.setUserRole(dtoUser.getUserRole());
+            users.setPassword(passwordEncoder.encode("Lecturer1234"));
+            users.setContactNumber(dtoUser.getContactNumber());
+            users.setBatch(dtoUser.getBatchId());
+        }
+//        emailService.EmailToLecturers(dtoUser.getEmail());
         return userRepo.save(users);
     }
 
@@ -136,43 +164,50 @@ public class UserService implements UserDetailsService {
         User users = null;
         if (user.isPresent()) {
             users = user.get();
-//            System.out.println(users.getBatch().getBatchID());
         }
         return users;
     }
 
     public User updateUserInfo(User dtoUser) {
 
-//        Optional<User> user= userRepo.findById(dtoUser.getEmail());
         User users = new User();
-//        System.out.println(dtoUser.getBatchId().getBatchID());
         if (users != null) {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
             users.setUserRole(dtoUser.getUserRole());
-            users.setPassword(dtoUser.getPassword());
+            users.setPassword(passwordEncoder.encode(dtoUser.getPassword()));
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatch());
 
         }
         return userRepo.save(users);
     }
-//    public List<batchDTO> getAllBatchesToList(){
-//        List<batchDTO> list = new ArrayList<>();
-//        for(Batch batch: batchRepo.findAll()){
-//            batchDTO dto= new batchDTO();
-//            dto.setBatchID(batch.getBatchID());
-//            dto.setBatchName(batch.getBatchName());
-//            list.add(dto);
-//        }
-//        return list;
-//    }
 
-//    public List<userDTO> getAllLecturersToList(String userRole){
-//        List<userDTO> list= new ArrayList<>();
-//        for (User user:userRepo.findAll());
-//
-//    }
+
+    public User directUserType(String email){
+        return userRepo.findUserByEmail(email);
+    }
+
+    public void removeUser(User user){
+        userRepo.delete(user);
+    }
+
+    public List<userDTO> searchUsers(String name) {
+        List<User> userList = new ArrayList<>();
+        userList.addAll(userRepo.firstName(name));
+        userList.addAll(userRepo.lastName(name));
+        List<userDTO> userList2 = new ArrayList<>();
+        for (User user : userList) {
+            userDTO listUser = new userDTO();
+            listUser.setEmail(user.getEmail());
+            listUser.setfName(user.getfName());
+            listUser.setlName(user.getlName());
+            listUser.setBatchId(user.getBatch());
+            listUser.setContactNumber(user.getContactNumber());
+            userList2.add(listUser);
+        }
+        return userList2;
+    }
 
 }
