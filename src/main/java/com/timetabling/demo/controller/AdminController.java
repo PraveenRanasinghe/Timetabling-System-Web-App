@@ -149,11 +149,11 @@ public class AdminController {
 
     @GetMapping("/viewAddUsers")
     public String RegisterUsers(Model m) {
-            List<batchDTO> allBatches = batchService.getAllBatchesToList();
-            m.addAttribute("successMessage");
-            m.addAttribute("errorMessage");
-            m.addAttribute("batchList", allBatches);
-            m.addAttribute("AddUser", new userDTO());
+        List<batchDTO> allBatches = batchService.getAllBatchesToList();
+        m.addAttribute("successMessage");
+        m.addAttribute("errorMessage");
+        m.addAttribute("batchList", allBatches);
+        m.addAttribute("AddUser", new userDTO());
         return "addUsers";
     }
 
@@ -164,15 +164,12 @@ public class AdminController {
                 return "addUsers";
             }
             User user = userService.registerUsers(dto);
-            if (user == null) {
-                m.addAttribute("error", "User email has been used! Please try with another email.");
-            }
+
             m.addAttribute("success", "Student has been added to the system successfully!");
 
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            redirectAttributes.addFlashAttribute("error", "User email has been used! Please try with another email.");
+            redirectAttributes.addFlashAttribute("error", ex.getMessage());
         }
 
         return "redirect:/viewAdminHome";
@@ -187,7 +184,7 @@ public class AdminController {
     }
 
     @PostMapping("adminAddLecturers")
-    public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m,RedirectAttributes redirectAttributes) {
+    public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m, RedirectAttributes redirectAttributes) {
         try {
 
             User user = userService.registerLecturers(dto);

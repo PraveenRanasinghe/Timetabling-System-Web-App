@@ -14,6 +14,7 @@ import com.timetabling.demo.repositary.TimetableRepo;
 import com.timetabling.demo.repositary.UserRepo;
 import com.timetabling.demo.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +33,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepo auth;
+
+    @Value("${default.password}")
+    private String lecturerPw;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -121,8 +125,8 @@ public class UserService implements UserDetailsService {
     public User registerUsers(userDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
         if (userRepo.findById(dtoUser.getEmail()).isPresent()) {
-            throw new UserAlreadyExistsException("User Already Exists");
-        } else if (dtoUser != null) {
+            throw new UserAlreadyExistsException("This email is already in use");
+        } else {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
@@ -142,7 +146,7 @@ public class UserService implements UserDetailsService {
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
             users.setUserRole(dtoUser.getUserRole());
-            users.setPassword(passwordEncoder.encode("Lecturer1234"));
+            users.setPassword(passwordEncoder.encode(lecturerPw));
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
