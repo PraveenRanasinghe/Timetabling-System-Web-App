@@ -3,6 +3,7 @@ package com.timetabling.demo.service;
 import com.timetabling.demo.dto.batchDTO;
 import com.timetabling.demo.dto.moduleDTO;
 import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.exceptions.moduleIdExistException;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
@@ -49,8 +50,11 @@ public class ModuleService {
         return modules;
     }
 
-    public Module createModule(moduleDTO dtoModule) {
+    public Module createModule(moduleDTO dtoModule) throws moduleIdExistException {
         Module modules = new Module();
+        if(moduleRepo.findById(dtoModule.getModuleID()).isPresent()){
+            throw new moduleIdExistException("Module Id is already Used! Please try again with another Module Id.");
+        }
         List<Batch> batchList = new ArrayList();
 
         modules.setModuleID(dtoModule.getModuleID());

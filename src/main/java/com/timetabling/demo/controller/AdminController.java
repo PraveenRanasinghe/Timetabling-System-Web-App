@@ -1,6 +1,7 @@
 package com.timetabling.demo.controller;
 
 import com.timetabling.demo.dto.*;
+import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.model.*;
 import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.ClassroomRepo;
@@ -158,15 +159,11 @@ public class AdminController {
     }
 
     @PostMapping("/adminAddUsers")
-    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, BindingResult br, RedirectAttributes redirectAttributes) {
+    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, RedirectAttributes redirectAttributes) {
         try {
-            if (br.hasErrors()) {
-                return "addUsers";
-            }
-            User user = userService.registerUsers(dto);
 
+            userService.registerUsers(dto);
             m.addAttribute("success", "Student has been added to the system successfully!");
-
 
         } catch (Exception ex) {
             redirectAttributes.addFlashAttribute("error", ex.getMessage());
@@ -187,19 +184,17 @@ public class AdminController {
     public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m, RedirectAttributes redirectAttributes) {
         try {
 
-            User user = userService.registerLecturers(dto);
-            if (user == null) {
-                m.addAttribute("error", "User email has been used! Please try with another email.");
-            }
+            userService.registerLecturers(dto);
             m.addAttribute("success", "User has been added to the system successfully!");
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            redirectAttributes.addFlashAttribute("error", "User email has been used! Please try with another email.");
+            redirectAttributes.addFlashAttribute("error", ex.getMessage());
         }
 
         return "redirect:/viewAdminHome";
     }
+
 
     @PostMapping("/adminUpdateUsers")
     public String updateU(@ModelAttribute("upUser") User dto, Model a) {
@@ -257,6 +252,7 @@ public class AdminController {
         return "createBatch";
     }
 
+
     @PostMapping("/adminAddBatches")
     public String BatchRegister(@ModelAttribute("AddBatches") batchDTO dto, Model a) {
         try {
@@ -264,11 +260,13 @@ public class AdminController {
             a.addAttribute("success", "New Batch has been added to the system successfully.");
 
         } catch (Exception ex) {
-            a.addAttribute("error", "Can't Add the batch at this moment.Please try again later!");
+            a.addAttribute("error",  ex.getMessage());
         }
 
         return "createBatch";
     }
+
+
 
     @PostMapping("/adminUpdateBatches")
     public String updateB(@ModelAttribute("getBatch") batchDTO dto, Model a) {
@@ -325,7 +323,7 @@ public class AdminController {
             m.addAttribute("success", "Module has been added to system successfully !");
 
         } catch (Exception ex) {
-            m.addAttribute("error", "Cannot Add the Module at this moment.Please try again later!");
+            m.addAttribute("error",  ex.getMessage());
         }
 
         return "addModules";
@@ -449,7 +447,7 @@ public class AdminController {
             m.addAttribute("success", "The New Class-Room has been added to system successfully!");
 
         } catch (Exception e) {
-            m.addAttribute("error", "Cannot Add the Class-Room to the System at this moment.Please try again later!");
+            m.addAttribute("error",  e.getMessage());
         }
 
         return "addClassRoom";

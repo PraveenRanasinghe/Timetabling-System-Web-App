@@ -1,6 +1,7 @@
 package com.timetabling.demo.service;
 
 import com.timetabling.demo.dto.batchDTO;
+import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
@@ -51,14 +52,20 @@ public class BatchService {
         return batchRepo.findAll();
     }
 
-    public Batch createBatch(batchDTO dtoBatch){
+    public Batch createBatch(batchDTO dtoBatch) throws BatchIdExistException {
         Batch batches = new Batch();
-        batches.setBatchID(dtoBatch.getBatchID());
-        batches.setBatchName(dtoBatch.getBatchName());
-        batches.setStartDate(dtoBatch.getStartDate());
-        batches.setEndDate(dtoBatch.getEndDate());
+        if(batchRepo.findById(dtoBatch.getBatchID()).isPresent()){
+            throw new BatchIdExistException("Batch Id is already used. Please try with another Batch Id.");
+        }
+        else {
+            batches.setBatchID(dtoBatch.getBatchID());
+            batches.setBatchName(dtoBatch.getBatchName());
+            batches.setStartDate(dtoBatch.getStartDate());
+            batches.setEndDate(dtoBatch.getEndDate());
+        }
         return batchRepo.save(batches);
     }
+
 
     public Batch getBatchById(String bId){
         Optional<Batch> batch= batchRepo.findById(bId);

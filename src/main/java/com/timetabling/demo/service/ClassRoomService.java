@@ -3,6 +3,7 @@ package com.timetabling.demo.service;
 import com.timetabling.demo.dto.batchDTO;
 import com.timetabling.demo.dto.classRoomDTO;
 import com.timetabling.demo.dto.moduleDTO;
+import com.timetabling.demo.exceptions.classRoomIdExistException;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.ClassRoom;
 import com.timetabling.demo.model.Module;
@@ -46,13 +47,17 @@ public class ClassRoomService {
         return classroomRepo.findAll();
     }
 
-    public ClassRoom addClassRoom(classRoomDTO dtoclass){
-
+    public ClassRoom addClassRoom(classRoomDTO dtoclass) throws classRoomIdExistException {
         ClassRoom room= new ClassRoom();
-        room.setClassRoomID(dtoclass.getClassRoomID());
-        room.setAc(dtoclass.getAc());
-        room.setCapacity(dtoclass.getCapacity());
-        room.setSmartBoard(dtoclass.getSmartBoard());
+        if(classroomRepo.findById(dtoclass.getClassRoomID()).isPresent()){
+            throw new classRoomIdExistException("ClassRoom Id is already used. Please try with another ClassRoom Id.");
+        }
+        else {
+            room.setClassRoomID(dtoclass.getClassRoomID());
+            room.setAc(dtoclass.getAc());
+            room.setCapacity(dtoclass.getCapacity());
+            room.setSmartBoard(dtoclass.getSmartBoard());
+        }
         return classroomRepo.save(room);
     }
 

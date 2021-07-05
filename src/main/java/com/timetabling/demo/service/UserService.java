@@ -37,6 +37,9 @@ public class UserService implements UserDetailsService {
     @Value("${default.password}")
     private String lecturerPw;
 
+    @Value("${default.password1}")
+    private String studentPw;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -49,10 +52,11 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = auth.findUserByEmail(s);
-        if (user == null) {
-            throw new UsernameNotFoundException(s);
-
-        } else {
+//        if (user == null) {
+//            throw new UsernameNotFoundException(s);
+//
+//        }
+        {
             ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
             grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserRole().toUpperCase(Locale.ROOT)));
             AppUser u = new AppUser(grantedAuthorities, user.getEmail(), user.getPassword(),
@@ -125,13 +129,13 @@ public class UserService implements UserDetailsService {
     public User registerUsers(userDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
         if (userRepo.findById(dtoUser.getEmail()).isPresent()) {
-            throw new UserAlreadyExistsException("This email is already in use");
+            throw new UserAlreadyExistsException("This email is already in use. Please try with another email.");
         } else {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
             users.setUserRole(dtoUser.getUserRole());
-            users.setPassword(passwordEncoder.encode("User1234"));
+            users.setPassword(passwordEncoder.encode(studentPw));
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
@@ -139,9 +143,12 @@ public class UserService implements UserDetailsService {
         return userRepo.save(users);
     }
 
-    public User registerLecturers(userDTO dtoUser) {
+    public User registerLecturers(userDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
-        if (dtoUser != null) {
+        if(userRepo.findById(dtoUser.getEmail()).isPresent()){
+            throw new UserAlreadyExistsException("This Lecturer Email is already in Use. Please try with another email.");
+        }
+        else {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
