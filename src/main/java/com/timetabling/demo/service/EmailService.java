@@ -32,7 +32,6 @@ public class EmailService {
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
 
-
         theAuthenticator = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -53,26 +52,17 @@ public class EmailService {
                     "Enrolled Successfully!" +
                     "----------");
 
-            String msg = "Dear Student,\n\n" +
+            String msg = "Dear Student,<br/><br/>" +
 
-                    "You have been registered in Our College successfully!." +
-                    "Now you have the access to Timetable portal. " +
-                    "Now you can find your weekly timetable there." +
-                    "Your default password would be 'User1234'." +
-                    "----------------------------------------------------------------" +
-                    "\n"+
-                    "\n\n Best Regards," +
+                    "You have been registered in Our College successfully!.<br/>" +
+                    "Now you have the access to Timetable portal.<br/>" +
+                    "Now you can find your weekly timetable there.<br/>" +
+                    "Your default password would be 'User1234'.<br/>" +
+                    "----------------------------------------------------------------<br/><br/>" +
+                    "Best Regards,<br/>" +
                     "System Admin.";
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            Multipart multi= new MimeMultipart();
-            BodyPart messageBodyPart = new MimeBodyPart();
-            String fileName="../../main/webapp/WEB-INF/Webpages/Message.html";
-            DataSource source= new FileDataSource(fileName);
-            messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(fileName);
-            multi.addBodyPart(messageBodyPart);
-
             mimeBodyPart.setContent(msg, "text/html");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
@@ -93,15 +83,14 @@ public class EmailService {
                     Message.RecipientType.TO, InternetAddress.parse(recepientEmail));
             message.setSubject("Thanking for Joining Us!");
 
-            String msg = "Dear Lecturer, \n" +
+            String msg = "Dear Lecturer, <br/><br/>" +
 
                     "You have been successfully registered in our Timetabling Portal." +
-                    "Now you have the access to Timetable portal. \n" +
-                    "Now you can find your weekly timetable there." +
-                    "Your default password would be 'Lecturer1234'.\n" +
-                    "---------------------------------------------------------------- \n" +
-                    "\n"+
-                    "Thanking You," +
+                    "Now you have the access to Timetable portal.<br/>" +
+                    "Now you can find your weekly timetable there.<br/>" +
+                    "Your default password would be 'Lecturer1234'.<br/>" +
+                    "---------------------------------------------------------------- <br/><br/>" +
+                    "Thanking You,<br/>" +
                     "System Admin.";
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setContent(msg, "text/html");

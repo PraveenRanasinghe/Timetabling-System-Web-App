@@ -37,18 +37,14 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2">
-<%--            <li class="mr-5">--%>
-<%--                <form class="d-flex">--%>
-<%--                    <input class="form-control" style="width: 450px;" type="search" placeholder="Search" aria-label="Search">--%>
-<%--                    <button class="btn btn-primary" type="submit">Search</button>--%>
-<%--                </form>--%>
-<%--            </li>--%>
             <li class="nav-item ml-5" style="cursor: pointer;">
                 <a class="nav-link" style="color: black" href="/logout">Sign Out</a>
             </li>
         </ul>
     </div>
 </nav>
+
+
 
 <div class="row alert-success justify-content-center">
     <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
@@ -58,8 +54,6 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 
     <div class="card"
          style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-        <%--            <div style="background-image: url('https://mpng.subpng.com/20180528/ccc/kisspng-computer-icons-user-avatar-woman-avatar-5b0c5b2f6ecaa1.2446433615275364314538.jpg'); background-size: cover; height: 15rem;border-radius: 20px;">--%>
-        <%--            </div>--%>
         <div class="card-body cbcb" style="border-radius: 20px;">
             <div class="row justify-content-center">
                 <h2 class="card-title" style="color: #f3da07">User Operations</h2>
@@ -89,8 +83,6 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 
     <div class="card ml-5"
          style="width: 25rem;border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-        <%--            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem; border-radius: 20px;">--%>
-        <%--            </div>--%>
         <div class="card-body cbcb" style="border-radius: 20px;">
             <div class="row justify-content-center">
                 <h2 class="card-title" style="color: #f3da07">Batch Operations</h2>
@@ -107,34 +99,11 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 
         </div>
     </div>
-
-
-    <%--        <div class="card ml-5" style="width: 25rem; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">--%>
-    <%--&lt;%&ndash;            <div style="background-image: url('https://adaptivesolutions.com/wp-content/uploads/2016/10/icon2.gif'); background-size: cover; height: 15rem; border-radius: 20px;">&ndash;%&gt;--%>
-    <%--&lt;%&ndash;            </div>&ndash;%&gt;--%>
-    <%--              <div class="card-body cbcb" style="border-radius: 20px;">--%>
-    <%--                  <div class="row justify-content-center">--%>
-    <%--                      <h2 class="card-title" style="color: #f3da07">Time-Table Scheduling</h2>--%>
-    <%--                  </div>--%>
-    <%--                  <div class="row justify-content-center mt-3">--%>
-    <%--                      <a class="btn btn-primary" style="width: 250px;--%>
-    <%--                  border-color: black; border-style: double" href="${pageContext.request.contextPath}/viewClassScheduling">Schedule a Class</a>--%>
-    <%--                  </div>--%>
-
-    <%--                  <div class="row justify-content-center mt-4">--%>
-    <%--                      <a class="btn btn-danger" style="width: 250px;--%>
-    <%--                  border-color: black; border-style: double " href="${pageContext.request.contextPath}/viewAdminCancelClasses">View Cancel & Re-Scheduling Classes</a>--%>
-    <%--                  </div>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-
 </div>
 
 <div class="row justify-content-center mt-5 mb-5">
     <div class="card"
          style="width: 25rem; border-style: double; border-color: black; box-shadow: 15px 15px 30px black; border-radius: 20px;">
-        <%--        <div style="background-image: url('https://icon-library.com/images/settings-icon-flat/settings-icon-flat-19.jpg'); background-size: cover; height: 15rem; border-radius: 20px;">--%>
-        <%--        </div>--%>
         <div class="card-body cbcb" style="border-radius: 20px;">
             <div class="row justify-content-center ">
                 <h2 class="card-title" style="color: #f3da07">Module Operations</h2>

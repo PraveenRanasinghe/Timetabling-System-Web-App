@@ -4,6 +4,7 @@ import com.timetabling.demo.auth.AppUser;
 import com.timetabling.demo.dto.batchDTO;
 import com.timetabling.demo.dto.timetableDTO;
 import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
@@ -28,23 +29,15 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-    @Autowired
-    private UserRepo auth;
 
     @Autowired
-    private PasswordEncoder encoder;
+    private UserRepo auth;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepo userRepo;
-
-    @Autowired
-    private BatchRepo batchRepo;
-
-    @Autowired
-    private TimetableRepo timetableRepo;
 
     @Autowired
     private EmailService emailService;
@@ -54,6 +47,7 @@ public class UserService implements UserDetailsService {
         User user = auth.findUserByEmail(s);
         if (user == null) {
             throw new UsernameNotFoundException(s);
+
         } else {
             ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
             grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserRole().toUpperCase(Locale.ROOT)));
@@ -72,7 +66,7 @@ public class UserService implements UserDetailsService {
     public List<userDTO> getAllLecturersToList() {
         List<userDTO> list = new ArrayList<>();
         for (User user : userRepo.findAll()) {
-            if(user.getUserRole().equals("lecturer")){
+            if (user.getUserRole().equals("lecturer")) {
                 userDTO dto = new userDTO();
                 dto.setUserRole(user.getUserRole());
                 dto.setEmail(user.getEmail());
@@ -80,7 +74,6 @@ public class UserService implements UserDetailsService {
                 dto.setlName(user.getlName());
                 list.add(dto);
             }
-
         }
         return list;
     }
@@ -125,12 +118,11 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User registerUsers(userDTO dtoUser) {
+    public User registerUsers(userDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
-        if(userRepo.findById(dtoUser.getEmail()).isPresent()){
-            return null;
-        }
-        else if (dtoUser != null) {
+        if (userRepo.findById(dtoUser.getEmail()).isPresent()) {
+            throw new UserAlreadyExistsException("User Already Exists");
+        } else if (dtoUser != null) {
             users.setfName(dtoUser.getfName());
             users.setlName(dtoUser.getlName());
             users.setEmail(dtoUser.getEmail());
@@ -140,7 +132,7 @@ public class UserService implements UserDetailsService {
             users.setBatch(dtoUser.getBatchId());
         }
 //            emailService.EmailToStudents(dtoUser.getEmail());
-            return userRepo.save(users);
+        return userRepo.save(users);
     }
 
     public User registerLecturers(userDTO dtoUser) {
@@ -185,11 +177,11 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User directUserType(String email){
+    public User directUserType(String email) {
         return userRepo.findUserByEmail(email);
     }
 
-    public void removeUser(User user){
+    public void removeUser(User user) {
         userRepo.delete(user);
     }
 

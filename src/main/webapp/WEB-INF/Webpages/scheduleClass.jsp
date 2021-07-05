@@ -78,11 +78,6 @@ background: linear-gradient(90deg, rgba(75,130,154,1) 0%, rgba(161,232,147,1) 49
                                     style="background-color: #e3e1e1; color: black; border-color: black" readonly="true"/>
                     </div>
 
-<%--                    <div class="col-lg-4">--%>
-<%--                        <label class="form-label"><b>Batch ID</b></label>--%>
-<%--                       --%>
-<%--                       --%>
-<%--                    </div>--%>
 
                     <div class="col-lg-6">
                         <label class="form-label"><b>Select the Class</b></label>

@@ -20,15 +20,13 @@ public class Timetable {
 
     @Column(name = "start_time")
     private LocalTime startTime;
+
     @Column(name = "end_time")
     private LocalTime endTime;
+
     @Column(name = "scheduled_date")
     private Date scheduledDate;
 
-//
-//    @ManyToOne
-//    @JoinColumn(name = "batch_id")
-//    private Batch batch;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "module_id")

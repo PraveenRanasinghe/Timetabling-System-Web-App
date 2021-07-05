@@ -114,10 +114,6 @@ public class TimetableService {
         timetableRepo.delete(timetable);
     }
 
-//    public List<Timetable> getTodaysTimetable(Date date, Batch batchId){
-//        return timetableRepo.findTimetablesByBatchesAndScheduledDate(batchId,date);
-//    }
-
 
 }
 

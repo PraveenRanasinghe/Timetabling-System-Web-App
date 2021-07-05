@@ -7,9 +7,7 @@ import com.timetabling.demo.repositary.ClassroomRepo;
 import com.timetabling.demo.repositary.UserRepo;
 import com.timetabling.demo.service.*;
 import com.timetabling.demo.validators.userValidator;
-import netscape.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,9 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
-import java.time.LocalTime;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 public class AdminController {
@@ -40,6 +37,8 @@ public class AdminController {
 
     @Autowired
     private userValidator userValidator;
+
+    private Logger logger;
 
     @Autowired
     private final BatchRepo batchRepo;
@@ -74,10 +73,10 @@ public class AdminController {
     }
 
     @GetMapping("/searchUsers")
-    public String searchUser(HttpServletRequest req, Model m){
-        String name= req.getParameter("searchByName");
-        List<userDTO> userList= userService.searchUsers(name);
-        m.addAttribute("users",userList);
+    public String searchUser(HttpServletRequest req, Model m) {
+        String name = req.getParameter("searchByName");
+        List<userDTO> userList = userService.searchUsers(name);
+        m.addAttribute("users", userList);
         return "viewStudents";
     }
 
@@ -108,12 +107,13 @@ public class AdminController {
     }
 
     @GetMapping("/searchBatches")
-    public String searchBatches(HttpServletRequest req, Model m){
-        String name= req.getParameter("searchByName");
-        List<batchDTO> batches= batchService.searchBatches(name);
+    public String searchBatches(HttpServletRequest req, Model m) {
+        String name = req.getParameter("searchByName");
+        List<batchDTO> batches = batchService.searchBatches(name);
         m.addAttribute("batches", batches);
         return "removeBatches";
     }
+
     //----------------------------------------------------------------------------------------------------------------
     @GetMapping(path = "/viewRemoveModules")
     public String viewAllModules(Model m) {
@@ -123,10 +123,10 @@ public class AdminController {
     }
 
     @GetMapping("/searchModules")
-    public String searchModules(HttpServletRequest req, Model m){
-        String name= req.getParameter("searchByName");
-        List<moduleDTO>modules= moduleService.searchModules(name);
-        m.addAttribute("modules",modules);
+    public String searchModules(HttpServletRequest req, Model m) {
+        String name = req.getParameter("searchByName");
+        List<moduleDTO> modules = moduleService.searchModules(name);
+        m.addAttribute("modules", modules);
         return "removeModules";
     }
 
@@ -149,29 +149,30 @@ public class AdminController {
 
     @GetMapping("/viewAddUsers")
     public String RegisterUsers(Model m) {
-        List<batchDTO> allBatches = batchService.getAllBatchesToList();
-        m.addAttribute("successMessage");
-        m.addAttribute("errorMessage");
-        m.addAttribute("batchList", allBatches);
-        m.addAttribute("AddUser", new userDTO());
+            List<batchDTO> allBatches = batchService.getAllBatchesToList();
+            m.addAttribute("successMessage");
+            m.addAttribute("errorMessage");
+            m.addAttribute("batchList", allBatches);
+            m.addAttribute("AddUser", new userDTO());
         return "addUsers";
     }
 
     @PostMapping("/adminAddUsers")
-    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, BindingResult br) {
+    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, BindingResult br, RedirectAttributes redirectAttributes) {
         try {
-            if(br.hasErrors()){
+            if (br.hasErrors()) {
                 return "addUsers";
             }
-            User user= userService.registerUsers(dto);
-            if(user==null){
-                m.addAttribute("error","User email has been used! Please try with another email.");
+            User user = userService.registerUsers(dto);
+            if (user == null) {
+                m.addAttribute("error", "User email has been used! Please try with another email.");
             }
             m.addAttribute("success", "Student has been added to the system successfully!");
 
 
         } catch (Exception ex) {
-            m.addAttribute("error", "Cannot add the Student at this moment.Try again later!");
+            System.out.println(ex.getMessage());
+            redirectAttributes.addFlashAttribute("error", "User email has been used! Please try with another email.");
         }
 
         return "redirect:/viewAdminHome";
@@ -186,13 +187,18 @@ public class AdminController {
     }
 
     @PostMapping("adminAddLecturers")
-    public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m) {
+    public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m,RedirectAttributes redirectAttributes) {
         try {
-            userService.registerLecturers(dto);
+
+            User user = userService.registerLecturers(dto);
+            if (user == null) {
+                m.addAttribute("error", "User email has been used! Please try with another email.");
+            }
             m.addAttribute("success", "User has been added to the system successfully!");
 
         } catch (Exception ex) {
-            m.addAttribute("error", "Cannot add the user at this moment.Try again later!");
+            System.out.println(ex.getMessage());
+            redirectAttributes.addFlashAttribute("error", "User email has been used! Please try with another email.");
         }
 
         return "redirect:/viewAdminHome";
@@ -365,10 +371,8 @@ public class AdminController {
     }
 
     @GetMapping("/getModuleToTimetable/{moduleId}")
-    public String getModuleToTimetable(@PathVariable(value = "moduleId")String moduleId,Model m){
+    public String getModuleToTimetable(@PathVariable(value = "moduleId") String moduleId, Model m) {
         Module mo = moduleService.getModuleById(moduleId);
-//        Module module = new Module();
-//        m.addAttribute("getModule", module);
         m.addAttribute("findModule", mo);
 
         timetableDTO theDTO = new timetableDTO();
@@ -480,96 +484,7 @@ public class AdminController {
         return "viewClassRooms";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
-
-//    In the below functions what is happening is it take each and every object to a single page according to the selected item.
-
-
-
-
-
-
-
-
+    //-----------------------------------------------     END     ----------------------------------------------------
 
 }
 
-
-//    @GetMapping("/viewUpdateModules")
-//    public String updateModuleDetails(Model m){
-//        m.addAttribute("updateModule",new moduleDTO());
-//        return "updateModules";
-//    }
-//
-//    @PostMapping("/adminUpdateModules")
-//    public String moduleUpdating(@ModelAttribute("updateModule") moduleDTO dto){
-//        userService.updateModule(dto);
-//        return "redirect:/viewAdminHome";
-//    }
-
-
-//    @PostMapping("/adminAddTimetable")
-//    public String scheduleTimetable(HttpServletRequest req) {
-//        String batch = req.getParameter("batch");
-//        String moduleName = req.getParameter("moduleName");
-//        String classRoom = req.getParameter("classRoom");
-//        String user = req.getParameter("user");
-//        String scheduledDate = req.getParameter("scheduledDate");
-//        String startTime = req.getParameter("startTime");
-//        String endTime = req.getParameter("endTime");
-//
-//        timetableDTO dto = new timetableDTO();
-//
-//        dto.setBatch(batchRepo.getOne(batch));
-//        dto.setModuleName(moduleName);
-//        dto.setClassRoom(classroomRepo.getOne(classRoom));
-//        dto.setUser(userRepo.findUserByEmail(user));
-//        dto.setScheduledDate(Date.valueOf(scheduledDate));
-//        dto.setStartTime(LocalTime.parse(startTime));
-//        dto.setEndTime(LocalTime.parse(endTime));
-//        timetableService.createTimetable(dto);
-//        return "redirect:/viewAdminHome";
-//    }
-
-
-
-
-
-//--------------------------------------------------------------------------------------------------------------------
-
-
-//
-//    @GetMapping("/viewScheduleClass")
-//    public String addTimetable(Model m) {
-//        m.addAttribute("addTimetable", new timetableDTO());
-//        m.addAttribute("successMessage");
-//        m.addAttribute("errorMessage");
-//        return "scheduleClass";
-//    }
-//    @GetMapping("/getModuleToSchedule/{moduleId}")
-//    public String getModuleToSchedule(Model m, @PathVariable(value = "moduleId") String moduleId) {
-//        Module mo = moduleService.getModuleById(moduleId);
-//        Module module = new Module();
-//        m.addAttribute("getModuleToSchedule", module);
-//        m.addAttribute("findModule", mo);
-//        return "scheduleClass";
-//    }
-
-
-//    @GetMapping("/viewClassScheduling")
-//    public String addTimeTable(Model m, String moduleId) {
-//
-//        List<batchDTO> alBatches = batchService.getAllBatchesToList();
-//        m.addAttribute("batchList", alBatches);
-//
-//        List<classRoomDTO> allClassRooms = classRoomService.getAllClassRoomsToList();
-//        m.addAttribute("classRoomList", allClassRooms);
-//
-//        List<moduleDTO> allModules = moduleService.getAllModulesToList();
-//        m.addAttribute("moduleList", allModules);
-//
-//        m.addAttribute("successMessage");
-//        m.addAttribute("errorMessage");
-//        m.addAttribute("AddTimetable", new timetableDTO());
-//        return "classScheduling";
-//    }

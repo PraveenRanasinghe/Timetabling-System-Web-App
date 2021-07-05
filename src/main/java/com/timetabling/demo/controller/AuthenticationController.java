@@ -20,8 +20,6 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private TimetableService timetableService;
 
     @GetMapping("/home")
     public String getLogin(){
@@ -37,7 +35,6 @@ public class AuthenticationController {
     @GetMapping("/successfulLogin")
     public String successfulLogin(Authentication auth, Model model){
         User user= userService.directUserType(auth.getName());
-//        System.out.println(user.getEmail());
         System.out.println(user.getUserRole());
 
         if(user.getUserRole().equals("student")){
@@ -51,12 +48,11 @@ public class AuthenticationController {
         }
 
         if(user.getUserRole().equals("admin")){
-//            userService.updateUserInfo(auth.getName());
             model.addAttribute("adminDetails", user);
             return "redirect:/viewAdminHome";
         }
 
-        return "Admin";
+        return "Home";
     }
 
 }

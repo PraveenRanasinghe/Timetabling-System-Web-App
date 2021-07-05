@@ -112,18 +112,3 @@
 
 </body>
 </html>
-
-
-<%--<form:input path="ac" type="text" style="border-color: black" cssClass="form-control" placeholder="Enter the Lecturer Name"/>&ndash;%&gt;--%>
-<%--<div class="form-check">--%>
-<%--    <form:select path="ac" class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1"/>--%>
-<%--    <label class="form-check-label" for="flexRadioDefault1">--%>
-<%--        Air Conditioned--%>
-<%--    </label>--%>
-<%--</div>--%>
-<%--<div class="form-check">--%>
-<%--    <form:select path="smartBoard" class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2"/>--%>
-<%--    <label class="form-check-label" for="flexRadioDefault2">--%>
-<%--        Smart Board--%>
-<%--    </label>--%>
-<%--</div>--%>

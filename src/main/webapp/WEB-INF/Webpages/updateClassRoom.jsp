@@ -58,8 +58,6 @@ box-shadow: 15px 15px 30px black; border-radius: 20px;">
                                     cssClass="form-control" readonly="true"/>
                     </div>
 
-<%--                    <form:input path="timetable" value="${findClassRoom.timetable}" type="hidden"/>--%>
-
                      <div class="col">
                         <label class="control-label col"><b>Capacity of the Class</b></label>
                         <form:input path="capacity" value="${findClassRoom.capacity}" type="text" style="border-color: black"

@@ -50,8 +50,6 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
 
                     <form:input path="timetableId" value="${findTimetable.timetableId}" type="hidden"/>
 
-<%--                    <form:input path="batches" value="${findTimetable.timetableId}" type="hidden"/>--%>
-
                         <div class="row justify-content-center mt-3">
                                 <h3><b>Batch ID : <c:forEach items="${findTimetable.batches}" var="batch">
                                     ${batch.batchID}
@@ -74,15 +72,6 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
                             <label class="control-label col"><b>Class-Room</b></label>
                             <form:input path="classRoom.classRoomID" value="${findTimetable.classRoom.classRoomID}" type="text" style="border-color: black"
                                         cssClass="form-control" placeholder="" readonly="true"/>
-<%--                            <form:select path="classRoom.classRoomID" type="text" style="border-color: black"--%>
-<%--                                         cssClass="form-control">--%>
-
-<%--                                <c:forEach var="classRoomList" items="${findTimetable.classRoom}" varStatus="item">--%>
-<%--                                    <form:option value="${findTimetable.classRoomID}">--%>
-<%--                                        ${findTimetable.classRoomID}--%>
-<%--                                    </form:option>--%>
-<%--                                </c:forEach>--%>
-<%--                            </form:select>--%>
                         </div>
                     </div>
 

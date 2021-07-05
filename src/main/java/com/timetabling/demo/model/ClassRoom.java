@@ -9,14 +9,12 @@ public class ClassRoom {
     @Column(name = "class_roomid")
     private String classRoomID;
 
-//    @OneToOne
-//    @JoinColumn(name = "timetable_id")
-//    private Timetable timetable;
-
     @Column(name = "capacity")
     private String capacity;
+
     @Column(name = "smart_board")
     private String smartBoard;
+
     @Column(name = "ac")
     private String Ac;
 
