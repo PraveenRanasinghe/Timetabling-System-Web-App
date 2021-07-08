@@ -27,14 +27,10 @@
                      style="height: 250px; width: 900px;margin-left: 100px; background-size: cover; border-radius: 30px;">
             </div>
 
-<%--            <div class="row">--%>
-<%--                <c:if test="${pageContext.request.getParameter('error'==true)}"/>--%>
-<%--                <div class="row justify-content-center">--%>
-<%--                    <div class="alert-danger">--%>
-<%--                        Invalid Credentials--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <div class="row alert-success justify-content-center mt-4">
+                <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+            </div>
+
 
             <div class="d-flex justify-content-center mt-5">
                 <div class="card card1" style="border-radius: 25px;">

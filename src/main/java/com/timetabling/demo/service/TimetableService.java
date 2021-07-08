@@ -100,7 +100,7 @@ public class TimetableService {
     }
 
 
-
+//timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
     public Timetable reScheduleTimetable(timetableDTO dtoTimetable) {
         Timetable timetables = timetableRepo.findById(dtoTimetable.getTimetableId()).orElseThrow(RuntimeException::new);
         timetables.setScheduledDate(new Date(dtoTimetable.getScheduledDate().getTime()));

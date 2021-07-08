@@ -16,7 +16,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<%--    <link rel="stylesheet" type="text/css"  href="webjars/bootstrap/4.1.1/css/bootstrap.min.css" />--%>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 
 <body>
@@ -98,20 +99,20 @@ background: linear-gradient(90deg, rgba(75,130,154,1) 0%, rgba(161,232,147,1) 49
 
                     <div class="col-lg-4">
                         <label class="form-label"><b>Select the Date</b></label>
-                        <form:input path="scheduledDate" Class="form-control" type="date"
-                                    style="background-color: #e3e1e1; color: black; border-color: black"/>
+                        <form:input path="scheduledDate" Class="form-control" id='datetimepicker1' type="date"
+                                    style="background-color: #e3e1e1; color: black; border-color: black" />
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label"><b>Starting Time</b></label>
                         <form:input path="startTime" Class="form-control"
-                                    style="background-color: #e3e1e1; color: black; border-color: black" type="time"
-                                    placeholder="Dr.John Doe"/>
+                                    style="background-color: #e3e1e1; color: black; border-color: black" type="time" max="05:00pm" min="08:00am"
+                        />
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label"><b>Ending Time</b></label>
-                        <form:input path="endTime" Class="form-control" type="time"
+                        <form:input path="endTime" Class="form-control" type="time"  max="09:00am" min="06:00pm"
                                     style="background-color: #e3e1e1; color: black; border-color: black"/>
                     </div>
 
@@ -138,5 +139,57 @@ background: linear-gradient(90deg, rgba(75,130,154,1) 0%, rgba(161,232,147,1) 49
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
+<%--<link rel="stylesheet" href="jquery-timepicker/jquery.timepicker.min.css">--%>
+<%--<script src="jquery-timepicker/jquery.timepicker.min.js"></script>--%>
+<%--<script>--%>
+<%--    $(document).ready(function (){--%>
+<%--            var dtToday = new Date();--%>
+<%--            var month = dtToday.getMonth()+1;--%>
+<%--            var day = dtToday.getDate();--%>
+<%--            var year = dtToday.getFullYear();--%>
+
+<%--            if (month<10)--%>
+<%--                day='0'+day.toString();--%>
+<%--            var maxDate = year+'-'+month+'-'+day;--%>
+<%--            $('#dateControl').attr('min',maxDate);--%>
+
+<%--    });--%>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '8',
+            maxTime: '5:00pm',
+            startTime: '08:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#timepicker2').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '9',
+            maxTime: '6:00pm',
+            startTime: '09:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>
+
+
+

@@ -20,7 +20,7 @@
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/viewLecturerHome">Home</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

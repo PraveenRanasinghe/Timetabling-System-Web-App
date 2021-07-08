@@ -16,6 +16,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 <body>
 
@@ -83,12 +85,14 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>Start Time</b></label>
-                            <form:input path="startTime" value="${findTimetable.startTime}" type="time" style="border-color: black"
-                                        cssClass="form-control"/>
+                            <form:input path="startTime" value="${findTimetable.startTime}" style="border-color: black"
+                                        cssClass="form-control" type="text"
+                                        id="timepicker"/>
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>End Time</b></label>
-                            <form:input path="endTime" value="${findTimetable.endTime}" type="time" style="border-color: black"
+                            <form:input path="endTime" value="${findTimetable.endTime}" type="text"
+                                        id="timepicker2" style="border-color: black"
                                         cssClass="form-control"/>
                         </div>
                     </div>
@@ -101,5 +105,37 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
         </div>
     </form:form>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '8',
+            maxTime: '5:00pm',
+            startTime: '08:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#timepicker2').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '9',
+            maxTime: '6:00pm',
+            startTime: '09:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>
