@@ -27,29 +27,37 @@
                      style="height: 250px; width: 900px;margin-left: 100px; background-size: cover; border-radius: 30px;">
             </div>
 
-            <div class="row alert-success justify-content-center mt-4">
+            <div class="row alert-success justify-content-center mt-4" >
                 <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
             </div>
+
+            <c:if test="${pageContext.request.getParameter('?error')}">
+                <div style="font-size: xx-large; color: red"> Invalid Credentials.Please Try again!</div>
+            </c:if>
+<%--            if home?error; show essage--%>
 
 
             <div class="d-flex justify-content-center mt-5">
                 <div class="card card1" style="border-radius: 25px;">
                     <div class="row justify-content-center card-header">
-                        <h3 style="color:#ffffff;">Sign In</h3>
+                        <h1 style="color:#130505;">Login Here!</h1>
+                    </div>
+                    <div style="margin-left: 34%">
+                        <img src="${pageContext.request.contextPath}/images/login.png" width="170px" height="140px">
                     </div>
                     <div class="card-body">
                         <form method="post" action="${pageContext.request.contextPath}/authenticate">
                             <label  class="form-label" style="color: #ffffff">Email address</label>
                             <div class="input-group form-group">
 
-                                <input style="background-color: #cdc3c3" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com" required="required">
+                                <input style="background-color: #f5eded" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com" required="required">
 
                             </div>
 
                             <label  class="form-label mt-2" style="color: #ffffff">Password</label>
                             <div class="input-group form-group">
 
-                                <input style="background-color: #cdc3c3" name="password" type="password" class="form-control" placeholder="Password" required="required">
+                                <input style="background-color: #f5eded" name="password" type="password" class="form-control" placeholder="Password" required="required">
                             </div>
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me
@@ -68,5 +76,4 @@
 
 </div>
 </body>
-
 </html>

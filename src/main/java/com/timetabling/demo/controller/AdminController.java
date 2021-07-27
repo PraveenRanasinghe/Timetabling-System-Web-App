@@ -389,7 +389,8 @@ public class AdminController {
             m.addAttribute("success", "Timetable has been scheduled successfully !");
         } catch (Exception ex) {
             ex.printStackTrace();
-            m.addAttribute("error", "Cannot schedule the Timetable at this moment.Please try again later !");
+            m.addAttribute("error", ex.getMessage());
+
         }
 
         return "scheduleClass";

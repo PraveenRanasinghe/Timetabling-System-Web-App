@@ -79,11 +79,21 @@ public class TimetableService {
 
 
     @Transactional
-    public Timetable createTimetable(timetableDTO dtoTimetable) {
+    public Timetable createTimetable(timetableDTO dtoTimetable) throws Exception {
 
         Timetable timetables = new Timetable();
         List<Batch> batchList = new ArrayList();
-
+        List<Timetable> timetableList = timetableRepo.findTimetablesByClassRoomAndScheduledDate(dtoTimetable.getClassRoom(),dtoTimetable.getScheduledDate());
+        for(Timetable timetableData: timetableList){
+            if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetableData.getStartTime()))
+            && (LocalTime.parse((dtoTimetable.getStartTime())).isBefore(timetableData.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected classroom is already Booked!");
+            }
+            else if((LocalTime.parse((dtoTimetable.getEndTime())).isAfter(timetableData.getStartTime()))
+                    && (LocalTime.parse((dtoTimetable.getEndTime())).isBefore(timetableData.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected classroom is already Booked!");
+            }
+        }
         timetables.setTimetableId(dtoTimetable.getTimetableId());
 
         for (Batch batches : dtoTimetable.getBatches()) {

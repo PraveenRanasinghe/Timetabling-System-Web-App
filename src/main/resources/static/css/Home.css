@@ -1,8 +1,9 @@
 
 body{
-    /*background-image: url('https://www.themely.com/wp-content/uploads/edd/2015/11/dark-blue-bg.png');*/
+
     background-size: cover;
-    background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+    background: rgb(176,232,246);
+    background: linear-gradient(90deg, rgba(176,232,246,1) 0%, rgba(182,208,236,1) 100%);
 }
 
 .cb{
@@ -49,8 +50,8 @@ body{
     border-bottom-left-radius: 0.5rem;
 }
 .header1{
-    background: rgb(34,181,195);
-    background: linear-gradient(0deg, rgba(34,181,195,1) 0%, rgba(242,239,7,1) 100%);
+    background: rgb(69,197,228);
+    background: linear-gradient(90deg, rgba(69,197,228,1) 0%, rgba(30,147,239,1) 100%);
     padding: 4%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -120,7 +121,7 @@ body{
 }
 
 .card1{
-    height: 390px;
+    height: 550px;
     margin-top: auto;
     margin-bottom: auto;
     width: 550px;

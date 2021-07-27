@@ -47,7 +47,7 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <table class="table table-info table-striped" style="border-color: black; border-radius: 15px;">
+        <table class="table table-secondary table-striped" style="border-color: black; border-radius: 15px;">
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
             <tr>
                 <th scope="col">#</th>
@@ -72,14 +72,14 @@
                         ${batch.batchID}
                     </c:forEach>
                 </td>
-                <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="/deleteModule/${modules.moduleID}" id="demo" onclick="deleteModules()">Remove Module</a>
+                <td> <a class="btn btn-outline-danger" style="
+                  width:150px;"   href="/deleteModule/${modules.moduleID}" id="demo" onclick="deleteModules()">Remove Module</a>
                 </td>
-                <td> <a class="btn btn-warning" style="border-color: black;
-                  width:150px; border-style: double" href="/getModule/${modules.moduleID}">Update Module</a>
+                <td> <a class="btn btn-outline-warning" style=" color: black;
+                  width:150px;" href="/getModule/${modules.moduleID}">Update Module</a>
                 </td>
-                <td> <a class="btn btn-success" style="border-color: black;
-                  width:150px; border-style: double" href="/getModuleToTimetable/${modules.moduleID}">Schedule Lecture</a>
+                <td> <a class="btn btn-outline-success" style="color: black;
+                  width:150px;" href="/getModuleToTimetable/${modules.moduleID}">Schedule Lecture</a>
                 </td>
             </tr>
 </c:forEach>
