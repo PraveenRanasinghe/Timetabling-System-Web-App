@@ -111,11 +111,22 @@ public class TimetableService {
 
 
 //timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
-    public Timetable reScheduleTimetable(timetableDTO dtoTimetable) {
+    public Timetable reScheduleTimetable(timetableDTO dtoTimetable) throws Exception {
         Timetable timetables = timetableRepo.findById(dtoTimetable.getTimetableId()).orElseThrow(RuntimeException::new);
+        List<Timetable> timetableList = timetableRepo.findTimetablesByClassRoomAndScheduledDate(dtoTimetable.getClassRoom(),dtoTimetable.getScheduledDate());
+        for(Timetable timetableData: timetableList){
+            if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetableData.getStartTime()))
+                    && (LocalTime.parse((dtoTimetable.getStartTime())).isBefore(timetableData.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected classroom is already Booked!");
+            }
+            else if((LocalTime.parse((dtoTimetable.getEndTime())).isAfter(timetableData.getStartTime()))
+                    && (LocalTime.parse((dtoTimetable.getEndTime())).isBefore(timetableData.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected classroom is already Booked!");
+            }
+        }
         timetables.setScheduledDate(new Date(dtoTimetable.getScheduledDate().getTime()));
-        timetables.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
-        timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
+//        timetables.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
+//        timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
         return timetableRepo.save(timetables);
     }
 
