@@ -25,7 +25,6 @@
             <li class="nav-item" style="cursor: pointer">
                 <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
-
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="mr-5 mt-1">
@@ -48,7 +47,7 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <table class="table table-info table-striped" style="border-color: black; border-radius: 15px;">
+        <table class="table table-secondary table-striped" style="border-color: black; border-radius: 15px;">
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
             <tr>
                 <th scope="col">#</th>

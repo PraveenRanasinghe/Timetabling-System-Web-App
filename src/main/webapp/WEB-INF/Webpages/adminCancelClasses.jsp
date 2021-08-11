@@ -67,10 +67,10 @@
                 <td>${timetables.startTime}</td>
                 <td>${timetables.endTime}</td>
                 <td>${timetables.classRoom.classRoomID}</td>
-                <td><a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double; color: white" href="/cancelTimetable/${timetables.timetableId}">Cancel Lecture</a></td>
-                <td><a class="btn btn-warning" style="border-color: black;
-                  width:200px; border-style: double; color: black" href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
+                <td><a class="btn btn-outline-danger" style=" width:150px;"
+                       href="/cancelTimetable/${timetables.timetableId}">Cancel Lecture</a></td>
+                <td><a class="btn btn-outline-dark" style="width:200px;"
+                       href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
             </tr>
 </c:forEach>
             </tbody>

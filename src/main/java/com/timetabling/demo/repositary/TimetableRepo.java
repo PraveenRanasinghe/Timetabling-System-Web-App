@@ -1,6 +1,7 @@
 package com.timetabling.demo.repositary;
 
 import com.timetabling.demo.model.Batch;
+import com.timetabling.demo.model.ClassRoom;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +22,5 @@ public interface TimetableRepo extends JpaRepository<Timetable, Integer> {
 
     List<Timetable> findTimetablesByModule_User_EmailAndScheduledDate(String email, Date date);
 
+    List<Timetable> findTimetablesByClassRoomAndScheduledDate(ClassRoom classRoom, Date date);
 }
