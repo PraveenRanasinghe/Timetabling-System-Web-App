@@ -3,6 +3,7 @@ package com.timetabling.demo.controller;
 import com.timetabling.demo.dto.*;
 import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.model.*;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.ClassroomRepo;
 import com.timetabling.demo.repositary.UserRepo;

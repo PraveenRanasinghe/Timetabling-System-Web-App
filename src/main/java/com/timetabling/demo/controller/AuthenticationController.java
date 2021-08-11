@@ -32,6 +32,8 @@ public class AuthenticationController {
         return "AdminHome";
     }
 
+    @GetMapping("/defaultHome")
+    public String defaultHome(){return "newAdminHome";}
 
     @GetMapping("/successfulLogin")
     public String successfulLogin(Authentication auth, Model model, RedirectAttributes redirectAttributes){

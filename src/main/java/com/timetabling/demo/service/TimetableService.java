@@ -1,6 +1,6 @@
 package com.timetabling.demo.service;
 
-import com.sun.deploy.net.HttpResponse;
+//import com.sun.deploy.net.HttpResponse;
 import com.timetabling.demo.dto.timetableDTO;
 import com.timetabling.demo.dto.userDTO;
 import com.timetabling.demo.model.Batch;
@@ -35,6 +35,7 @@ public class TimetableService {
 
     @Autowired
     private ModuleRepo moduleRepo;
+
     @Autowired
     private UserService userService;
 
