@@ -85,14 +85,16 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="control-label">Date of Commencement:</label>
-                                <form:input path="startDate" style="color: black; border-color: black" type="date"
+                                <form:input path="startDate"  id="dateControl"
+                                            style="color: black; border-color: black" type="date"
                                             pattern="yyyy-MM-dd" cssClass="form-control" required="required"/>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="control-label">Date of Termination:</label>
-                                <form:input path="endDate" style="color: black; border-color: black" type="date"
+                                <form:input path="endDate" id="dateControl2"
+                                            style="color: black; border-color: black" type="date"
                                             pattern="yyyy-MM-dd" cssClass="form-control" required="required"/>
                             </div>
                         </div>
@@ -111,5 +113,26 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function (){
+        $(function (){
+            var dtToday = new Date();
+            var month = dtToday.getMonth()+1;
+            var day = dtToday.getDay()+8;
+            var year = dtToday.getFullYear();
+
+            if(month<10){
+                month='0'+month.toString();
+            }
+            if(day<10){
+                day='0'+day.toString();
+            }
+
+            var maxDate = year +'-' +month+'-'+day;
+            $('#dateControl').attr('min',maxDate);
+            $('#dateControl2').attr('min',maxDate);
+        });
+    })
+</script>
 </body>
 </html>

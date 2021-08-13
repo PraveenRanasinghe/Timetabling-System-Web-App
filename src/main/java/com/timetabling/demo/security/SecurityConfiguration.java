@@ -45,33 +45,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-//
-        httpSecurity.csrf().disable().authorizeRequests()
-                .anyRequest().permitAll();
 
-//        httpSecurity
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/webjars/**", "/images/**", "/css/**")
-//                .permitAll().anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/home")
-//                .loginProcessingUrl("/authenticate")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/successfulLogin")
-//                .permitAll()
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true)
-//                .logoutSuccessUrl("/home")
-//                .permitAll();
+//        httpSecurity.csrf().disable().authorizeRequests()
+//                .anyRequest().permitAll();
+
+        httpSecurity
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/webjars/**", "/images/**", "/css/**")
+                .permitAll().anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/home")
+                .loginProcessingUrl("/authenticate")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/successfulLogin")
+                .permitAll()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/home")
+                .permitAll();
 
     }
 }
