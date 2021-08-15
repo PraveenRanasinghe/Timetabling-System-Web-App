@@ -52,10 +52,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = auth.findUserByEmail(s);
-//        if (user == null) {
-//            throw new UsernameNotFoundException(s);
-//
-//        }
+        if (user == null) {
+            throw new UsernameNotFoundException(s);
+
+        }
         {
             ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
             grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserRole().toUpperCase(Locale.ROOT)));

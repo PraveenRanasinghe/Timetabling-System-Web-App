@@ -69,11 +69,7 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
                   border-color: black; border-style: double; font-weight: bold; color: black"
                    href="${pageContext.request.contextPath}/viewRemoveBatch">View Update & Remove Batches</a>
             </div>
-
-
         </div>
-
-
     </div>
 
 
