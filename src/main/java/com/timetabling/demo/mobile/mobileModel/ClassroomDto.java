@@ -17,6 +17,10 @@ public class ClassroomDto {
         Ac = ac;
     }
 
+    public ClassroomDto() {
+
+    }
+
     public String getClassRoomID() {
         return classRoomID;
     }

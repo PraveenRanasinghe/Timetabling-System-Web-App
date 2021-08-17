@@ -18,6 +18,10 @@ public class ModuleDto {
         this.batches = batches;
     }
 
+    public ModuleDto() {
+
+    }
+
     public String getModuleID() {
         return moduleID;
     }

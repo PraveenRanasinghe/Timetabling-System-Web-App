@@ -2,25 +2,18 @@ package com.timetabling.demo.mobile.mobileController;
 
 import com.timetabling.demo.ReqResp.JwtRequest;
 import com.timetabling.demo.ReqResp.JwtResponse;
-import com.timetabling.demo.mobile.mobileModel.TimetableDto;
-import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.model.User;
 import com.timetabling.demo.security.JwtTokenUtil;
-import com.timetabling.demo.service.TimetableService;
 import com.timetabling.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class MobileAuthController {
@@ -34,8 +27,6 @@ public class MobileAuthController {
     @Autowired
     private UserService userDetailsService;
 
-    @Autowired
-    private TimetableService timetableService;
 
 
     @RequestMapping(value = "/mobileAuthentication", method = RequestMethod.POST)
@@ -52,15 +43,6 @@ public class MobileAuthController {
 
         return ResponseEntity.ok(new JwtResponse(token,user.getUserRole(), user.getEmail()));
 
-    }
-
-
-    @GetMapping("/todayLecturersForStudent")
-    public ResponseEntity<?> getTodayTimetableToStudent(Model m, Authentication auth){
-        long date= System.currentTimeMillis();
-        java.sql.Date currentDate= new java.sql.Date(date);
-        List<Timetable> timetables= timetableService.getTodaysTimetableToStudent(userDetailsService.getUserByID(auth.getName()).getBatch(),currentDate);
-        return ResponseEntity.ok(timetables);
     }
 
 
