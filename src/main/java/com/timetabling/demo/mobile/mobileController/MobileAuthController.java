@@ -40,9 +40,11 @@ public class MobileAuthController {
         User user = userDetailsService.getUserByID(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new JwtResponse(token,user.getUserRole(), user.getEmail()));
-
+        JwtResponse response = new JwtResponse();
+        response.setEmail(user.getEmail());
+        response.setJwtToken(token);
+        response.setUserRole(user.getUserRole());
+        return ResponseEntity.ok(response);
     }
 
 
