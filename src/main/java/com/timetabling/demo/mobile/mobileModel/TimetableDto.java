@@ -12,7 +12,7 @@ public class TimetableDto {
     private int timetableId;
     private String startTime;
     private String endTime;
-    private java.util.Date scheduledDate;
+    private Date scheduledDate;
     private List<BatchDto> batches;
     private ModuleDto modules;
     private ClassroomDto classRoom;

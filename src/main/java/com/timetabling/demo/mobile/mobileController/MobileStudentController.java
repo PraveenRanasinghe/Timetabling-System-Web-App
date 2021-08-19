@@ -13,11 +13,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PreAuthorize("permitAll()")
 public class MobileStudentController {
     @Autowired
     private UserService userService;
@@ -28,7 +28,7 @@ public class MobileStudentController {
     @GetMapping("/todayLecturersForStudent")
     public ResponseEntity<?> getTodayTimetableToStudent(Authentication auth){
         long date= System.currentTimeMillis();
-        java.sql.Date currentDate= new java.sql.Date(date);
+        Date currentDate= new Date(date);
         List<Timetable> timetables= timetableService.getTodaysTimetableToStudent(userService.getUserByID(auth.getName()).getBatch(),currentDate);
 
         List<TimetableDto> dtoList = new ArrayList<>();
