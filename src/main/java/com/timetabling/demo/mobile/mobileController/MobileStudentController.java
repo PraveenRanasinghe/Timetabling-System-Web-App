@@ -42,7 +42,7 @@ public class MobileStudentController {
             dto.setScheduledDate(timetable.getScheduledDate());
             classroomDto.setClassRoomID(timetable.getClassRoom().getClassRoomID());
             dto.setClassRoom(classroomDto);
-            moduleDto.setModuleName(timetable.getModule().getModuleName());
+            moduleDto.setModuleName(timetable.getModule().toString());
             dto.setModules(moduleDto);
             dtoList.add(dto);
             System.out.println(auth.getName());
@@ -67,7 +67,7 @@ public class MobileStudentController {
             dto.setScheduledDate(timetables.getScheduledDate());
             classroomDto.setClassRoomID(timetables.getClassRoom().getClassRoomID());
             dto.setClassRoom(classroomDto);
-            moduleDto.setModuleName(timetables.getModule().getModuleName());
+            moduleDto.setModuleName(timetables.getModule().toString());
             dto.setModules(moduleDto);
             dtoList.add(dto);
         }

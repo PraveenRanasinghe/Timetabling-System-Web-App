@@ -17,6 +17,10 @@ public class BatchDto {
         this.endDate = endDate;
     }
 
+    public BatchDto() {
+
+    }
+
     public String getBatchID() {
         return batchID;
     }

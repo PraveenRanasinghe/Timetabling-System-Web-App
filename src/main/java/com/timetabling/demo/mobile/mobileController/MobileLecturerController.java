@@ -1,6 +1,7 @@
 package com.timetabling.demo.mobile.mobileController;
 
 
+import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.ModuleDto;
 import com.timetabling.demo.mobile.mobileModel.TimetableDto;
@@ -37,6 +38,7 @@ public class MobileLecturerController {
         for(Timetable timetable:timetableList){
             TimetableDto dto = new TimetableDto();
             ClassroomDto classroomDto= new ClassroomDto();
+            BatchDto batchDto = new BatchDto();
             ModuleDto moduleDto = new ModuleDto();
 
             dto.setStartTime(timetable.getStartTime().toString());
