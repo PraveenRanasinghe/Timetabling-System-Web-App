@@ -1,7 +1,6 @@
-package com.timetabling.demo.controller;
+package com.timetabling.demo.WebController;
 
 import com.timetabling.demo.dto.*;
-import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.model.*;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
@@ -12,7 +11,6 @@ import com.timetabling.demo.validators.userValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 

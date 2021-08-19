@@ -8,6 +8,7 @@ import com.timetabling.demo.service.TimetableService;
 import com.timetabling.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@PreAuthorize("permitAll()")
 public class MobileStudentController {
     @Autowired
     private UserService userService;
@@ -43,6 +45,7 @@ public class MobileStudentController {
             moduleDto.setModuleName(timetable.getModule().getModuleName());
             dto.setModules(moduleDto);
             dtoList.add(dto);
+            System.out.println(auth.getName());
         }
         return ResponseEntity.ok(dtoList);
     }

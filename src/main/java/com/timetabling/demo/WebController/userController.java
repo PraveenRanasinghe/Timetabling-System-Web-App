@@ -1,4 +1,4 @@
-package com.timetabling.demo.controller;
+package com.timetabling.demo.WebController;
 
 
 import com.timetabling.demo.model.Module;

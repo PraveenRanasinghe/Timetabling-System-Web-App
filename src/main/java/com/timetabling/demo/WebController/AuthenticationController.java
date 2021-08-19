@@ -1,8 +1,6 @@
-package com.timetabling.demo.controller;
+package com.timetabling.demo.WebController;
 
-import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.model.User;
-import com.timetabling.demo.service.TimetableService;
 import com.timetabling.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,10 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-import java.util.List;
 
 @Controller
 public class AuthenticationController {
