@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -68,6 +71,16 @@ public class MobileAdminController {
     public ResponseEntity<?> viewAllModules() {
         List<Module> allModules = moduleService.getAllModules();
         return ResponseEntity.ok(allModules);
+    }
+
+    @PostMapping("/addStudents")
+    public ResponseEntity<?> StudentRegistration(userDTO dto, RedirectAttributes redirectAttributes) {
+        try {
+            userService.registerUsers(dto);
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("error", ex.getMessage());
+        }
+        return ResponseEntity.ok(dto);
     }
 
 }
