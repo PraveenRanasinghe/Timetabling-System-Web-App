@@ -4,11 +4,9 @@ package com.timetabling.demo.mobile.mobileController;
 import com.timetabling.demo.dto.userDTO;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.ClassRoom;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
-import com.timetabling.demo.service.BatchService;
-import com.timetabling.demo.service.ClassRoomService;
-import com.timetabling.demo.service.TimetableService;
-import com.timetabling.demo.service.UserService;
+import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -31,6 +29,9 @@ public class MobileAdminController {
 
     @Autowired
     private ClassRoomService classRoomService;
+
+    @Autowired
+    private ModuleService moduleService;
 
 
     @GetMapping(path = "/viewAllStudents")
@@ -58,9 +59,15 @@ public class MobileAdminController {
     }
 
     @GetMapping("/viewAllClassRooms")
-    public ResponseEntity<?> viewAllClasses(Model m) {
+    public ResponseEntity<?> viewAllClasses() {
         List<ClassRoom> allClassRooms = classRoomService.getAllClassRooms();
         return ResponseEntity.ok(allClassRooms);
+    }
+
+    @GetMapping(path = "/viewAllModules")
+    public ResponseEntity<?> viewAllModules() {
+        List<Module> allModules = moduleService.getAllModules();
+        return ResponseEntity.ok(allModules);
     }
 
 }
