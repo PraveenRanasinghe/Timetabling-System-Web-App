@@ -16,6 +16,8 @@ public interface ModuleRepo extends JpaRepository<Module, String> {
 
     List<Module> findModulesByUserEmail_Email(String email);
 
+    List<Module> findModuleByUserEmail(String email);
+
     @Query("FROM Module module WHERE module.moduleName LIKE %:moduleNames%")
     List<Module> getModuleName(String moduleNames);
 

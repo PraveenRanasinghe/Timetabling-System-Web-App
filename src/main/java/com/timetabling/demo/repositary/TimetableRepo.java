@@ -23,4 +23,7 @@ public interface TimetableRepo extends JpaRepository<Timetable, Integer> {
     List<Timetable> findTimetablesByModule_User_EmailAndScheduledDate(String email, Date date);
 
     List<Timetable> findTimetablesByClassRoomAndScheduledDate(ClassRoom classRoom, Date date);
+
+    List<Timetable> findTimetablesByBatchesAndScheduledDate(Batch batchId, Date date);
+
 }

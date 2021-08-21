@@ -52,4 +52,5 @@ public class BatchDto {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
 }

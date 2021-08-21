@@ -2,6 +2,8 @@ package com.timetabling.demo.mobile.mobileController;
 
 
 import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.exceptions.UserAlreadyExistsException;
+import com.timetabling.demo.mobile.mobileModel.UserDto;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.ClassRoom;
 import com.timetabling.demo.model.Module;
@@ -10,10 +12,7 @@ import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -74,12 +73,17 @@ public class MobileAdminController {
     }
 
     @PostMapping("/addStudents")
-    public ResponseEntity<?> StudentRegistration(userDTO dto, RedirectAttributes redirectAttributes) {
-        try {
-            userService.registerUsers(dto);
-        } catch (Exception ex) {
-            redirectAttributes.addFlashAttribute("error", ex.getMessage());
-        }
+    public ResponseEntity<?> StudentRegistration(@RequestBody UserDto dto) throws UserAlreadyExistsException {
+        System.out.println(dto);
+        userDTO userDTO = new userDTO();
+        userDTO.setEmail(dto.getEmail());
+        userDTO.setfName(dto.getfName());
+        userDTO.setlName(dto.getlName());
+        userDTO.setUserRole(dto.getUserRole());
+        userDTO.setBatchId(batchService.getBatchById(dto.getBatchId()));
+        userDTO.setContactNumber(dto.getContactNumber());
+
+        userService.registerUsers(userDTO);
         return ResponseEntity.ok(dto);
     }
 

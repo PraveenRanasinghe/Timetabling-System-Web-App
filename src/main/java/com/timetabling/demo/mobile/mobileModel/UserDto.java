@@ -10,10 +10,10 @@ public class UserDto {
     private String lName;
     private String contactNumber;
     private String userRole;
-    private BatchDto batchId;
+    private String batchId;
     private String password;
 
-    public UserDto(String email, String fName, String lName, String contactNumber, String userRole, BatchDto batchId, String password) {
+    public UserDto(String email, String fName, String lName, String contactNumber, String userRole, String batchId, String password) {
         this.email = email;
         this.fName = fName;
         this.lName = lName;
@@ -21,6 +21,9 @@ public class UserDto {
         this.userRole = userRole;
         this.batchId = batchId;
         this.password = password;
+    }
+
+    public UserDto() {
     }
 
     public String getEmail() {
@@ -63,11 +66,11 @@ public class UserDto {
         this.userRole = userRole;
     }
 
-    public BatchDto getBatchId() {
+    public String getBatchId() {
         return batchId;
     }
 
-    public void setBatchId(BatchDto batchId) {
+    public void setBatchId(String batchId) {
         this.batchId = batchId;
     }
 

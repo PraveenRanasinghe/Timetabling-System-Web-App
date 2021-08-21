@@ -97,7 +97,7 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
             <div class="row justify-content-center mt-4">
                 <a class="btn btn-outline-success" style="width: 250px;
                   border-color: black; border-style: double; font-weight: bold; color: black"
-                   hhref="${pageContext.request.contextPath}/viewLecturers">Lecturer
+                   href="${pageContext.request.contextPath}/viewLecturers">Lecturer
                     Operations</a>
             </div>
 

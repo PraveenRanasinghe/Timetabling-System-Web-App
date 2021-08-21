@@ -43,15 +43,15 @@ body{
 }
 
 .header{
-    background: rgb(195,34,91);
-    background: linear-gradient(0deg, rgba(195,34,91,1) 0%, rgba(242,168,7,1) 100%);
+    background: rgb(211, 94, 59);
+    background: linear-gradient(0deg, rgb(231, 138, 98) 0%, rgba(242,168,7,1) 100%);
     padding: 4%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
 .header1{
-    background: rgb(69,197,228);
-    background: linear-gradient(90deg, rgba(69,197,228,1) 0%, rgba(30,147,239,1) 100%);
+    background: rgb(217, 228, 69);
+    background: linear-gradient(90deg, rgb(146, 228, 69) 0%, rgb(239, 173, 30) 100%);
     padding: 4%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -72,13 +72,13 @@ body{
     border-bottom-right-radius: 0.5rem;
 }
 .footer{
-    background: #f3e7cf;
+    background: #fcebcb;
     padding: 3%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
 .footer1{
-    background: #e9d194;
+    background: #c5b68f;
     padding: 3%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;

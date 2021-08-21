@@ -48,7 +48,6 @@
 
     <div class="col-lg-6">
         <div class="contact">
-
             <div class="row header" style="box-shadow: 15px 15px 30px black; border-radius: 20px;">
                 <div class="col contact-info">
                     <hr style="background-color: black">
@@ -123,7 +122,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group mt-4" style="margin-left: 30%; width: 800px;">
+                        <div class="form-group mt-4" style="margin-left: 40%; width: 800px;">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-warning">Create Account</button>
                             </div>

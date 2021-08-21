@@ -89,6 +89,7 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
                     <td>${timetables.endTime}</td>
                     <td>${timetables.classRoom.classRoomID}</td>
                 </tr>
+
             </c:forEach>
             </tbody>
         </table>
