@@ -1,11 +1,16 @@
 package com.timetabling.demo.mobile.mobileController;
 
 
+import com.timetabling.demo.dto.batchDTO;
 import com.timetabling.demo.dto.classRoomDTO;
+import com.timetabling.demo.dto.timetableDTO;
 import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.exceptions.classRoomIdExistException;
+import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
+import com.timetabling.demo.mobile.mobileModel.TimetableDto;
 import com.timetabling.demo.mobile.mobileModel.UserDto;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.ClassRoom;
@@ -114,5 +119,37 @@ public class MobileAdminController {
         classRoomService.addClassRoom(classDto);
         return ResponseEntity.ok(dto);
     }
+
+    @PostMapping("/addBatch")
+    public ResponseEntity<?> addBatch(@RequestBody BatchDto dto) throws BatchIdExistException {
+
+        batchDTO batchDto = new batchDTO();
+        batchDto.setBatchID(dto.getBatchID());
+        batchDto.setBatchName(dto.getBatchName());
+        batchDto.setStartDate(dto.getStartDate());
+        batchDto.setEndDate(dto.getEndDate());
+
+        batchService.createBatch(batchDto);
+        return ResponseEntity.ok(dto);
+    }
+
+
+    @PostMapping("/scheduleTimetable")
+    public ResponseEntity<?> scheduleTimetable(@RequestBody TimetableDto dto) throws Exception {
+
+        timetableDTO timetableDto = new timetableDTO();
+        timetableDto.setTimetableId(dto.getTimetableId());
+        timetableDto.setStartTime(dto.getStartTime());
+        timetableDto.setEndTime(dto.getEndTime());
+        //Have to take the Batch List
+        timetableDto.setScheduledDate(dto.getScheduledDate());
+        timetableDto.setClassRoom(classRoomService.getClassRoomById(dto.getClassRoom().toString()));
+        timetableDto.setModules(moduleService.getModuleById(dto.getModules().toString()));
+
+        timetableService.createTimetable(timetableDto);
+
+      return ResponseEntity.ok(dto);
+    }
+
 
 }
