@@ -1,10 +1,7 @@
 package com.timetabling.demo.mobile.mobileController;
 
 
-import com.timetabling.demo.dto.batchDTO;
-import com.timetabling.demo.dto.classRoomDTO;
-import com.timetabling.demo.dto.timetableDTO;
-import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.dto.*;
 import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.exceptions.classRoomIdExistException;
@@ -54,6 +51,13 @@ public class MobileAdminController {
         return ResponseEntity.ok(allLecturers);
     }
 
+    @GetMapping(path = "/getAllLecturers")
+    public ResponseEntity<?> getAllLecturersToList() {
+        List<userDTO> allLecturers = userService.getAllLecturersToList();
+        return ResponseEntity.ok(allLecturers);
+    }
+
+
     @GetMapping(path = "/viewAllBatches")
     public ResponseEntity<?> viewAllBatches() {
         List<Batch> allBatches = batchService.getAllBatches();
@@ -74,7 +78,7 @@ public class MobileAdminController {
 
     @GetMapping(path = "/viewAllModules")
     public ResponseEntity<?> viewAllModules() {
-        List<Module> allModules = moduleService.getAllModules();
+        List<moduleDTO> allModules = moduleService.getAllModulesToList();
         return ResponseEntity.ok(allModules);
     }
 

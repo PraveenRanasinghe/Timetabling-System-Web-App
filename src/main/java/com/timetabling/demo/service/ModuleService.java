@@ -35,6 +35,8 @@ public class ModuleService {
             moduleDTO dto = new moduleDTO();
             dto.setModuleID(module.getModuleID());
             dto.setModuleName(module.getModuleName());
+            dto.setBatches(module.getBatches());
+            dto.setUser(module.getUser());
             list.add(dto);
         }
         return list;

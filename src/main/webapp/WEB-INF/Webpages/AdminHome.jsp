@@ -33,7 +33,7 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
                 <a class="nav-link active" style="color: black" href="${pageContext.request.contextPath}/viewAdminHome">Home</a>
             </li>
             <li class="nav-item" style="cursor: pointer">
-                <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getAdmin/">Update Account</a>
+                <a class="nav-link" style="color: black" href="${pageContext.request.contextPath}/getAdmin/">My Account</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2">
