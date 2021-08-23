@@ -9,13 +9,12 @@ import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.TimetableDto;
 import com.timetabling.demo.mobile.mobileModel.UserDto;
-import com.timetabling.demo.model.Batch;
-import com.timetabling.demo.model.ClassRoom;
+import com.timetabling.demo.model.*;
 import com.timetabling.demo.model.Module;
-import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +42,12 @@ public class MobileAdminController {
     public ResponseEntity<?> viewAllStudents() {
         List<userDTO> allUsers = userService.getAllStudents();
         return ResponseEntity.ok(allUsers);
+    }
+
+    @GetMapping("/getAdminAccount/")
+    public ResponseEntity<?> getMyAccount(Authentication auth) {
+        User u = userService.getUserByID(auth.getName());
+        return ResponseEntity.ok(u);
     }
 
     @GetMapping(path = "/viewAllLecturers")

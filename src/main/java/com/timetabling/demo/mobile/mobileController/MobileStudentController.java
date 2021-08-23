@@ -3,13 +3,17 @@ package com.timetabling.demo.mobile.mobileController;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.ModuleDto;
 import com.timetabling.demo.mobile.mobileModel.TimetableDto;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
+import com.timetabling.demo.model.User;
+import com.timetabling.demo.service.ModuleService;
 import com.timetabling.demo.service.TimetableService;
 import com.timetabling.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +28,23 @@ public class MobileStudentController {
 
     @Autowired
     private TimetableService timetableService;
+
+    @Autowired
+    private ModuleService moduleService;
+
+
+    @GetMapping("/getStudentAccount")
+    public ResponseEntity<?> getStudent(Authentication auth) {
+        User u = userService.getUserByID(auth.getName());
+        return ResponseEntity.ok(u);
+    }
+
+
+    @GetMapping("/batchModules")
+    public ResponseEntity<?> getBatchModules(Authentication auth){
+        List<Module> allModules = moduleService.getModulesInBatch(userService.getUserByID(auth.getName()).getBatch());
+        return ResponseEntity.ok(allModules);
+    }
 
     @GetMapping("/todayLecturersForStudent")
     public ResponseEntity<?> getTodayTimetableToStudent(Authentication auth){

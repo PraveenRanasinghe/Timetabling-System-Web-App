@@ -5,7 +5,10 @@ import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.ModuleDto;
 import com.timetabling.demo.mobile.mobileModel.TimetableDto;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
+import com.timetabling.demo.model.User;
+import com.timetabling.demo.service.ModuleService;
 import com.timetabling.demo.service.TimetableService;
 import com.timetabling.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,21 @@ public class MobileLecturerController {
     @Autowired
     private TimetableService timetableService;
 
+    @Autowired
+    private ModuleService moduleService;
+
+
+    @GetMapping("/getLecturerAccount")
+    public ResponseEntity<?> getLecturer(Authentication auth) {
+        User u = userService.getUserByID(auth.getName());
+        return ResponseEntity.ok(u);
+    }
+
+    @GetMapping("/myModules")
+    public ResponseEntity<?> getLecModules(Authentication auth){
+        List<Module> allModules=moduleService.getLecturerModules(userService.getUserByID(auth.getName()).getEmail());
+        return ResponseEntity.ok(allModules);
+    }
 
     @GetMapping("/todayLecturersForLecturer")
     public ResponseEntity<?> getTodaysTimetableToLec(Authentication auth){
