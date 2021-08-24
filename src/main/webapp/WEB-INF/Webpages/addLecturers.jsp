@@ -35,6 +35,10 @@
     </div>
 </nav>
 
+<div class="row justify-content-center">
+    <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
+</div>
+
 <div class="row justify-content-center mt-4">
 
 <div class="col-lg-4 mt-5">

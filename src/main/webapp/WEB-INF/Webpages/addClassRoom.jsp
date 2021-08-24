@@ -35,7 +35,7 @@
 </nav>
 
 <div class="row alert-success justify-content-center">
-    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+    <div style="font-family:sans-serif; background: #FFC312; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
 </div>
 
 

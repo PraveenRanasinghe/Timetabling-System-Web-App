@@ -35,10 +35,9 @@
     </div>
 </nav>
 
-<div class="row alert-success justify-content-center mt-4">
-    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+<div class="row justify-content-center">
+    <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
 </div>
-
 <div class="container">
     <form:form action="/adminUpdateBatches" modelAttribute="getBatch" method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-5">

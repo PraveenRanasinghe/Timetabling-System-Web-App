@@ -168,7 +168,7 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("error", ex.getMessage());
         }
 
-        return "redirect:/viewAdminHome";
+        return "addUsers";
     }
 
     @GetMapping("/viewAddLecturers")
@@ -191,7 +191,7 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("error", ex.getMessage());
         }
 
-        return "redirect:/viewAdminHome";
+        return "addLecturers";
     }
 
 
@@ -402,7 +402,8 @@ public class AdminController {
             timetableService.reScheduleTimetable(dto);
             m.addAttribute("success", "Module has been Re-Scheduled successfully!");
         } catch (Exception ex) {
-            m.addAttribute("error", "Cannot Re-Schedule the class at this time. Please try again later.");
+            ex.printStackTrace();
+            m.addAttribute("error", ex.getMessage());
         }
         return "adminReScheduling";
     }

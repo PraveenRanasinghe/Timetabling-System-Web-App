@@ -35,8 +35,8 @@
 </nav>
 
 
-<div class="row alert-success justify-content-center">
-    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+<div class="row justify-content-center">
+    <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
 </div>
 
 <div class="row justify-content-center">

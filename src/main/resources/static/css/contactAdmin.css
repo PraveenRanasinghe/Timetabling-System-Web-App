@@ -1,4 +1,6 @@
 body{
     background-size: cover;
-    background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+    background-size: cover;
+    background: rgb(176,232,246);
+    background: linear-gradient(90deg, rgba(176,232,246,1) 0%, rgba(182,208,236,1) 100%);
 }

@@ -46,10 +46,9 @@ background: linear-gradient(0deg, rgba(18,123,131,1) 0%, rgba(115,150,173,1) 100
 
 
 
-<div class="row alert-success justify-content-center">
-    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+<div class="row justify-content-center">
+    <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
 </div>
-
 
 <div class="row">
 

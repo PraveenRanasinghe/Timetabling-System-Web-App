@@ -37,6 +37,20 @@ public class MobileAdminController {
     private ModuleService moduleService;
 
 
+
+    @GetMapping(path = "/getAllLecturers")
+    public ResponseEntity<?> getAllLecturersToList() {
+        List<UserDTO> allLecturers = userService.getAllLecturersToList();
+        return ResponseEntity.ok(allLecturers);
+    }
+
+
+    @GetMapping(path = "/getAllClassesToList")
+    public ResponseEntity<?> getAllClassesToList(){
+        List<ClassRoomDTO> allClassRooms = classRoomService.getAllClassRoomsToList();
+        return ResponseEntity.ok(allClassRooms);
+    }
+
     @GetMapping(path = "/viewAllStudents")
     public ResponseEntity<?> viewAllStudents() {
         List<UserDTO> allUsers = userService.getAllStudents();
@@ -52,12 +66,6 @@ public class MobileAdminController {
     @GetMapping(path = "/viewAllLecturers")
     public ResponseEntity<?> viewAllLecturers() {
         List<UserDTO> allLecturers = userService.getAllLecturers();
-        return ResponseEntity.ok(allLecturers);
-    }
-
-    @GetMapping(path = "/getAllLecturers")
-    public ResponseEntity<?> getAllLecturersToList() {
-        List<UserDTO> allLecturers = userService.getAllLecturersToList();
         return ResponseEntity.ok(allLecturers);
     }
 

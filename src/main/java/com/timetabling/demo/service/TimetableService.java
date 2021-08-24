@@ -138,7 +138,6 @@ public class TimetableService {
     }
 
 
-//timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
     public Timetable reScheduleTimetable(TimetableDTO dtoTimetable) throws Exception {
         Timetable timetables = timetableRepo.findById(dtoTimetable.getTimetableId()).orElseThrow(RuntimeException::new);
         List<Timetable> timetableList = timetableRepo.findTimetablesByClassRoomAndScheduledDate(dtoTimetable.getClassRoom(),dtoTimetable.getScheduledDate());
@@ -152,9 +151,38 @@ public class TimetableService {
                 throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected classroom is already Booked!");
             }
         }
+//        Module module = moduleRepo.findById(dtoTimetable.getModules().getModuleID()).get();
+        List<Timetable> timetableListToLec =
+                timetableRepo.findTimetablesByModule_User_EmailAndScheduledDate(dtoTimetable.getModules().getUser().getEmail(),dtoTimetable.getScheduledDate());
+
+        for(Timetable timetable:timetableListToLec){
+            if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetable.getStartTime()))
+                    && (LocalTime.parse((dtoTimetable.getStartTime())).isBefore(timetable.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because Lecturer is not available at that time!");
+            }
+            else if((LocalTime.parse((dtoTimetable.getEndTime())).isAfter(timetable.getStartTime()))
+                    && (LocalTime.parse((dtoTimetable.getEndTime())).isBefore(timetable.getEndTime()))){
+                throw new Exception("You cannot Schedule the Timetable at this time slot. Because Lecturer is not available at that time!");
+            }
+        }
+
+//        Module module = moduleRepo.findById(dtoTimetable.getBatches().toString()).get();
+//        List<Timetable> timetableListToBatch=
+//                timetableRepo.findTimetablesByBatchesAndScheduledDate( ,dtoTimetable.getScheduledDate());
+//        for(Timetable timetable:timetableListToBatch){
+//            if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetable.getStartTime()))
+//                    && (LocalTime.parse((dtoTimetable.getStartTime())).isBefore(timetable.getEndTime()))){
+//                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected Batches having lecturers on that time!");
+//            }
+//            else if((LocalTime.parse((dtoTimetable.getEndTime())).isAfter(timetable.getStartTime()))
+//                    && (LocalTime.parse((dtoTimetable.getEndTime())).isBefore(timetable.getEndTime()))){
+//                throw new Exception("You cannot Schedule the Timetable at this time slot. Because selected Batches having lecturers on that time!");
+//            }
+//        }
+
         timetables.setScheduledDate(new Date(dtoTimetable.getScheduledDate().getTime()));
-//        timetables.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
-//        timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
+        timetables.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
+        timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
         return timetableRepo.save(timetables);
     }
 

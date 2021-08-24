@@ -36,10 +36,9 @@
     </div>
 </nav>
 
-<div class="row alert-success justify-content-center mt-4">
-    <div style="font-family:sans-serif; color: black; font-size: x-large;">${success}${error}</div>
+<div class="row justify-content-center">
+    <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
 </div>
-
 <div class="container">
     <form:form action="/classRescheduling" modelAttribute="findTimetable"  method="post" cssClass="mt-5">
         <div class="row justify-content-center mt-5">
@@ -86,12 +85,12 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
                         <div class="col-lg-4">
                             <label class="control-label col"><b>Start Time</b></label>
                             <form:input path="startTime" value="${findTimetable.startTime}" style="border-color: black"
-                                        cssClass="form-control" type="text"
+                                        cssClass="form-control" type="time"
                                         id="timepicker"/>
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>End Time</b></label>
-                            <form:input path="endTime" value="${findTimetable.endTime}" type="text"
+                            <form:input path="endTime" value="${findTimetable.endTime}" type="time"
                                         id="timepicker2" style="border-color: black"
                                         cssClass="form-control"/>
                         </div>
@@ -105,36 +104,6 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
         </div>
     </form:form>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#timepicker').timepicker({
-            timeFormat: 'h:mm p',
-            interval: 60,
-            minTime: '8',
-            maxTime: '5:00pm',
-            startTime: '08:00',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#timepicker2').timepicker({
-            timeFormat: 'h:mm p',
-            interval: 60,
-            minTime: '9',
-            maxTime: '6:00pm',
-            startTime: '09:00',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
-    });
-</script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
