@@ -1,18 +1,15 @@
 package com.timetabling.demo.service;
 
 //import com.sun.deploy.net.HttpResponse;
-import com.timetabling.demo.dto.timetableDTO;
-import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.dto.TimetableDTO;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
-import com.timetabling.demo.model.User;
 import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.ModuleRepo;
 import com.timetabling.demo.repositary.TimetableRepo;
 import com.timetabling.demo.repositary.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -61,10 +58,10 @@ public class TimetableService {
     }
 
 
-    public timetableDTO getTimetableById(int tId) {
+    public TimetableDTO getTimetableById(int tId) {
         Optional<Timetable> timetable = timetableRepo.findById(tId);
-        timetableDTO timetables = null;
-        timetableDTO dto = new timetableDTO();
+        TimetableDTO timetables = null;
+        TimetableDTO dto = new TimetableDTO();
         if (timetable.isPresent()) {
             dto.setTimetableId(timetable.get().getTimetableId());
             dto.setScheduledDate(timetable.get().getScheduledDate());
@@ -80,7 +77,7 @@ public class TimetableService {
 
 
     @Transactional
-    public Timetable createTimetable(timetableDTO dtoTimetable) throws Exception {
+    public Timetable createTimetable(TimetableDTO dtoTimetable) throws Exception {
 
         Timetable timetables = new Timetable();
         List<Batch> batchList = new ArrayList();
@@ -97,8 +94,9 @@ public class TimetableService {
             }
         }
 
+        Module module = moduleRepo.findById(dtoTimetable.getModules().getModuleID()).get();
         List<Timetable> timetableListToLec =
-                timetableRepo.findTimetablesByModule_User_EmailAndScheduledDate(dtoTimetable.getModules().getUser().getEmail(),dtoTimetable.getScheduledDate());
+                timetableRepo.findTimetablesByModule_User_EmailAndScheduledDate(module.getUser().getEmail(),dtoTimetable.getScheduledDate());
 
         for(Timetable timetable:timetableListToLec){
             if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetable.getStartTime()))
@@ -141,7 +139,7 @@ public class TimetableService {
 
 
 //timetables.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
-    public Timetable reScheduleTimetable(timetableDTO dtoTimetable) throws Exception {
+    public Timetable reScheduleTimetable(TimetableDTO dtoTimetable) throws Exception {
         Timetable timetables = timetableRepo.findById(dtoTimetable.getTimetableId()).orElseThrow(RuntimeException::new);
         List<Timetable> timetableList = timetableRepo.findTimetablesByClassRoomAndScheduledDate(dtoTimetable.getClassRoom(),dtoTimetable.getScheduledDate());
         for(Timetable timetableData: timetableList){

@@ -4,13 +4,12 @@ package com.timetabling.demo.mobile.mobileController;
 import com.timetabling.demo.dto.*;
 import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
-import com.timetabling.demo.exceptions.classRoomIdExistException;
+import com.timetabling.demo.exceptions.ClassRoomIdExistException;
 import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.TimetableDto;
 import com.timetabling.demo.mobile.mobileModel.UserDto;
 import com.timetabling.demo.model.*;
-import com.timetabling.demo.model.Module;
 import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,7 @@ public class MobileAdminController {
 
     @GetMapping(path = "/viewAllStudents")
     public ResponseEntity<?> viewAllStudents() {
-        List<userDTO> allUsers = userService.getAllStudents();
+        List<UserDTO> allUsers = userService.getAllStudents();
         return ResponseEntity.ok(allUsers);
     }
 
@@ -52,13 +51,13 @@ public class MobileAdminController {
 
     @GetMapping(path = "/viewAllLecturers")
     public ResponseEntity<?> viewAllLecturers() {
-        List<userDTO> allLecturers = userService.getAllLecturers();
+        List<UserDTO> allLecturers = userService.getAllLecturers();
         return ResponseEntity.ok(allLecturers);
     }
 
     @GetMapping(path = "/getAllLecturers")
     public ResponseEntity<?> getAllLecturersToList() {
-        List<userDTO> allLecturers = userService.getAllLecturersToList();
+        List<UserDTO> allLecturers = userService.getAllLecturersToList();
         return ResponseEntity.ok(allLecturers);
     }
 
@@ -83,14 +82,14 @@ public class MobileAdminController {
 
     @GetMapping(path = "/viewAllModules")
     public ResponseEntity<?> viewAllModules() {
-        List<moduleDTO> allModules = moduleService.getAllModulesToList();
+        List<ModuleDTO> allModules = moduleService.getAllModulesToList();
         return ResponseEntity.ok(allModules);
     }
 
     @PostMapping("/addStudents")
     public ResponseEntity<?> StudentRegistration(@RequestBody UserDto dto) throws UserAlreadyExistsException {
 
-        userDTO userDTO = new userDTO();
+        UserDTO userDTO = new UserDTO();
         userDTO.setEmail(dto.getEmail());
         userDTO.setfName(dto.getfName());
         userDTO.setlName(dto.getlName());
@@ -105,7 +104,7 @@ public class MobileAdminController {
     @PostMapping("/addLecturers")
     public ResponseEntity<?> LecturerRegistration(@RequestBody UserDto dto) throws UserAlreadyExistsException {
 
-        userDTO userDTO = new userDTO();
+        UserDTO userDTO = new UserDTO();
         userDTO.setEmail(dto.getEmail());
         userDTO.setfName(dto.getfName());
         userDTO.setlName(dto.getlName());
@@ -117,9 +116,9 @@ public class MobileAdminController {
     }
 
     @PostMapping("/addClassrooms")
-    public ResponseEntity<?> addClassRooms(@RequestBody ClassroomDto dto) throws classRoomIdExistException {
+    public ResponseEntity<?> addClassRooms(@RequestBody ClassroomDto dto) throws ClassRoomIdExistException {
 
-        classRoomDTO classDto = new classRoomDTO();
+        ClassRoomDTO classDto = new ClassRoomDTO();
         classDto.setClassRoomID(dto.getClassRoomID());
         classDto.setCapacity(dto.getCapacity());
         classDto.setAc(dto.getAc());
@@ -132,7 +131,7 @@ public class MobileAdminController {
     @PostMapping("/addBatch")
     public ResponseEntity<?> addBatch(@RequestBody BatchDto dto) throws BatchIdExistException {
 
-        batchDTO batchDto = new batchDTO();
+        BatchDTO batchDto = new BatchDTO();
         batchDto.setBatchID(dto.getBatchID());
         batchDto.setBatchName(dto.getBatchName());
         batchDto.setStartDate(dto.getStartDate());
@@ -146,7 +145,7 @@ public class MobileAdminController {
     @PostMapping("/scheduleTimetable")
     public ResponseEntity<?> scheduleTimetable(@RequestBody TimetableDto dto) throws Exception {
 
-        timetableDTO timetableDto = new timetableDTO();
+        TimetableDTO timetableDto = new TimetableDTO();
         timetableDto.setTimetableId(dto.getTimetableId());
         timetableDto.setStartTime(dto.getStartTime());
         timetableDto.setEndTime(dto.getEndTime());

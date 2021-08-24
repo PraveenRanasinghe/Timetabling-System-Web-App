@@ -22,8 +22,8 @@ public class Module {
     @JoinColumn(name = "email")
     private User user;
 
-    @OneToMany(mappedBy = "module")
-    private List<Timetable> lectureList;
+//    @OneToMany(mappedBy = "module")
+//    private List<Timetable> lectureList;
 
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
@@ -46,9 +46,9 @@ public class Module {
     }
 
 
-    public List<Timetable> getLectureList() {
-        return lectureList;
-    }
+//    public List<Timetable> getLectureList() {
+//        return lectureList;
+//    }
 
     public String getModuleID() {
         return moduleID;

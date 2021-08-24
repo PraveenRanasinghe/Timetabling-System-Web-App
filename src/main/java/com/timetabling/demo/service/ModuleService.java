@@ -1,9 +1,7 @@
 package com.timetabling.demo.service;
 
-import com.timetabling.demo.dto.batchDTO;
-import com.timetabling.demo.dto.moduleDTO;
-import com.timetabling.demo.dto.userDTO;
-import com.timetabling.demo.exceptions.moduleIdExistException;
+import com.timetabling.demo.dto.ModuleDTO;
+import com.timetabling.demo.exceptions.ModuleIdExistException;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,10 +26,10 @@ public class ModuleService {
     }
 
 
-    public List<moduleDTO> getAllModulesToList() {
-        List<moduleDTO> list = new ArrayList<>();
+    public List<ModuleDTO> getAllModulesToList() {
+        List<ModuleDTO> list = new ArrayList<>();
         for (Module module : moduleRepo.findAll()) {
-            moduleDTO dto = new moduleDTO();
+            ModuleDTO dto = new ModuleDTO();
             dto.setModuleID(module.getModuleID());
             dto.setModuleName(module.getModuleName());
             dto.setBatches(module.getBatches());
@@ -52,10 +49,10 @@ public class ModuleService {
         return modules;
     }
 
-    public Module createModule(moduleDTO dtoModule) throws moduleIdExistException {
+    public Module createModule(ModuleDTO dtoModule) throws ModuleIdExistException {
         Module modules = new Module();
         if(moduleRepo.findById(dtoModule.getModuleID()).isPresent()){
-            throw new moduleIdExistException("Module Id is already Used! Please try again with another Module Id.");
+            throw new ModuleIdExistException("Module Id is already Used! Please try again with another Module Id.");
         }
         List<Batch> batchList = new ArrayList();
 
@@ -71,7 +68,7 @@ public class ModuleService {
     }
 
 
-    public Module updateModuleInfo(moduleDTO dtoModule) {
+    public Module updateModuleInfo(ModuleDTO dtoModule) {
         Module modules = new Module();
         List<Batch> batchList = new ArrayList();
 
@@ -102,13 +99,13 @@ public class ModuleService {
     }
 
 
-    public List<moduleDTO> searchModules(String modName){
+    public List<ModuleDTO> searchModules(String modName){
         List<Module> moduleList= new ArrayList<>();
         moduleList.addAll(moduleRepo.getModuleName(modName));
-        List<moduleDTO> moduleDTOList= new ArrayList<>();
+        List<ModuleDTO> moduleDTOList= new ArrayList<>();
 
         for (Module module:moduleList){
-            moduleDTO dto= new moduleDTO();
+            ModuleDTO dto= new ModuleDTO();
             dto.setBatches(module.getBatches());
             dto.setModuleName(module.getModuleName());
             dto.setModuleID(module.getModuleID());

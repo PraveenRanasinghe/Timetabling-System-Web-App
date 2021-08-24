@@ -1,21 +1,12 @@
 package com.timetabling.demo.service;
 
 import com.timetabling.demo.auth.AppUser;
-import com.timetabling.demo.dto.batchDTO;
-import com.timetabling.demo.dto.timetableDTO;
-import com.timetabling.demo.dto.userDTO;
+import com.timetabling.demo.dto.UserDTO;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
-import com.timetabling.demo.model.Batch;
-import com.timetabling.demo.model.Module;
-import com.timetabling.demo.model.Timetable;
 import com.timetabling.demo.model.User;
-import com.timetabling.demo.repositary.BatchRepo;
-import com.timetabling.demo.repositary.TimetableRepo;
 import com.timetabling.demo.repositary.UserRepo;
-import com.timetabling.demo.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -71,11 +62,11 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public List<userDTO> getAllLecturersToList() {
-        List<userDTO> list = new ArrayList<>();
+    public List<UserDTO> getAllLecturersToList() {
+        List<UserDTO> list = new ArrayList<>();
         for (User user : userRepo.findAll()) {
             if (user.getUserRole().equals("lecturer")) {
-                userDTO dto = new userDTO();
+                UserDTO dto = new UserDTO();
                 dto.setUserRole(user.getUserRole());
                 dto.setEmail(user.getEmail());
                 dto.setfName(user.getfName());
@@ -87,13 +78,13 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public List<userDTO> getAllLecturers() {
+    public List<UserDTO> getAllLecturers() {
         List<User> users = userRepo.findAll();
-        List<userDTO> userList = new ArrayList<>();
+        List<UserDTO> userList = new ArrayList<>();
         if (users != null) {
             for (User user : users) {
                 if (user.getUserRole().equals("lecturer")) {
-                    userDTO listUser = new userDTO();
+                    UserDTO listUser = new UserDTO();
                     listUser.setEmail(user.getEmail());
                     listUser.setfName(user.getfName());
                     listUser.setlName(user.getlName());
@@ -106,13 +97,13 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public List<userDTO> getAllStudents() {
+    public List<UserDTO> getAllStudents() {
         List<User> users = userRepo.findAll();
-        List<userDTO> userList = new ArrayList<>();
+        List<UserDTO> userList = new ArrayList<>();
         if (users != null) {
             for (User user : users) {
                 if (user.getUserRole().equals("student")) {
-                    userDTO listUser = new userDTO();
+                    UserDTO listUser = new UserDTO();
                     listUser.setEmail(user.getEmail());
                     listUser.setfName(user.getfName());
                     listUser.setlName(user.getlName());
@@ -126,7 +117,7 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User registerUsers(userDTO dtoUser) throws UserAlreadyExistsException {
+    public User registerUsers(UserDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
         if (userRepo.findById(dtoUser.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("This email is already in use. Please try with another email.");
@@ -143,7 +134,7 @@ public class UserService implements UserDetailsService {
         return userRepo.save(users);
     }
 
-    public User registerLecturers(userDTO dtoUser) throws UserAlreadyExistsException {
+    public User registerLecturers(UserDTO dtoUser) throws UserAlreadyExistsException {
         User users = new User();
         if(userRepo.findById(dtoUser.getEmail()).isPresent()){
             throw new UserAlreadyExistsException("This Lecturer Email is already in Use. Please try with another email.");
@@ -196,13 +187,13 @@ public class UserService implements UserDetailsService {
         userRepo.delete(user);
     }
 
-    public List<userDTO> searchUsers(String name) {
+    public List<UserDTO> searchUsers(String name) {
         List<User> userList = new ArrayList<>();
         userList.addAll(userRepo.firstName(name));
         userList.addAll(userRepo.lastName(name));
-        List<userDTO> userList2 = new ArrayList<>();
+        List<UserDTO> userList2 = new ArrayList<>();
         for (User user : userList) {
-            userDTO listUser = new userDTO();
+            UserDTO listUser = new UserDTO();
             listUser.setEmail(user.getEmail());
             listUser.setfName(user.getfName());
             listUser.setlName(user.getlName());

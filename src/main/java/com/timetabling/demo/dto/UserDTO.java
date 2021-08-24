@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 
-public class userDTO {
+public class UserDTO {
 
     @Email(message = "Last name is not completed")
     private String email;
@@ -19,7 +19,7 @@ public class userDTO {
     private Batch batchId;
     private String password;
 
-    public userDTO(String email, String fName, String lName, String contactNumber, String userRole, Batch batchId, String password) {
+    public UserDTO(String email, String fName, String lName, String contactNumber, String userRole, Batch batchId, String password) {
         this.email = email;
         this.fName = fName;
         this.lName = lName;
@@ -29,7 +29,7 @@ public class userDTO {
         this.password = password;
     }
 
-    public userDTO() {
+    public UserDTO() {
 
     }
 

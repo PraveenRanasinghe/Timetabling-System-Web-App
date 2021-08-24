@@ -5,20 +5,20 @@ import com.timetabling.demo.model.User;
 
 import java.util.List;
 
-public class moduleDTO {
+public class ModuleDTO {
     private String moduleID;
     private String moduleName;
     private User user;
     private List<Batch> batches;
 
-    public moduleDTO(String moduleID, String moduleName, User user, List<Batch> batches) {
+    public ModuleDTO(String moduleID, String moduleName, User user, List<Batch> batches) {
         this.moduleID = moduleID;
         this.moduleName = moduleName;
         this.user = user;
         this.batches = batches;
     }
 
-    public moduleDTO(){
+    public ModuleDTO(){
 
     }
 

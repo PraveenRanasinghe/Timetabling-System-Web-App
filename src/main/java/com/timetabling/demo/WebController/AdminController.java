@@ -67,7 +67,7 @@ public class AdminController {
 
     @GetMapping(path = "/viewStudents")
     public String viewAllStudents(Model m) {
-        List<userDTO> allUsers = userService.getAllStudents();
+        List<UserDTO> allUsers = userService.getAllStudents();
         m.addAttribute("users", allUsers);
         return "viewStudents";
     }
@@ -75,7 +75,7 @@ public class AdminController {
     @GetMapping("/searchUsers")
     public String searchUser(HttpServletRequest req, Model m) {
         String name = req.getParameter("searchByName");
-        List<userDTO> userList = userService.searchUsers(name);
+        List<UserDTO> userList = userService.searchUsers(name);
         m.addAttribute("users", userList);
         return "viewStudents";
     }
@@ -84,7 +84,7 @@ public class AdminController {
 
     @GetMapping(path = "/viewLecturers")
     public String viewAllLecturers(Model m) {
-        List<userDTO> allLecturers = userService.getAllLecturers();
+        List<UserDTO> allLecturers = userService.getAllLecturers();
         m.addAttribute("Lecturers", allLecturers);
         return "viewLecturers";
     }
@@ -109,7 +109,7 @@ public class AdminController {
     @GetMapping("/searchBatches")
     public String searchBatches(HttpServletRequest req, Model m) {
         String name = req.getParameter("searchByName");
-        List<batchDTO> batches = batchService.searchBatches(name);
+        List<BatchDTO> batches = batchService.searchBatches(name);
         m.addAttribute("batches", batches);
         return "removeBatches";
     }
@@ -125,7 +125,7 @@ public class AdminController {
     @GetMapping("/searchModules")
     public String searchModules(HttpServletRequest req, Model m) {
         String name = req.getParameter("searchByName");
-        List<moduleDTO> modules = moduleService.searchModules(name);
+        List<ModuleDTO> modules = moduleService.searchModules(name);
         m.addAttribute("modules", modules);
         return "removeModules";
     }
@@ -149,16 +149,16 @@ public class AdminController {
 
     @GetMapping("/viewAddUsers")
     public String RegisterUsers(Model m) {
-        List<batchDTO> allBatches = batchService.getAllBatchesToList();
+        List<BatchDTO> allBatches = batchService.getAllBatchesToList();
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
         m.addAttribute("batchList", allBatches);
-        m.addAttribute("AddUser", new userDTO());
+        m.addAttribute("AddUser", new UserDTO());
         return "addUsers";
     }
 
     @PostMapping("/adminAddUsers")
-    public String StudentRegistration(@ModelAttribute("AddUser") userDTO dto, Model m, RedirectAttributes redirectAttributes) {
+    public String StudentRegistration(@ModelAttribute("AddUser") UserDTO dto, Model m, RedirectAttributes redirectAttributes) {
         try {
 
             userService.registerUsers(dto);
@@ -175,12 +175,12 @@ public class AdminController {
     public String RegisterLecturers(Model m) {
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
-        m.addAttribute("addLecturers", new userDTO());
+        m.addAttribute("addLecturers", new UserDTO());
         return "addLecturers";
     }
 
     @PostMapping("adminAddLecturers")
-    public String LecturerRegistration(@ModelAttribute("addLecturers") userDTO dto, Model m, RedirectAttributes redirectAttributes) {
+    public String LecturerRegistration(@ModelAttribute("addLecturers") UserDTO dto, Model m, RedirectAttributes redirectAttributes) {
         try {
 
             userService.registerLecturers(dto);
@@ -245,7 +245,7 @@ public class AdminController {
 
     @GetMapping("/viewCreateBatch")
     public String addBatches(Model m) {
-        m.addAttribute("AddBatches", new batchDTO());
+        m.addAttribute("AddBatches", new BatchDTO());
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
         return "createBatch";
@@ -253,7 +253,7 @@ public class AdminController {
 
 
     @PostMapping("/adminAddBatches")
-    public String BatchRegister(@ModelAttribute("AddBatches") batchDTO dto, Model a) {
+    public String BatchRegister(@ModelAttribute("AddBatches") BatchDTO dto, Model a) {
         try {
             batchService.createBatch(dto);
             a.addAttribute("success", "New Batch has been added to the system successfully.");
@@ -268,7 +268,7 @@ public class AdminController {
 
 
     @PostMapping("/adminUpdateBatches")
-    public String updateB(@ModelAttribute("getBatch") batchDTO dto, Model a) {
+    public String updateB(@ModelAttribute("getBatch") BatchDTO dto, Model a) {
         try {
             batchService.updateBatchInfo(dto);
             a.addAttribute("success", "Batch details has been updated successfully.");
@@ -305,18 +305,18 @@ public class AdminController {
 
     @GetMapping("/viewAddModules")
     public String addModules(Model m) {
-        List<batchDTO> allBatches = batchService.getAllBatchesToList();
+        List<BatchDTO> allBatches = batchService.getAllBatchesToList();
         m.addAttribute("batchList", allBatches);
-        List<userDTO> allLecturers = userService.getAllLecturersToList();
+        List<UserDTO> allLecturers = userService.getAllLecturersToList();
         m.addAttribute("lecList", allLecturers);
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
-        m.addAttribute("AddModules", new moduleDTO());
+        m.addAttribute("AddModules", new ModuleDTO());
         return "addModules";
     }
 
     @PostMapping("/adminAddModules")
-    public String ModuleRegister(@ModelAttribute("AddModules") moduleDTO dto, Model m) {
+    public String ModuleRegister(@ModelAttribute("AddModules") ModuleDTO dto, Model m) {
         try {
             moduleService.createModule(dto);
             m.addAttribute("success", "Module has been added to system successfully !");
@@ -329,7 +329,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminUpdateModules")
-    public String updateM(@ModelAttribute("getModule") moduleDTO dto, Model m) {
+    public String updateM(@ModelAttribute("getModule") ModuleDTO dto, Model m) {
         try {
             moduleService.updateModuleInfo(dto);
             m.addAttribute("success", "Module details has been updated successfully !");
@@ -357,7 +357,7 @@ public class AdminController {
 
     @GetMapping("/getTimetable/{timetableId}")
     public String getTimetable(Model m, @PathVariable(value = "timetableId") Integer timetableId) {
-        timetableDTO t = timetableService.getTimetableById(timetableId);
+        TimetableDTO t = timetableService.getTimetableById(timetableId);
         Timetable timetable = new Timetable();
         m.addAttribute("getTimetable", timetable);
         m.addAttribute("findTimetable", t);
@@ -369,12 +369,12 @@ public class AdminController {
         Module mo = moduleService.getModuleById(moduleId);
         m.addAttribute("findModule", mo);
 
-        timetableDTO theDTO = new timetableDTO();
+        TimetableDTO theDTO = new TimetableDTO();
         theDTO.setBatches(mo.getBatches());
 
         m.addAttribute("addTimetable", theDTO);
 
-        List<classRoomDTO> allClassRooms = classRoomService.getAllClassRoomsToList();
+        List<ClassRoomDTO> allClassRooms = classRoomService.getAllClassRoomsToList();
         m.addAttribute("classRoomList", allClassRooms);
 
         return "scheduleClass";
@@ -382,7 +382,7 @@ public class AdminController {
 
 
     @PostMapping("/adminAddTimetable")
-    public String scheduleTimetable(@ModelAttribute("addTimetable") timetableDTO dto, Model m) {
+    public String scheduleTimetable(@ModelAttribute("addTimetable") TimetableDTO dto, Model m) {
         try {
             timetableService.createTimetable(dto);
             m.addAttribute("success", "Timetable has been scheduled successfully !");
@@ -397,7 +397,7 @@ public class AdminController {
 
 
     @PostMapping("/classRescheduling")
-    public String reScheduleClasses(@ModelAttribute("findTimetable") timetableDTO dto, Model m) {
+    public String reScheduleClasses(@ModelAttribute("findTimetable") TimetableDTO dto, Model m) {
         try {
             timetableService.reScheduleTimetable(dto);
             m.addAttribute("success", "Module has been Re-Scheduled successfully!");
@@ -436,12 +436,12 @@ public class AdminController {
     public String addClassRooms(Model m) {
         m.addAttribute("successMessage");
         m.addAttribute("errorMessage");
-        m.addAttribute("AddClasses", new classRoomDTO());
+        m.addAttribute("AddClasses", new ClassRoomDTO());
         return "addClassRoom";
     }
 
     @PostMapping("/adminAddClassRooms")
-    public String addClasses(@ModelAttribute("AddClasses") classRoomDTO dto, Model m) {
+    public String addClasses(@ModelAttribute("AddClasses") ClassRoomDTO dto, Model m) {
         try {
             classRoomService.addClassRoom(dto);
             m.addAttribute("success", "The New Class-Room has been added to system successfully!");
@@ -454,7 +454,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminUpdateClassRoom")
-    public String updateClassRoom(@ModelAttribute("getClassRoom") classRoomDTO dto, Model m) {
+    public String updateClassRoom(@ModelAttribute("getClassRoom") ClassRoomDTO dto, Model m) {
         try {
             classRoomService.updateClassRoom(dto);
             m.addAttribute("success", "Class-Room details has been updated successfully!");

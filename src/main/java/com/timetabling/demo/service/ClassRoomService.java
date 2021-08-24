@@ -1,12 +1,8 @@
 package com.timetabling.demo.service;
 
-import com.timetabling.demo.dto.batchDTO;
-import com.timetabling.demo.dto.classRoomDTO;
-import com.timetabling.demo.dto.moduleDTO;
-import com.timetabling.demo.exceptions.classRoomIdExistException;
-import com.timetabling.demo.model.Batch;
+import com.timetabling.demo.dto.ClassRoomDTO;
+import com.timetabling.demo.exceptions.ClassRoomIdExistException;
 import com.timetabling.demo.model.ClassRoom;
-import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.ClassroomRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,10 +27,10 @@ public class ClassRoomService {
     }
 
 
-    public List<classRoomDTO> getAllClassRoomsToList(){
-        List<classRoomDTO> list= new ArrayList<>();
+    public List<ClassRoomDTO> getAllClassRoomsToList(){
+        List<ClassRoomDTO> list= new ArrayList<>();
         for(ClassRoom classRoom: classroomRepo.findAll()){
-            classRoomDTO dto= new classRoomDTO();
+            ClassRoomDTO dto= new ClassRoomDTO();
             dto.setClassRoomID(classRoom.getClassRoomID());
             dto.setCapacity(classRoom.getCapacity());
             list.add(dto);
@@ -47,10 +43,10 @@ public class ClassRoomService {
         return classroomRepo.findAll();
     }
 
-    public ClassRoom addClassRoom(classRoomDTO dtoclass) throws classRoomIdExistException {
+    public ClassRoom addClassRoom(ClassRoomDTO dtoclass) throws ClassRoomIdExistException {
         ClassRoom room= new ClassRoom();
         if(classroomRepo.findById(dtoclass.getClassRoomID()).isPresent()){
-            throw new classRoomIdExistException("ClassRoom Id is already used. Please try with another ClassRoom Id.");
+            throw new ClassRoomIdExistException("ClassRoom Id is already used. Please try with another ClassRoom Id.");
         }
         else {
             room.setClassRoomID(dtoclass.getClassRoomID());
@@ -61,7 +57,7 @@ public class ClassRoomService {
         return classroomRepo.save(room);
     }
 
-    public ClassRoom updateClassRoom(classRoomDTO dtoclass){
+    public ClassRoom updateClassRoom(ClassRoomDTO dtoclass){
 
         ClassRoom room= new ClassRoom();
         room.setClassRoomID(dtoclass.getClassRoomID());

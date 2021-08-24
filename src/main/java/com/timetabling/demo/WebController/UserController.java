@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class userController {
+public class UserController {
 
     @Autowired
     private final TimetableService timetableService;
@@ -29,7 +29,7 @@ public class userController {
     @Autowired
     private final UserService userService;
 
-    public userController(TimetableService timetableService, ModuleService moduleService, UserService userService) {
+    public UserController(TimetableService timetableService, ModuleService moduleService, UserService userService) {
         this.timetableService = timetableService;
         this.moduleService = moduleService;
         this.userService = userService;

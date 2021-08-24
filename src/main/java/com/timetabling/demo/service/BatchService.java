@@ -1,13 +1,11 @@
 package com.timetabling.demo.service;
 
-import com.timetabling.demo.dto.batchDTO;
+import com.timetabling.demo.dto.BatchDTO;
 import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.model.Batch;
-import com.timetabling.demo.model.Module;
 import com.timetabling.demo.repositary.BatchRepo;
 import com.timetabling.demo.repositary.ModuleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,10 +21,10 @@ public class BatchService {
     @Autowired
     private ModuleRepo moduleRepo;
 
-    public List<batchDTO> getAllBatchesToList(){
-        List<batchDTO> list = new ArrayList<>();
+    public List<BatchDTO> getAllBatchesToList(){
+        List<BatchDTO> list = new ArrayList<>();
         for(Batch batch: batchRepo.findAll()){
-            batchDTO dto= new batchDTO();
+            BatchDTO dto= new BatchDTO();
             dto.setBatchID(batch.getBatchID());
             dto.setBatchName(batch.getBatchName());
             list.add(dto);
@@ -35,10 +33,10 @@ public class BatchService {
     }
 
 
-    public List<batchDTO> getSelectedModulesBatchList(String moduleId){
-        List<batchDTO> list = new ArrayList<>();
+    public List<BatchDTO> getSelectedModulesBatchList(String moduleId){
+        List<BatchDTO> list = new ArrayList<>();
         for (Batch batch: moduleRepo.findById(moduleId).get().getBatches()){
-            batchDTO dto= new batchDTO();
+            BatchDTO dto= new BatchDTO();
             dto.setBatchID(batch.getBatchID());
             dto.setBatchName(batch.getBatchName());
             list.add(dto);
@@ -52,7 +50,7 @@ public class BatchService {
         return batchRepo.findAll();
     }
 
-    public Batch createBatch(batchDTO dtoBatch) throws BatchIdExistException {
+    public Batch createBatch(BatchDTO dtoBatch) throws BatchIdExistException {
         Batch batches = new Batch();
         if(batchRepo.findById(dtoBatch.getBatchID()).isPresent()){
             throw new BatchIdExistException("Batch Id is already used. Please try with another Batch Id.");
@@ -76,7 +74,7 @@ public class BatchService {
         return batches;
     }
 
-    public Batch updateBatchInfo(batchDTO dtoBatch){
+    public Batch updateBatchInfo(BatchDTO dtoBatch){
         Batch batches = new Batch();
         batches.setBatchID(dtoBatch.getBatchID());
         batches.setBatchName(dtoBatch.getBatchName());
@@ -89,13 +87,13 @@ public class BatchService {
         batchRepo.delete(batch);
     }
 
-    public List<batchDTO> searchBatches(String batchName){
+    public List<BatchDTO> searchBatches(String batchName){
         List<Batch> batchList= new ArrayList<>();
         batchList.addAll(batchRepo.searchBatchName(batchName));
-        List<batchDTO> batchDTOS= new ArrayList<>();
+        List<BatchDTO> batchDTOS= new ArrayList<>();
 
         for(Batch batch:batchList){
-            batchDTO dto= new batchDTO();
+            BatchDTO dto= new BatchDTO();
             dto.setBatchName(batch.getBatchName());
             dto.setBatchID(batch.getBatchID());
             dto.setStartDate(batch.getStartDate());

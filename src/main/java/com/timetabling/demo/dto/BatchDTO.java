@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class batchDTO {
+public class BatchDTO {
     private String batchID;
     private String batchName;
 
@@ -13,14 +13,14 @@ public class batchDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
 
-    public batchDTO(String batchID, String batchName, Date startDate, Date endDate) {
+    public BatchDTO(String batchID, String batchName, Date startDate, Date endDate) {
         this.batchID = batchID;
         this.batchName = batchName;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public batchDTO(){
+    public BatchDTO(){
 
     }
 

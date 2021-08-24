@@ -4,14 +4,14 @@ import com.timetabling.demo.model.Timetable;
 
 
 
-public class classRoomDTO {
+public class ClassRoomDTO {
     private String classRoomID;
     private Timetable timetable;
     private String capacity;
     private String smartBoard;
     private String Ac;
 
-    public classRoomDTO(String classRoomID, Timetable timetable, String capacity, String smartBoard, String ac) {
+    public ClassRoomDTO(String classRoomID, Timetable timetable, String capacity, String smartBoard, String ac) {
         this.classRoomID = classRoomID;
         this.timetable = timetable;
         this.capacity = capacity;
@@ -19,7 +19,7 @@ public class classRoomDTO {
         Ac = ac;
     }
 
-    public classRoomDTO(){
+    public ClassRoomDTO(){
 
     }
 

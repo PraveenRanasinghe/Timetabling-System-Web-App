@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
-public class timetableDTO {
+public class TimetableDTO {
     private int timetableId;
 
     @DateTimeFormat(pattern = "HH:mm:ss")
@@ -26,7 +26,7 @@ public class timetableDTO {
     private Module modules;
     private ClassRoom classRoom;
 
-    public timetableDTO(int timetableId, String startTime, String endTime, Date scheduledDate, List<Batch> batches, Module modules, ClassRoom classRoom) {
+    public TimetableDTO(int timetableId, String startTime, String endTime, Date scheduledDate, List<Batch> batches, Module modules, ClassRoom classRoom) {
         this.timetableId = timetableId;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -36,7 +36,7 @@ public class timetableDTO {
         this.classRoom = classRoom;
     }
 
-    public timetableDTO() {
+    public TimetableDTO() {
 
     }
 
