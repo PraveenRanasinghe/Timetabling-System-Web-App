@@ -14,6 +14,7 @@ import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,11 @@ public class MobileAdminController {
         return ResponseEntity.ok(allLecturers);
     }
 
+    @GetMapping(path = "/getAllTimetablesForAdmin")
+    public ResponseEntity<?> viewScheduledClasses() {
+        List<Timetable> allTimetables = timetableService.getAllTimetables();
+        return ResponseEntity.ok(allTimetables);
+    }
 
     @GetMapping(path = "/getAllClassesToList")
     public ResponseEntity<?> getAllClassesToList(){
