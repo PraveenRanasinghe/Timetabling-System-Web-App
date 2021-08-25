@@ -173,5 +173,11 @@ public class MobileAdminController {
       return ResponseEntity.ok(dto);
     }
 
+    @PostMapping("/UpdateAccount")
+    public ResponseEntity<?> updateAdminAccount(User user) {
+        userService.updateUserInfo(user);
+        return ResponseEntity.ok(user);
+    }
+
 
 }
