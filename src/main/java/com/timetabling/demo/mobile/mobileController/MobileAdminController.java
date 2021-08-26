@@ -45,6 +45,12 @@ public class MobileAdminController {
         return ResponseEntity.ok(allLecturers);
     }
 
+    @GetMapping("/getBatchesToList")
+    public ResponseEntity<?> RegisterUsers() {
+        List<BatchDTO> allBatches = batchService.getAllBatchesToList();
+        return ResponseEntity.ok(allBatches);
+    }
+
     @GetMapping(path = "/getAllTimetablesForAdmin")
     public ResponseEntity<?> viewScheduledClasses() {
         List<Timetable> allTimetables = timetableService.getAllTimetables();
