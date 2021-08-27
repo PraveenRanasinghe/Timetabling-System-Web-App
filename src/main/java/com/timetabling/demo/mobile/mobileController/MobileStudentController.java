@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Date;
@@ -96,6 +97,11 @@ public class MobileStudentController {
         return ResponseEntity.ok(dtoList);
     }
 
+    @PostMapping("/UpdateStudentAccount")
+    public ResponseEntity<?> updateAdminAccount(User user) {
+        userService.updateUserInfo(user);
+        return ResponseEntity.ok(user);
+    }
 
 
 }

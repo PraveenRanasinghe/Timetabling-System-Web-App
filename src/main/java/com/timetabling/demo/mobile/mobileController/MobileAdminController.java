@@ -5,10 +5,7 @@ import com.timetabling.demo.dto.*;
 import com.timetabling.demo.exceptions.BatchIdExistException;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.exceptions.ClassRoomIdExistException;
-import com.timetabling.demo.mobile.mobileModel.BatchDto;
-import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
-import com.timetabling.demo.mobile.mobileModel.TimetableDto;
-import com.timetabling.demo.mobile.mobileModel.UserDto;
+import com.timetabling.demo.mobile.mobileModel.*;
 import com.timetabling.demo.model.*;
 import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -36,7 +35,6 @@ public class MobileAdminController {
 
     @Autowired
     private ModuleService moduleService;
-
 
 
     @GetMapping(path = "/getAllLecturers")
@@ -89,9 +87,17 @@ public class MobileAdminController {
     }
 
     @GetMapping(path = "/viewAllScheduledClasses")
-    public ResponseEntity<?> viewAllScheduledClasses() {
-        List<Timetable> allTimetables = timetableService.getAllTimetables();
-        return ResponseEntity.ok(allTimetables);
+    public ResponseEntity<?> viewAllScheduledClasses(@RequestBody DtoTimetable dtoTimetable) {
+        Timetable timetable = new Timetable();
+        timetable.setStartTime(LocalTime.parse(dtoTimetable.getStartTime()));
+        timetable.setEndTime(LocalTime.parse(dtoTimetable.getEndTime()));
+        timetable.setScheduledDate(Date.valueOf(dtoTimetable.getScheduledDate()));
+        timetable.setClassRoom(dtoTimetable.getClassRoom());
+        timetable.setModule(dtoTimetable.getModules());
+        timetable.setBatches(dtoTimetable.getBatches());
+
+        timetableService.getAllTimetables();
+        return ResponseEntity.ok(dtoTimetable);
     }
 
     @GetMapping("/viewAllClassRooms")
@@ -179,7 +185,7 @@ public class MobileAdminController {
       return ResponseEntity.ok(dto);
     }
 
-    @PostMapping("/UpdateAccount")
+    @PostMapping("/UpdateAdminAccount")
     public ResponseEntity<?> updateAdminAccount(User user) {
         userService.updateUserInfo(user);
         return ResponseEntity.ok(user);
