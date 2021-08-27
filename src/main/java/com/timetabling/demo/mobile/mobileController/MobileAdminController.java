@@ -175,7 +175,7 @@ public class MobileAdminController {
         timetableDto.setTimetableId(dto.getTimetableId());
         timetableDto.setStartTime(dto.getStartTime());
         timetableDto.setEndTime(dto.getEndTime());
-        //Have to take the Batch List
+
         timetableDto.setScheduledDate(dto.getScheduledDate());
         timetableDto.setClassRoom(classRoomService.getClassRoomById(dto.getClassRoom().toString()));
         timetableDto.setModules(moduleService.getModuleById(dto.getModules().toString()));
