@@ -7,6 +7,7 @@ import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.exceptions.ClassRoomIdExistException;
 import com.timetabling.demo.mobile.mobileModel.*;
 import com.timetabling.demo.model.*;
+import com.timetabling.demo.model.Module;
 import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -168,7 +170,7 @@ public class MobileAdminController {
     }
 
 
-    @PostMapping("/scheduleTimetable")
+    @PostMapping("/AdminScheduleTimetable")
     public ResponseEntity<?> scheduleTimetable(@RequestBody TimetableDto dto) throws Exception {
 
         TimetableDTO timetableDto = new TimetableDTO();
@@ -176,9 +178,28 @@ public class MobileAdminController {
         timetableDto.setStartTime(dto.getStartTime());
         timetableDto.setEndTime(dto.getEndTime());
 
+        Module module = new Module();
+        module.setModuleID(dto.getModules().getModuleID());
+
+        List<Batch> batches = new ArrayList<>();
+
+        for(Batch batch:batches){
+            BatchDto batchDto= new BatchDto();
+            batchDto.setBatchID(batch.getBatchID());
+            batchDto.setBatchName(batch.getBatchName());
+            batchDto.setStartDate(batch.getStartDate());
+            batchDto.setEndDate(batch.getEndDate());
+
+            batches.add(batch);
+        }
+
         timetableDto.setScheduledDate(dto.getScheduledDate());
         timetableDto.setClassRoom(classRoomService.getClassRoomById(dto.getClassRoom().toString()));
-        timetableDto.setModules(moduleService.getModuleById(dto.getModules().toString()));
+        timetableDto.setModules(module);
+        timetableDto.setBatches(batches);
+//        timetableDto.setModules(moduleService.getModuleById(dto.getModules().toString()));
+
+        System.out.println(dto.getEndTime());
 
         timetableService.createTimetable(timetableDto);
 

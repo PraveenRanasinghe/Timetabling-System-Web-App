@@ -128,7 +128,6 @@ public class TimetableService {
             batchList.add(batchRepo.findById(batches.getBatchID()).get());
         }
         timetables.setBatches(batchList);
-
         timetables.setModule(moduleRepo.getOne(dtoTimetable.getModules().getModuleID()));
         timetables.setClassRoom(dtoTimetable.getClassRoom());
         timetables.setScheduledDate(new Date(dtoTimetable.getScheduledDate().getTime()));
@@ -190,6 +189,8 @@ public class TimetableService {
     public void cancelScheduledClass(Timetable timetable) {
         timetableRepo.delete(timetable);
     }
+
+
 
 
 }
