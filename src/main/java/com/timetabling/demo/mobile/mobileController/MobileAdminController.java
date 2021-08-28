@@ -197,6 +197,18 @@ public class MobileAdminController {
       return ResponseEntity.ok(dto);
     }
 
+
+    @RequestMapping("/cancelScheduledTimetable")
+    public ResponseEntity<?> cancelScheduledClasses(TimetableDto timetabledto) {
+        Timetable timetable= new Timetable();
+        timetable.setTimetableId(timetabledto.getTimetableId());
+        timetable.setStartTime(LocalTime.parse(timetabledto.getStartTime()));
+        timetable.setEndTime(LocalTime.parse(timetabledto.getEndTime()));
+
+        timetableService.cancelScheduledClass(timetable);
+        return ResponseEntity.ok(timetabledto);
+    }
+
     @PostMapping("/UpdateAdminAccount")
     public ResponseEntity<?> updateAdminAccount(User user) {
         userService.updateUserInfo(user);
