@@ -181,25 +181,16 @@ public class MobileAdminController {
         Module module = new Module();
         module.setModuleID(dto.getModules().getModuleID());
 
-        List<Batch> batches = new ArrayList<>();
-
-        for(Batch batch:batches){
-            BatchDto batchDto= new BatchDto();
-            batchDto.setBatchID(batch.getBatchID());
-            batchDto.setBatchName(batch.getBatchName());
-            batchDto.setStartDate(batch.getStartDate());
-            batchDto.setEndDate(batch.getEndDate());
-
-            batches.add(batch);
+        List<BatchDto> batches = dto.getBatches();
+        List<Batch> batchList = new ArrayList<>();
+        for(BatchDto batch:batches){
+            batchList.add(batchService.getBatchById(batch.getBatchID()));
         }
 
         timetableDto.setScheduledDate(dto.getScheduledDate());
         timetableDto.setClassRoom(classRoomService.getClassRoomById(dto.getClassRoom().toString()));
         timetableDto.setModules(module);
-        timetableDto.setBatches(batches);
-//        timetableDto.setModules(moduleService.getModuleById(dto.getModules().toString()));
-
-        System.out.println(dto.getEndTime());
+        timetableDto.setBatches(batchList);
 
         timetableService.createTimetable(timetableDto);
 
