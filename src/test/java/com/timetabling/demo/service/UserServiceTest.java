@@ -29,4 +29,5 @@ class UserServiceTest {
         assertThat(allLecturers, not(IsEmptyCollection.empty()));
     }
 
+
 }
