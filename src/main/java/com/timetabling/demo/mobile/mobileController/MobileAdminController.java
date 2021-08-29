@@ -210,7 +210,7 @@ public class MobileAdminController {
       return ResponseEntity.ok(dto);
     }
 
-    @RequestMapping("/AdminCancelTimetable")
+    @DeleteMapping("/AdminCancelTimetable")
     public ResponseEntity<?> cancelScheduledClasses(@RequestBody TimetableDto timetabledto) {
         Timetable timetable= new Timetable();
 
