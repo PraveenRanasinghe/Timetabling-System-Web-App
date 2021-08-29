@@ -3,6 +3,7 @@ package com.timetabling.demo.mobile.mobileController;
 
 import com.timetabling.demo.dto.*;
 import com.timetabling.demo.exceptions.BatchIdExistException;
+import com.timetabling.demo.exceptions.ModuleIdExistException;
 import com.timetabling.demo.exceptions.UserAlreadyExistsException;
 import com.timetabling.demo.exceptions.ClassRoomIdExistException;
 import com.timetabling.demo.mobile.mobileModel.*;
@@ -169,6 +170,12 @@ public class MobileAdminController {
         return ResponseEntity.ok(dto);
     }
 
+    @PostMapping("/AdminAddModule")
+    public ResponseEntity<?> ModuleRegister(@RequestBody ModuleDTO dto) throws ModuleIdExistException {
+        moduleService.createModule(dto);
+        return ResponseEntity.ok(dto);
+    }
+
 
     @PostMapping("/AdminScheduleTimetable")
     public ResponseEntity<?> scheduleTimetable(@RequestBody TimetableDto dto) throws Exception {
@@ -187,8 +194,14 @@ public class MobileAdminController {
             batchList.add(batchService.getBatchById(batch.getBatchID()));
         }
 
+        ClassRoom classRoom= new ClassRoom();
+        classRoom.setClassRoomID(dto.getClassRoom().getClassRoomID());
+        classRoom.setAc(dto.getClassRoom().getAc());
+        classRoom.setCapacity(dto.getClassRoom().getCapacity());
+        classRoom.setSmartBoard(dto.getClassRoom().getSmartBoard());
+
         timetableDto.setScheduledDate(dto.getScheduledDate());
-        timetableDto.setClassRoom(classRoomService.getClassRoomById(dto.getClassRoom().toString()));
+        timetableDto.setClassRoom(classRoom);
         timetableDto.setModules(module);
         timetableDto.setBatches(batchList);
 
@@ -199,14 +212,25 @@ public class MobileAdminController {
 
 
     @RequestMapping("/cancelScheduledTimetable")
-    public ResponseEntity<?> cancelScheduledClasses(TimetableDto timetabledto) {
+    public ResponseEntity<?> cancelScheduledClasses(@RequestBody TimetableDto timetabledto) {
         Timetable timetable= new Timetable();
+
+        List<BatchDto> list = timetabledto.getBatches();
+        List<Batch> batchList = new ArrayList<>();
+
+
         timetable.setTimetableId(timetabledto.getTimetableId());
         timetable.setStartTime(LocalTime.parse(timetabledto.getStartTime()));
         timetable.setEndTime(LocalTime.parse(timetabledto.getEndTime()));
-
+        timetable.setBatches(batchList);
         timetableService.cancelScheduledClass(timetable);
         return ResponseEntity.ok(timetabledto);
+    }
+
+    @PostMapping("/adminReschedulingClasses")
+    public ResponseEntity<?> reScheduleClasses(TimetableDTO dto) throws Exception {
+        timetableService.reScheduleTimetable(dto);
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping("/UpdateAdminAccount")
