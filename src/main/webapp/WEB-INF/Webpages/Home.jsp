@@ -27,9 +27,9 @@
                      style="height: 250px; width: 900px;margin-left: 100px; background-size: cover; border-radius: 30px;">
             </div>
 
-            <div class="row justify-content-center">
-                <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>
-            </div>
+<%--            <div class="row justify-content-center">--%>
+<%--                <div style="font-family:sans-serif; background: #e0c67b; height: 50px; color: black; font-size: x-large;">${success}${error}</div>--%>
+<%--            </div>--%>
 
             <c:if test="${pageContext.request.getParameter('?error')}">
                 <div style="font-size: xx-large; color: red"> Invalid Credentials.Please Try again!</div>
@@ -43,13 +43,12 @@
                         <h1 style="color:#130505;">Login Here!</h1>
                     </div>
                     <div style="margin-left: 34%">
-                        <img src="${pageContext.request.contextPath}/images/login.png" width="170px" height="140px">
+                        <img src="${pageContext.request.contextPath}/images/login.png" width="150px" height="120px">
                     </div>
                     <div class="card-body">
                         <form method="post" action="${pageContext.request.contextPath}/authenticate">
                             <label  class="form-label" style="color: #ffffff">Email address</label>
                             <div class="input-group form-group">
-
                                 <input style="background-color: #f5eded" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com" required="required">
 
                             </div>

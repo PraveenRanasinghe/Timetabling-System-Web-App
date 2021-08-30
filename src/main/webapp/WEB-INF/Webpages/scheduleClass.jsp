@@ -52,7 +52,7 @@
         <form:form class="mt-5" action="/adminAddTimetable" modelAttribute="addTimetable" method="POST">
             <div style="box-shadow: 15px 15px 30px black; border-radius: 20px;
          width: 900px;background: rgb(75,130,154);
-background: linear-gradient(90deg, rgba(75,130,154,1) 0%, rgba(161,232,147,1) 49%, rgba(139,177,232,1) 100%); margin-left: 10%; border-color: #130a04;
+background: linear-gradient(90deg, rgb(111,188,220) 0%, rgb(111,221,231) 49%, rgb(115,190,231) 100%); margin-left: 10%; border-color: #130a04;
           border-style: inset; border-radius: 10px;">
 
 

@@ -40,7 +40,7 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <table class="table table-info table-striped" style="border-color: black; border-radius: 15px;">
+        <table class="table table-secondary table-striped" style="border-color: black; border-radius: 15px;">
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
             <tr>
                 <th scope="col">#</th>
