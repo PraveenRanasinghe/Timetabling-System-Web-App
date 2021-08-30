@@ -1,6 +1,7 @@
 package com.timetabling.demo.mobile.mobileController;
 
 
+import com.timetabling.demo.dto.TimetableDTO;
 import com.timetabling.demo.mobile.mobileModel.BatchDto;
 import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
 import com.timetabling.demo.mobile.mobileModel.ModuleDto;
@@ -17,9 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +60,7 @@ public class MobileLecturerController {
         java.sql.Date currentDate= new java.sql.Date(date);
 
         List<Timetable> timetableList= timetableService.getTodaysTimetableToLec(userService.getUserByID(auth.getName()).getEmail(),currentDate);
+
         List<TimetableDto> dtoList = new ArrayList<>();
         for(Timetable timetable:timetableList){
             TimetableDto dto = new TimetableDto();
@@ -67,7 +73,6 @@ public class MobileLecturerController {
 
             List<Batch> batches= timetable.getBatches();
             List<BatchDto> dtos= new ArrayList<>();
-
             for(Batch batch:batches){
                 BatchDto batchDto= new BatchDto();
                 batchDto.setBatchID(batch.getBatchID());
@@ -109,6 +114,7 @@ public class MobileLecturerController {
                 dtos.add(batchDto);
             }
             dto.setBatches(dtos);
+            dto.setTimetableId(timetable.getTimetableId());
             dto.setStartTime(timetable.getStartTime().toString());
             dto.setEndTime(timetable.getEndTime().toString());
             dto.setScheduledDate(timetable.getScheduledDate());
@@ -122,8 +128,24 @@ public class MobileLecturerController {
     }
 
 
+    @DeleteMapping("/LecturerCancelTimetable")
+    public ResponseEntity<?> cancelScheduledClasses(@RequestBody TimetableDto timetabledto) {
 
+        TimetableDTO timetables = timetableService.getTimetableById(timetabledto.getTimetableId());
 
+        Timetable timetable= new Timetable();
+
+        timetable.setTimetableId(timetables.getTimetableId());
+        timetable.setStartTime(LocalTime.parse(timetables.getStartTime()));
+        timetable.setEndTime(LocalTime.parse(timetables.getEndTime()));
+        timetable.setScheduledDate(Date.valueOf(timetables.getScheduledDate().toString()));
+        timetable.setBatches(timetables.getBatches());
+        timetable.setClassRoom(timetables.getClassRoom());
+        timetable.setModule(timetables.getModules());
+
+        timetableService.cancelScheduledClass(timetable);
+        return ResponseEntity.ok("Cancelled Successfully!");
+    }
 
 
 }

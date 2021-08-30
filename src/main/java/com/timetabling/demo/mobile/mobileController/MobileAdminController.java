@@ -216,6 +216,7 @@ public class MobileAdminController {
         TimetableDTO timetables = timetableService.getTimetableById(timetabledto.getTimetableId());
 
         Timetable timetable= new Timetable();
+
         timetable.setTimetableId(timetables.getTimetableId());
         timetable.setScheduledDate(Date.valueOf(timetables.getScheduledDate().toString()));
         timetable.setStartTime(LocalTime.parse(timetables.getStartTime()));
@@ -230,7 +231,7 @@ public class MobileAdminController {
 
 
     @PostMapping("/adminReschedulingClasses")
-    public ResponseEntity<?> reScheduleClasses(TimetableDTO dto) throws Exception {
+    public ResponseEntity<?> reScheduleClasses(@RequestBody TimetableDTO dto) throws Exception {
         timetableService.reScheduleTimetable(dto);
         return ResponseEntity.ok(dto);
     }
