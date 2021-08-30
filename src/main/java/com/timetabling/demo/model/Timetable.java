@@ -5,7 +5,6 @@ import org.springframework.beans.Mergeable;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 

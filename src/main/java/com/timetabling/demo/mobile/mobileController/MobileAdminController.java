@@ -212,35 +212,20 @@ public class MobileAdminController {
 
     @DeleteMapping("/AdminCancelTimetable")
     public ResponseEntity<?> cancelScheduledClasses(@RequestBody TimetableDto timetabledto) {
+
+        TimetableDTO timetables = timetableService.getTimetableById(timetabledto.getTimetableId());
+
         Timetable timetable= new Timetable();
+        timetable.setTimetableId(timetables.getTimetableId());
+        timetable.setScheduledDate(Date.valueOf(timetables.getScheduledDate().toString()));
+        timetable.setStartTime(LocalTime.parse(timetables.getStartTime()));
+        timetable.setEndTime(LocalTime.parse(timetables.getEndTime()));
+        timetable.setBatches(timetables.getBatches());
+        timetable.setClassRoom(timetables.getClassRoom());
+        timetable.setModule(timetables.getModules());
 
-        List<BatchDto> list = timetabledto.getBatches();
-        List<Batch> batchList = new ArrayList<>();
-
-        for(BatchDto dto:list){
-            Batch batch= new Batch();
-            batch.setBatchID(dto.getBatchID());
-            batch.setBatchName(dto.getBatchName());
-            batch.setStartDate(dto.getStartDate());
-            batch.setEndDate(dto.getEndDate());
-            batchList.add(batch);
-        }
-
-        Module module= new Module();
-        module.setModuleID(timetabledto.getModules().getModuleID());
-        module.setModuleName(timetable.getModule().getModuleName());
-        module.setBatches(timetable.getBatches());
-        module.setUser(timetable.getModule().getUser());
-
-        timetable.setTimetableId(timetabledto.getTimetableId());
-        timetable.setStartTime(LocalTime.parse(timetabledto.getStartTime()));
-        timetable.setEndTime(LocalTime.parse(timetabledto.getEndTime()));
-        timetable.setBatches(batchList);
-        timetable.setModule(module);
-        timetable.setClassRoom(timetable.getClassRoom());
-        timetable.setScheduledDate(Date.valueOf(timetabledto.getScheduledDate().toString()));
         timetableService.cancelScheduledClass(timetable);
-        return ResponseEntity.ok(timetabledto);
+        return ResponseEntity.ok("Deleted Successfully!");
     }
 
 
