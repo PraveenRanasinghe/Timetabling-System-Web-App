@@ -2,10 +2,7 @@ package com.timetabling.demo.mobile.mobileController;
 
 
 import com.timetabling.demo.dto.TimetableDTO;
-import com.timetabling.demo.mobile.mobileModel.BatchDto;
-import com.timetabling.demo.mobile.mobileModel.ClassroomDto;
-import com.timetabling.demo.mobile.mobileModel.ModuleDto;
-import com.timetabling.demo.mobile.mobileModel.TimetableDto;
+import com.timetabling.demo.mobile.mobileModel.*;
 import com.timetabling.demo.model.Batch;
 import com.timetabling.demo.model.Module;
 import com.timetabling.demo.model.Timetable;
@@ -18,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.time.LocalTime;
@@ -146,6 +140,12 @@ public class MobileLecturerController {
         timetableService.cancelScheduledClass(timetable);
         return ResponseEntity.ok("Cancelled Successfully!");
     }
+
+//    @PostMapping("/lecturerReschedulingClasses")
+//    public ResponseEntity<?> reScheduleClasses(@RequestBody TimetableDTO dto) throws Exception {
+//        timetableService.reScheduleTimetable(dto);
+//        return ResponseEntity.ok(dto);
+//    }
 
 
 }
