@@ -1,5 +1,7 @@
 package com.timetabling.demo.service;
 
+import com.timetabling.demo.dto.UserDTO;
+import com.timetabling.demo.model.ClassRoom;
 import com.timetabling.demo.model.User;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +31,16 @@ class UserServiceTest {
         assertThat(allLecturers, not(IsEmptyCollection.empty()));
     }
 
+    @Test
+    public void getAllStudents(){
+        List<UserDTO> allStudents = userService.getAllStudents();
+        assertThat(allStudents,not(IsEmptyCollection.empty()));
+    }
+
+    @Test
+    public void getAllLecturers(){
+        List<UserDTO> allLecturers = userService.getAllLecturers();
+        assertThat(allLecturers,not(IsEmptyCollection.empty()));
+    }
 
 }
