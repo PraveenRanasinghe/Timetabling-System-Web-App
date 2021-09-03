@@ -118,7 +118,7 @@
         $(function (){
             var dtToday = new Date();
             var month = dtToday.getMonth()+1;
-            var day = dtToday.getDay()+8;
+            var day = dtToday.getDay()-2;
             var year = dtToday.getFullYear();
 
             if(month<10){

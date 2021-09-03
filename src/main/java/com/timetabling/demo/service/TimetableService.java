@@ -36,6 +36,9 @@ public class TimetableService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EmailService emailService;
+
     public List<Timetable> getAllTimetables() {
         return timetableRepo.findAll();
     }

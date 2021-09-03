@@ -105,4 +105,32 @@ public class EmailService {
         }
     }
 
+    public void EmailToLecWhenModuleIsAssigned(String recepientEmail) {
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(companyEmail));
+            message.setRecipients(
+                    Message.RecipientType.TO, InternetAddress.parse(recepientEmail));
+            message.setSubject("Assigned to a Module");
+
+            String msg = "Dear Lecturer, <br/><br/>" +
+
+                    "You have been assigned to teach a module to our students." +
+                    "Please check your Account for more Information!"+
+                    "---------------------------------------------------------------- <br/><br/>" +
+                    "Thanking You,<br/>" +
+                    "System Admin.";
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+            mimeBodyPart.setContent(msg, "text/html");
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(mimeBodyPart);
+            message.setContent(multipart);
+            Transport.send(message);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+
 }

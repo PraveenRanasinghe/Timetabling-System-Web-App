@@ -19,6 +19,9 @@ public class ModuleService {
     private ModuleRepo moduleRepo;
 
     @Autowired
+    private EmailService emailService;
+
+    @Autowired
     private BatchRepo batchRepo;
 
     public List<Module> getAllModules() {
@@ -64,6 +67,7 @@ public class ModuleService {
             batchList.add(batchRepo.findById(batches.getBatchID()).get());
         }
         modules.setBatches(batchList);
+        emailService.EmailToLecWhenModuleIsAssigned(dtoModule.getUser().getEmail());
         return moduleRepo.save(modules);
     }
 

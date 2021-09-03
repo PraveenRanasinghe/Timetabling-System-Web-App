@@ -106,6 +106,8 @@ public class AdminController {
         return "removeBatches";
     }
 
+
+
     @GetMapping("/searchBatches")
     public String searchBatches(HttpServletRequest req, Model m) {
         String name = req.getParameter("searchByName");
@@ -194,6 +196,14 @@ public class AdminController {
         return "addLecturers";
     }
 
+
+//    @GetMapping("/getBatchList")
+//    public String getBatches(Model m) {
+//        List<BatchDTO> allBatches = batchService.getAllBatchesToList();
+//        m.addAttribute("batchList", allBatches);
+//        m.addAttribute("upUser", new UserDTO());
+//        return "updateUser";
+//    }
 
     @PostMapping("/adminUpdateUsers")
     public String updateU(@ModelAttribute("upUser") User dto, Model a) {
@@ -349,7 +359,6 @@ public class AdminController {
         } catch (Exception ex) {
             m.addAttribute("error", "Module cannot delete at this time.Please try again later !");
         }
-
         return "removeModules";
     }
 

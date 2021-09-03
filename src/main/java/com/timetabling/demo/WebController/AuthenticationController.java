@@ -17,7 +17,7 @@ public class AuthenticationController {
 
 
     @GetMapping("/home")
-    public String getLogin(){
+        public String getLogin(){
         return "Home";
     }
 

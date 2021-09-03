@@ -18,5 +18,7 @@ public interface UserRepo extends JpaRepository<User, String> {
     @Query("FROM User u WHERE u.lName LIKE %:lastName%")
     List<User> lastName(String lastName);
 
+    List<User> findUsersByBatchBatchID(String batchId);
+
 }
 
