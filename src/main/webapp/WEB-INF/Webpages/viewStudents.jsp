@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -60,6 +61,8 @@
                 <th scope="col">Contact Number</th>
                 <th scope="col"> Remove</th>
                 <th scope="col"> Update</th>
+                <th scope="col">Call User</th>
+                <th scope="col">Email User</th>
             </tr>
             </thead>
             <tbody>
@@ -76,6 +79,16 @@
                     </td>
                     <td><a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getUser/${users.email}">Update Student</a>
+                    </td>
+                    <td>
+                        <a href="tel:${users.contactNumber}">
+                            <button class="btn btn-success"></button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="mailto:${users.email}">
+                            <button class="btn btn-primary"><i class="fas fa-phone-alt"></i></button>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

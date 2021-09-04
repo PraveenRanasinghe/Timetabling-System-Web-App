@@ -167,6 +167,7 @@ public class AdminController {
             m.addAttribute("success", "Student has been added to the system successfully!");
 
         } catch (Exception ex) {
+            m.addAttribute("error", ex.getMessage());
             redirectAttributes.addFlashAttribute("error", ex.getMessage());
         }
 
@@ -191,6 +192,7 @@ public class AdminController {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             redirectAttributes.addFlashAttribute("error", ex.getMessage());
+            m.addAttribute("error", ex.getMessage());
         }
 
         return "addLecturers";
