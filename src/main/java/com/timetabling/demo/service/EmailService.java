@@ -6,10 +6,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
 import java.util.Properties;
 
 @Service
@@ -29,8 +26,10 @@ public class EmailService {
         prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", true);
-        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.host", Host);
         prop.put("mail.smtp.port", "587");
+        prop.put(" mail.smtp.ssl.protocols","TLSv1.2");
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         theAuthenticator = new Authenticator() {
             @Override
@@ -132,5 +131,4 @@ public class EmailService {
             System.out.println("Error");
         }
     }
-
 }

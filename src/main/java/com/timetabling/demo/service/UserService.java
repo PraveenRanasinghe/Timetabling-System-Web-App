@@ -45,7 +45,6 @@ public class UserService implements UserDetailsService {
         User user = auth.findUserByEmail(s);
         if (user == null) {
             throw new UsernameNotFoundException(s);
-
         }
         {
             ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -130,7 +129,7 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
-//            emailService.EmailToStudents(dtoUser.getEmail());
+            emailService.EmailToStudents(dtoUser.getEmail());
         return userRepo.save(users);
     }
 
@@ -148,7 +147,7 @@ public class UserService implements UserDetailsService {
             users.setContactNumber(dtoUser.getContactNumber());
             users.setBatch(dtoUser.getBatchId());
         }
-//        emailService.EmailToLecturers(dtoUser.getEmail());
+        emailService.EmailToLecturers(dtoUser.getEmail());
         return userRepo.save(users);
     }
 
@@ -177,7 +176,6 @@ public class UserService implements UserDetailsService {
         }
         return userRepo.save(users);
     }
-
 
     public User directUserType(String email) {
         return userRepo.findUserByEmail(email);

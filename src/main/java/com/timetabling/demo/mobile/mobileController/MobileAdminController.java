@@ -13,6 +13,7 @@ import com.timetabling.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -228,6 +229,30 @@ public class MobileAdminController {
         return ResponseEntity.ok("Deleted Successfully!");
     }
 
+    @DeleteMapping("/adminRemoveClassroom")
+    public ResponseEntity<?> deleteClass(@RequestBody ClassRoom classRoom) {
+        classRoomService.deleteClassRoom(classRoom);
+        return ResponseEntity.ok("");
+    }
+
+    @DeleteMapping("/adminDeleteLec")
+    public ResponseEntity<?> removeLecturer(@RequestBody User user) {
+        userService.removeUser(user);
+        return ResponseEntity.ok("User Removed Successfully!");
+    }
+
+    @DeleteMapping("/adminDeleteModule")
+    public ResponseEntity<?> deleteModules(@RequestBody Module moduleId) {
+        moduleService.deleteModules(moduleId);
+        return ResponseEntity.ok("Module Deleted Successfully!");
+    }
+
+
+    @DeleteMapping("/adminDeleteBatch")
+    public ResponseEntity<?> removeBatch(@RequestBody Batch batchId) {
+        batchService.deleteBatch(batchId);
+        return ResponseEntity.ok("Batch Deleted");
+    }
 
     @PostMapping("/adminReschedulingClasses")
     public ResponseEntity<?> reScheduleClasses(@RequestBody TimetableDTO dto) throws Exception {
