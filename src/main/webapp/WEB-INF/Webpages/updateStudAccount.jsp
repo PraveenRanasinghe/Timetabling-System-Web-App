@@ -66,7 +66,7 @@
                         <div class="col">
                             <label class="control-label col"><b>First Name</b></label>
                             <form:input path="fName" value="${findUser.fName}" type="text" style="border-color: black"
-                                        cssClass="form-control" readonly="false"/>
+                                        cssClass="form-control" readonly="false" required="required"/>
                         </div>
                         <form:input path="userRole" value="${findUser.userRole}" type="hidden"/>
                         <form:input path="batch" value="${findUser.batch.batchID}" type="hidden" readonly="true"/>
@@ -75,7 +75,7 @@
                         <div class="col">
                             <label class="control-label col"><b>Last Name</b></label>
                             <form:input path="lName" value="${findUser.lName}" type="text" style="border-color: black"
-                                        cssClass="form-control" placeholder="" readonly="false"/>
+                                        cssClass="form-control" placeholder="" readonly="false" required="required"/>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -88,7 +88,7 @@
                             <label class="control-label col"><b>Contact Number</b></label>
                             <b><form:input path="contactNumber" value="${findUser.contactNumber}" type="text"
                                            style="border-color: black"
-                                           cssClass="form-control" placeholder="" readonly="false"/></b>
+                                           cssClass="form-control" placeholder="" readonly="false" required="required"/></b>
                         </div>
                     </div>
 
@@ -96,12 +96,12 @@
                         <div class="col">
                             <label class="control-label col"><b>Enter new Password</b></label>
                             <input  id="pass1" style="border-color: black" type="password"
-                                        class="form-control" placeholder="Enter New Password"/>
+                                        class="form-control" placeholder="Enter New Password" required="required"/>
                         </div>
                         <div class="col">
                             <label class="control-label col"><b>Confirm Password</b></label>
                             <form:input path="password" id="pass2" type="password" value="" style="border-color: black"
-                                        cssClass="form-control" placeholder="Confirm Password" readonly="false"/>
+                                        cssClass="form-control" placeholder="Confirm Password" readonly="false" required="required"/>
                         </div>
                     </div>
 

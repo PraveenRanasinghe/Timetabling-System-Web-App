@@ -146,7 +146,7 @@ background: linear-gradient(90deg, rgb(111,188,220) 0%, rgb(111,221,231) 49%, rg
         $(function (){
             var dtToday = new Date();
             var month = dtToday.getMonth()+1;
-            var day = dtToday.getDay()+8;
+            var day = dtToday.getDay()+5;
             var year = dtToday.getFullYear();
 
             if(month<10){

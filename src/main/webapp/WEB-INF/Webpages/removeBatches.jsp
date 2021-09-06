@@ -67,7 +67,7 @@
                 <td><fmt:formatDate value="${batches.startDate}" pattern="yyyy-MM-dd"/></td>
                 <td><fmt:formatDate value="${batches.endDate}" pattern="yyyy-MM-dd"/></td>
                 <td> <a class="btn btn-danger" style="border-color: black;
-                  width:150px; border-style: double" href="/deleteBatch/${batches.batchID}">Remove Batch</a>
+                  width:150px; border-style: double" href="/deleteBatch/${batches.batchID}" onclick="deleteBatches()">Remove Batch</a>
                 </td>
                 <td> <a class="btn btn-warning" style="border-color: black;
                   width:150px; border-style: double" href="/getBatch/${batches.batchID}">Update Batch</a>
@@ -78,5 +78,19 @@
         </table>
     </div>
 </div>
+
+<script>
+    function deleteBatches() {
+        var txt;
+        var r = confirm("Do You Really want to Remove this Batch?");
+        if (r == true) {
+            txt = "Batch has been removed successfully!";
+        } else {
+            txt = "Cancelled";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
+
 </body>
 </html>

@@ -39,7 +39,7 @@
 
 <form:form action="/adminUpdateClassRoom" modelAttribute="getClassRoom" method="post" cssClass="mt-5">
     <div class="row justify-content-center mt-5">
-        <div style="width: 500px; height: 550px; background-color: #fdf102; border-radius: 20px; border-color: black; border-style:double;
+        <div style="width: 500px; height: 550px; background-color: #c3e879; border-radius: 20px; border-color: black; border-style:double;
 box-shadow: 15px 15px 30px black; border-radius: 20px;">
             <div class="ml-2 mt-5 mr-2">
                 <div class="row justify-content-center">
@@ -55,13 +55,13 @@ box-shadow: 15px 15px 30px black; border-radius: 20px;">
                     <div class="col">
                         <label class="control-label col"><b>Class-Room ID</b></label>
                         <form:input path="classRoomID" value="${findClassRoom.classRoomID}" type="text" style="border-color: black"
-                                    cssClass="form-control" readonly="true"/>
+                                    cssClass="form-control" readonly="true" />
                     </div>
 
                      <div class="col">
                         <label class="control-label col"><b>Capacity of the Class</b></label>
-                        <form:input path="capacity" value="${findClassRoom.capacity}" type="text" style="border-color: black"
-                                    cssClass="form-control" placeholder="" readonly="false"/>
+                        <form:input path="capacity" value="${findClassRoom.capacity}" type="number" style="border-color: black"
+                                    cssClass="form-control" placeholder="" readonly="false" required="required"/>
                     </div>
                 </div>
                 <div class="row">
