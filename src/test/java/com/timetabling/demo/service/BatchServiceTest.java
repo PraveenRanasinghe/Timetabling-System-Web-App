@@ -1,6 +1,7 @@
 package com.timetabling.demo.service;
 
 import com.timetabling.demo.model.Batch;
+import com.timetabling.demo.testDto.BatchDTO;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,5 @@ public class BatchServiceTest {
         List<Batch> allBatches = batchService.getAllBatches();
         assertThat(allBatches,not(IsEmptyCollection.empty()));
     }
-
 
 }

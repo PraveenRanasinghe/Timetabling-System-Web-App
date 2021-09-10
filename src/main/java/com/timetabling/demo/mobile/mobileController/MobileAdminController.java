@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -266,4 +267,15 @@ public class MobileAdminController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/adminSearchBatches/{keyword}")
+    public  ResponseEntity<?> searchBatches(@PathVariable("keyword")String name) {
+        List<BatchDTO> batches = batchService.searchBatches(name);
+        return  ResponseEntity.ok(batches);
+    }
+
+    @GetMapping("/adminSearchModules/{keyword}")
+    public ResponseEntity<?> searchModules(@PathVariable("keyword")String name) {
+        List<ModuleDTO> modules = moduleService.searchModules(name);
+        return ResponseEntity.ok(modules);
+    }
 }
