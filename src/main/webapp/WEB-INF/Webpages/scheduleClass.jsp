@@ -28,6 +28,10 @@
                 <a class="nav-link active" href="${pageContext.request.contextPath}/viewAdminHome">Back to Home</a>
             </li>
 
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/viewRemoveModules">Back to List</a>
+            </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="cursor: pointer;">
