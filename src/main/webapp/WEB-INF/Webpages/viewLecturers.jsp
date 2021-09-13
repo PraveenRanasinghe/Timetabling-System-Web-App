@@ -79,12 +79,14 @@
                     </td>
                     <td>
                         <a href="tel:${Lecturers.contactNumber}">
-                             <i class="fas fa-phone-alt"></i>
+                            <img src="${pageContext.request.contextPath}/images/call.png"
+                                 style="height: 24px; width: 24px; margin-top: 5px">
                         </a>
                     </td>
                     <td>
                         <a href="mailto:${Lecturers.email}">
-                            <button class="btn btn-primary"></button>
+                            <img src="${pageContext.request.contextPath}/images/email.png"
+                                 style="height: 24px; width: 24px; margin-top: 5px">
                         </a>
                     </td>
                 </tr>

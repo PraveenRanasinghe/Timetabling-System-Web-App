@@ -32,7 +32,9 @@
             </div>
 
             <c:if test="${param.error != null}">
-                <div class="justify-content-center" style="font-size: x-large; color: #fc430b; margin-left: 30%"> Invalid Credentials.Please Try again!</div>
+                <div class="justify-content-center" style="font-size: x-large; color: #fc430b; margin-left: 30%">
+                    Invalid Credentials.Please Try again!
+                </div>
             </c:if>
 
             <div class="d-flex justify-content-center mt-5">
@@ -45,16 +47,18 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="${pageContext.request.contextPath}/authenticate">
-                            <label  class="form-label" style="color: #ffffff">Email address</label>
+                            <label class="form-label" style="color: #ffffff">Email address</label>
 
                             <div class="input-group form-group">
-                                <input style="background-color: #f5eded" name="email" type="text" class="form-control" placeholder="johndoe@yahoo.com" required="required">
+                                <input style="background-color: #f5eded" name="email" type="text" class="form-control"
+                                       placeholder="johndoe@yahoo.com" required="required">
                             </div>
 
-                            <label  class="form-label mt-2" style="color: #ffffff">Password</label>
+                            <label class="form-label mt-2" style="color: #ffffff">Password</label>
 
                             <div class="input-group form-group">
-                                <input style="background-color: #f5eded" name="password" type="password" class="form-control" placeholder="Password" required="required">
+                                <input style="background-color: #f5eded" name="password" type="password"
+                                       class="form-control" placeholder="Password" required="required">
                             </div>
 
                             <div class="row justify-content-center">

@@ -97,8 +97,8 @@ background: linear-gradient(90deg, rgba(212,177,128,1) 0%, rgba(189,169,85,1) 51
                         </div>
                     </div>
 
-                    <div class="row justify-content-center mt-4">
-                        <button type="submit" class="btn btn-success">Update User Info</button>
+                    <div class="row justify-content-center mt-4 mb-4">
+                        <button type="submit" class="btn btn-success">Update Info</button>
                     </div>
                 </div>
             </div>

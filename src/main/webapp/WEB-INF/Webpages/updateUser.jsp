@@ -58,8 +58,8 @@ box-shadow: 15px 15px 30px black; border-radius: 20px;">
                                     cssClass="form-control" readonly="false"/>
                     </div>
                     <form:input path="userRole" value="${findUser.userRole}" type="hidden"/>
-<%--                    <form:input path="batch" value="${findUser.batch.batchID}" type="hidden" readonly="true"/>--%>
-                        <%--                    <form:input path="email" value="${findUser.email}" type="hidden"/>--%>
+                    <form:input path="batch" value="${findUser.batch.batchID}" type="hidden" readonly="true"/>
+<%--                                            <form:input path="email" value="${findUser.email}" type="hidden"/>--%>
                     <form:input path="password" value="${findUser.password}" type="hidden"/>
                     <div class="col">
                         <label class="control-label col"><b>Last Name</b></label>
@@ -80,21 +80,21 @@ box-shadow: 15px 15px 30px black; border-radius: 20px;">
                                        cssClass="form-control" placeholder="" readonly="false"/></b>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="control-label col"><b>Select Batch</b></label>
+<%--                <div class="row">--%>
+<%--                    <div class="col">--%>
+<%--                        <label class="control-label col"><b>Select Batch</b></label>--%>
 
-                        <form:select path="batch" type="text" style="border-color: black"
-                                     cssClass="form-control" required="required">
-                            <c:forEach var="batchList" items="${batchList}" varStatus="item">
-                                <form:option value="${batchList.batchID}">
-                                    ${batchList.batchID} ${batchList.batchName}
-                                </form:option>
-                            </c:forEach>
-                        </form:select>
+<%--                        <form:select path="batch" type="text" style="border-color: black"--%>
+<%--                                     cssClass="form-control" required="required">--%>
+<%--                            <c:forEach var="batchList" items="${batchList}" varStatus="item">--%>
+<%--                                <form:option value="${batchList.batchID}">--%>
+<%--                                    ${batchList.batchID} ${batchList.batchName}--%>
+<%--                                </form:option>--%>
+<%--                            </c:forEach>--%>
+<%--                        </form:select>--%>
 
-                    </div>
-                </div>
+<%--                    </div>--%>
+<%--                </div>--%>
 
                 <div class="row justify-content-center mt-4">
                     <button type="submit" class="btn btn-success">Update User Info</button>

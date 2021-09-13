@@ -20,7 +20,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
@@ -31,7 +32,8 @@
         <ul class="navbar-nav ml-auto mt-2">
             <li class="mr-5">
                 <form action="${pageContext.request.contextPath}/searchUsers" method="get" class="d-flex">
-                    <input class="form-control" style="width: 450px;" type="search"  name="searchByName" placeholder="Search Students" aria-label="Search">
+                    <input class="form-control" style="width: 450px;" type="search" name="searchByName"
+                           placeholder="Search Students" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
             </li>
@@ -52,7 +54,8 @@
     <div class="row justify-content-center mt-5">
         <table class="table table-striped table-success table-hover" style="border-color: black; border-radius: 15px;">
             <thead>
-            <tr class="table-bordered" style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
+            <tr class="table-bordered"
+                style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
                 <th scope="col">#</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -82,12 +85,14 @@
                     </td>
                     <td>
                         <a href="tel:${users.contactNumber}">
-                            <button class="btn btn-success"></button>
+                            <img src="${pageContext.request.contextPath}/images/call.png"
+                                 style="height: 24px; width: 24px; margin-top: 5px">
                         </a>
                     </td>
                     <td>
                         <a href="mailto:${users.email}">
-                            <button class="btn btn-primary"><i class="fas fa-phone-alt"></i></button>
+                            <img src="${pageContext.request.contextPath}/images/email.png"
+                                 style="height: 24px; width: 24px; margin-top: 5px">
                         </a>
                     </td>
                 </tr>

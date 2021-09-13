@@ -60,7 +60,8 @@
                                         <form:input path="classRoomID" type="text" style="border-color: black"
                                                     cssClass="form-control"
                                                     placeholder="Enter the ClassRoom ID :(CLZ_any)" required="required"
-                                                    pattern="CLZ_.+" title="The Class-Room Id should be in the given pattern"/>
+                                                    pattern="CLZ_.+"
+                                                    title="The Class-Room Id should be in the given pattern"/>
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Capacity of the Room</label>
