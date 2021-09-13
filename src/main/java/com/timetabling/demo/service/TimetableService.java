@@ -112,8 +112,13 @@ public class TimetableService {
             }
         }
 
-        List<Timetable> timetableListToBatch=
-                timetableRepo.findTimetablesByBatchesAndScheduledDate(batchRepo.getOne(dtoTimetable.getBatches().toString()),dtoTimetable.getScheduledDate());
+
+        List<Timetable> timetableListToBatch = new ArrayList<>();
+
+        for (int j = 0; j<dtoTimetable.getBatches().size(); j++){
+            timetableListToBatch.addAll(timetableRepo.findTimetablesByBatchesAndScheduledDate(dtoTimetable.getBatches().get(j), dtoTimetable.getScheduledDate()));
+        }
+
         for(Timetable timetable:timetableListToBatch){
             if((LocalTime.parse((dtoTimetable.getStartTime())).isAfter(timetable.getStartTime()))
                     && (LocalTime.parse((dtoTimetable.getStartTime())).isBefore(timetable.getEndTime()))){

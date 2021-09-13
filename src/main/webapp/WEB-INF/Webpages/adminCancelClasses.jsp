@@ -12,14 +12,15 @@
 <head>
     <title>View,Cancel & Re-Scheduling Classes</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/contactAdmin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
+<nav class="navbar navbar-expand-lg"
+     style="padding: 10px; background-color: #011801; border-color: black; border-style:outset; font-size:large ">
     <div class="container">
         <ul id="dropdown-animated" class="navbar-nav">
             <li class="nav-item" style="cursor: pointer">
@@ -37,7 +38,8 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <table class="table table-success table-striped" style="border-color: black; border-radius: 15px; width: 1200px;">
+        <table class="table table-success table-striped"
+               style="border-color: black; border-radius: 15px; width: 1200px;">
             <thead style="background-color: #ffeb69; font-size: large; border-color: black; border-style: double;">
             <tr>
                 <th scope="col">#</th>
@@ -53,26 +55,26 @@
             </tr>
             </thead>
             <tbody>
-<c:forEach var="timetables" items="${timetables}" varStatus="item">
-            <tr>
-                <th scope="row">${item.index + 1}</th>
-                <td>
+            <c:forEach var="timetables" items="${timetables}" varStatus="item">
+                <tr>
+                    <th scope="row">${item.index + 1}</th>
+                    <td>
                         <c:forEach items="${timetables.batches}" var="batch">
                             ${batch.batchID}
                         </c:forEach>
-                </td>
-                <td>${timetables.module.moduleName}</td>
-                <td>${timetables.module.user.fName} ${timetables.module.user.lName}</td>
-                <td>${timetables.scheduledDate}</td>
-                <td>${timetables.startTime}</td>
-                <td>${timetables.endTime}</td>
-                <td>${timetables.classRoom.classRoomID}</td>
-                <td><a class="btn btn-outline-danger" style=" width:150px;"
-                       href="/cancelTimetable/${timetables.timetableId}">Cancel Lecture</a></td>
-                <td><a class="btn btn-outline-dark" style="width:200px;"
-                       href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
-            </tr>
-</c:forEach>
+                    </td>
+                    <td>${timetables.module.moduleName}</td>
+                    <td>${timetables.module.user.fName} ${timetables.module.user.lName}</td>
+                    <td>${timetables.scheduledDate}</td>
+                    <td>${timetables.startTime}</td>
+                    <td>${timetables.endTime}</td>
+                    <td>${timetables.classRoom.classRoomID}</td>
+                    <td><a class="btn btn-outline-danger" style=" width:150px;"
+                           href="/cancelTimetable/${timetables.timetableId}">Cancel Lecture</a></td>
+                    <td><a class="btn btn-outline-dark" style="width:200px;"
+                           href="/getTimetable/${timetables.timetableId}">Re-Schedule Lecture</a></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

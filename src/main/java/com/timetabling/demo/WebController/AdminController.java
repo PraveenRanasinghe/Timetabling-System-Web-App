@@ -425,7 +425,8 @@ public class AdminController {
         try {
             timetableService.cancelScheduledClass(timetableId);
             m.addAttribute("success", "Selected timetable has been cancelled successfully!");
-        } catch (Exception ex) {
+        }
+        catch (Exception ex) {
             m.addAttribute("error", "Selected Timetable cannot delete at this time. Please try again later.");
         }
         return "adminCancelClasses";
