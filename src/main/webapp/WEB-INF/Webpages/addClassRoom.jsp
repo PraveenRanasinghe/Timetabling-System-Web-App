@@ -68,6 +68,8 @@
                                         <form:input path="capacity" type="text" style="border-color: black"
                                                     cssClass="form-control"
                                                     placeholder="Enter the capacity of the Class" required="required"/>
+                                        <form:errors path="capacity" cssStyle="align-content: center">
+                                        </form:errors>
                                     </div>
                                 </div>
                             </div>

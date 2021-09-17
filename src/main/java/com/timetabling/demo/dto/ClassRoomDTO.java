@@ -2,11 +2,14 @@ package com.timetabling.demo.dto;
 
 import com.timetabling.demo.model.Timetable;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
 
 
 public class ClassRoomDTO {
     private String classRoomID;
     private Timetable timetable;
+    @Max(value = 100, message = "Capacity should not be more than 100")
     private String capacity;
     private String smartBoard;
     private String Ac;

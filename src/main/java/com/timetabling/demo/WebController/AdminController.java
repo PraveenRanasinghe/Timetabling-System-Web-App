@@ -11,10 +11,12 @@ import com.timetabling.demo.validators.userValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -454,15 +456,19 @@ public class AdminController {
     }
 
     @PostMapping("/adminAddClassRooms")
-    public String addClasses(@ModelAttribute("AddClasses") ClassRoomDTO dto, Model m) {
-        try {
-            classRoomService.addClassRoom(dto);
-            m.addAttribute("success", "The New Class-Room has been added to system successfully!");
-
-        } catch (Exception e) {
-            m.addAttribute("error",  e.getMessage());
+    public String addClasses(@Valid @ModelAttribute("AddClasses") ClassRoomDTO dto, BindingResult bindingResult, Model m) {
+        if(bindingResult.hasErrors()){
+             return "addClassRoom";
         }
+        else {
+            try {
+                classRoomService.addClassRoom(dto);
+                m.addAttribute("success", "The New Class-Room has been added to system successfully!");
 
+            } catch (Exception e) {
+                m.addAttribute("error",  e.getMessage());
+            }
+        }
         return "addClassRoom";
     }
 
