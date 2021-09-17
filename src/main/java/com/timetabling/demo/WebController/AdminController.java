@@ -62,10 +62,7 @@ public class AdminController {
         this.classroomRepo = classroomRepo;
     }
 
-    //=======================================  View Functions  =======================================================
 
-
-    //-------------------  View All Students ---------------------
 
     @GetMapping(path = "/viewStudents")
     public String viewAllStudents(Model m) {
@@ -82,7 +79,7 @@ public class AdminController {
         return "viewStudents";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
+
 
     @GetMapping(path = "/viewLecturers")
     public String viewAllLecturers(Model m) {
@@ -90,7 +87,7 @@ public class AdminController {
         m.addAttribute("Lecturers", allLecturers);
         return "viewLecturers";
     }
-    //----------------------------------------------------------------------------------------------------------------
+
 
     @GetMapping(path = "/viewAdminCancelClasses")
     public String viewScheduledClasses(Model m) {
@@ -99,7 +96,7 @@ public class AdminController {
         return "adminCancelClasses";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
+
 
     @GetMapping(path = "/viewRemoveBatch")
     public String viewAllBatches(Model m) {
@@ -107,7 +104,6 @@ public class AdminController {
         m.addAttribute("batches", allBatches);
         return "removeBatches";
     }
-
 
 
     @GetMapping("/searchBatches")
@@ -118,7 +114,7 @@ public class AdminController {
         return "removeBatches";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
+
     @GetMapping(path = "/viewRemoveModules")
     public String viewAllModules(Model m) {
         List<Module> allModules = moduleService.getAllModules();
@@ -140,7 +136,7 @@ public class AdminController {
         m.addAttribute("ClassRooms", allClassRooms);
         return "viewClassRooms";
     }
-    //----------------------------------------------------------------------------------------------------------------
+
 
     @GetMapping("/getUser/{email}")
     public String getUser(Model m, @PathVariable(value = "email") String email) {
@@ -162,17 +158,19 @@ public class AdminController {
     }
 
     @PostMapping("/adminAddUsers")
-    public String StudentRegistration(@ModelAttribute("AddUser") UserDTO dto, Model m, RedirectAttributes redirectAttributes) {
-        try {
+    public String StudentRegistration(@Valid @ModelAttribute("AddUser") UserDTO dto, BindingResult bindingResult, Model m, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return "addUsers";
+        } else {
+            try {
+                userService.registerUsers(dto);
+                m.addAttribute("success", "Student has been added to the system successfully!");
 
-            userService.registerUsers(dto);
-            m.addAttribute("success", "Student has been added to the system successfully!");
-
-        } catch (Exception ex) {
-            m.addAttribute("error", ex.getMessage());
-            redirectAttributes.addFlashAttribute("error", ex.getMessage());
+            } catch (Exception ex) {
+                m.addAttribute("error", ex.getMessage());
+                redirectAttributes.addFlashAttribute("error", ex.getMessage());
+            }
         }
-
         return "addUsers";
     }
 
@@ -185,29 +183,21 @@ public class AdminController {
     }
 
     @PostMapping("adminAddLecturers")
-    public String LecturerRegistration(@ModelAttribute("addLecturers") UserDTO dto, Model m, RedirectAttributes redirectAttributes) {
-        try {
-
-            userService.registerLecturers(dto);
-            m.addAttribute("success", "User has been added to the system successfully!");
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            redirectAttributes.addFlashAttribute("error", ex.getMessage());
-            m.addAttribute("error", ex.getMessage());
+    public String LecturerRegistration(@Valid @ModelAttribute("addLecturers") UserDTO dto, BindingResult bindingResult, Model m, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return "addLecturers";
+        } else {
+            try {
+                userService.registerLecturers(dto);
+                m.addAttribute("success", "User has been added to the system successfully!");
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                redirectAttributes.addFlashAttribute("error", ex.getMessage());
+                m.addAttribute("error", ex.getMessage());
+            }
         }
-
         return "addLecturers";
     }
-
-
-//    @GetMapping("/getBatchList")
-//    public String getBatches(Model m) {
-//        List<BatchDTO> allBatches = batchService.getAllBatchesToList();
-//        m.addAttribute("batchList", allBatches);
-//        m.addAttribute("upUser", new UserDTO());
-//        return "updateUser";
-//    }
 
     @PostMapping("/adminUpdateUsers")
     public String updateU(@ModelAttribute("upUser") User dto, Model a) {
@@ -244,8 +234,6 @@ public class AdminController {
         return "viewStudents";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
-
 
     @GetMapping("/getBatch/{batchId}")
     public String getBatch(Model m, @PathVariable(value = "batchId") String batchId) {
@@ -273,12 +261,11 @@ public class AdminController {
             a.addAttribute("success", "New Batch has been added to the system successfully.");
 
         } catch (Exception ex) {
-            a.addAttribute("error",  ex.getMessage());
+            a.addAttribute("error", ex.getMessage());
         }
 
         return "createBatch";
     }
-
 
 
     @PostMapping("/adminUpdateBatches")
@@ -305,7 +292,6 @@ public class AdminController {
         return "removeBatches";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/getModule/{moduleId}")
     public String getModule(Model m, @PathVariable(value = "moduleId") String moduleId) {
@@ -336,7 +322,7 @@ public class AdminController {
             m.addAttribute("success", "Module has been added to system successfully !");
 
         } catch (Exception ex) {
-            m.addAttribute("error",  ex.getMessage());
+            m.addAttribute("error", ex.getMessage());
         }
 
         return "addModules";
@@ -366,7 +352,6 @@ public class AdminController {
         return "removeModules";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/getTimetable/{timetableId}")
     public String getTimetable(Model m, @PathVariable(value = "timetableId") Integer timetableId) {
@@ -427,14 +412,12 @@ public class AdminController {
         try {
             timetableService.cancelScheduledClass(timetableId);
             m.addAttribute("success", "Selected timetable has been cancelled successfully!");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             m.addAttribute("error", "Selected Timetable cannot delete at this time. Please try again later.");
         }
         return "adminCancelClasses";
     }
 
-    //----------------------------------------------------------------------------------------------------------------
 
 
     @GetMapping("/getClassRoom/{classRoomId}")
@@ -457,16 +440,15 @@ public class AdminController {
 
     @PostMapping("/adminAddClassRooms")
     public String addClasses(@Valid @ModelAttribute("AddClasses") ClassRoomDTO dto, BindingResult bindingResult, Model m) {
-        if(bindingResult.hasErrors()){
-             return "addClassRoom";
-        }
-        else {
+        if (bindingResult.hasErrors()) {
+            return "addClassRoom";
+        } else {
             try {
                 classRoomService.addClassRoom(dto);
                 m.addAttribute("success", "The New Class-Room has been added to system successfully!");
 
             } catch (Exception e) {
-                m.addAttribute("error",  e.getMessage());
+                m.addAttribute("error", e.getMessage());
             }
         }
         return "addClassRoom";
@@ -497,8 +479,6 @@ public class AdminController {
 
         return "viewClassRooms";
     }
-
-    //-----------------------------------------------     END     ----------------------------------------------------
 
 }
 

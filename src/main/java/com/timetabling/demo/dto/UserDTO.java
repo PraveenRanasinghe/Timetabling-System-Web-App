@@ -1,19 +1,19 @@
 package com.timetabling.demo.dto;
 
 import com.timetabling.demo.model.Batch;
-
-import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 public class UserDTO {
 
-    @Email(message = "Last name is not completed")
     private String email;
-    @NotEmpty
+    @NotNull(message = "Last name is not completed")
     private String fName;
-    @NotEmpty(message = "Last name is not completed")
+    @NotNull(message = "Last name is not completed")
     private String lName;
+    @Max(value = 12, message = "Incorrect Mobile Number")
     private String contactNumber;
     private String userRole;
     private Batch batchId;

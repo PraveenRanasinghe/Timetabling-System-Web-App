@@ -90,11 +90,15 @@
                                     <label class="control-label col">First Name:</label>
                                     <form:input path="fName" type="text" style="border-color: black"
                                                 class="form-control" placeholder="John" required="required"/>
+                                    <form:errors path="fName" cssStyle="align-content: center; color: red;">
+                                    </form:errors>
                                 </div>
                                 <div class="col">
                                     <label class="control-label col">Last Name:</label>
                                     <form:input path="lName" type="text" style="border-color: black"
                                                 class="form-control" placeholder="Doe" required="required"/>
+                                    <form:errors path="lName" cssStyle="align-content: center; color: red;">
+                                    </form:errors>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +110,8 @@
                                     <form:input path="contactNumber" type="text" style="border-color: black"
                                                 class="form-control" placeholder="+94715385574" required="required"
                                                 maxlength="15" minlength="10"/>
+                                    <form:errors path="contactNumber" cssStyle="align-content: center; color: red;">
+                                    </form:errors>
                                 </div>
                             </div>
                         </div>

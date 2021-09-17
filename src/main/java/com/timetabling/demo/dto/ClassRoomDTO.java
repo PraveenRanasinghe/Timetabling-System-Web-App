@@ -9,6 +9,7 @@ import javax.validation.constraints.Pattern;
 public class ClassRoomDTO {
     private String classRoomID;
     private Timetable timetable;
+
     @Max(value = 100, message = "Capacity should not be more than 100")
     private String capacity;
     private String smartBoard;
