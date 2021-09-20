@@ -4,6 +4,7 @@ import com.timetabling.demo.model.Batch;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 public class UserDTO {
@@ -13,7 +14,7 @@ public class UserDTO {
     private String fName;
     @NotNull(message = "Last name is not completed")
     private String lName;
-    @Max(value = 12, message = "Incorrect Mobile Number")
+    @Pattern(regexp="(^$|[0-9]{10})",message = "Incorrect Mobile Number")
     private String contactNumber;
     private String userRole;
     private Batch batchId;

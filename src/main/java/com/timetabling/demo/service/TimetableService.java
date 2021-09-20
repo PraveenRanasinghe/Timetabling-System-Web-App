@@ -197,10 +197,6 @@ public class TimetableService {
     public void cancelScheduledClass(Timetable timetable) {
         timetableRepo.delete(timetable);
     }
-
-
-
-
 }
 
 

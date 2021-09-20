@@ -80,19 +80,19 @@ background: linear-gradient(90deg, rgba(203,212,128,1) 0%, rgba(103,189,85,1) 51
                         <div class="col-lg-4">
                             <label class="control-label col"><b>Scheduled Date</b></label>
                             <form:input path="scheduledDate" value="${findTimetable.scheduledDate}" type="date" style="border-color: black"
-                                        cssClass="form-control"/>
+                                        cssClass="form-control" required="required"/>
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>Start Time</b></label>
                             <form:input path="startTime" value="${findTimetable.startTime}" style="border-color: black"
                                         cssClass="form-control" type="time"
-                                        id="timepicker"/>
+                                        required="required" min="08:00" max="17:00"/>
                         </div>
                         <div class="col-lg-4">
                             <label class="control-label col"><b>End Time</b></label>
                             <form:input path="endTime" value="${findTimetable.endTime}" type="time"
-                                        id="timepicker2" style="border-color: black"
-                                        cssClass="form-control"/>
+                                        style="border-color: black"
+                                        cssClass="form-control" required="required" min="08:00" max="17:00"/>
                         </div>
                     </div>
 

@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col">
                                         <label class="control-label col">Capacity of the Room</label>
-                                        <form:input path="capacity" type="text" style="border-color: black"
+                                        <form:input path="capacity" type="number" min="0" style="border-color: black"
                                                     cssClass="form-control"
                                                     placeholder="Enter the capacity of the Class" required="required"/>
                                         <form:errors path="capacity" cssStyle="align-content: center; color: red;">

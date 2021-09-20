@@ -103,24 +103,23 @@ background: linear-gradient(90deg, rgb(111,188,220) 0%, rgb(111,221,231) 49%, rg
                     <div class="col-lg-4">
                         <label class="form-label"><b>Select the Date</b></label>
                         <form:input path="scheduledDate" Class="form-control" id='dateControl' type="date"
-                                    style="background-color: #e3e1e1; color: black; border-color: black" />
+                                    style="background-color: #e3e1e1; color: black; border-color: black" required="required"/>
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label"><b>Starting Time</b></label>
                         <form:input path="startTime" Class="form-control"
-                                    style="background-color: #e3e1e1; color: black; border-color: black" type="time" max="05:00pm" min="08:00am"
+                                    style="background-color: #e3e1e1; color: black; border-color: black" type="time"  min="08:00" max="17:00"
+                                    required="required"
                         />
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label"><b>Ending Time</b></label>
-                        <form:input path="endTime" Class="form-control" type="time"  max="09:00am" min="06:00pm"
+                        <form:input path="endTime" Class="form-control" type="time"  min="08:00" max="17:00" required="required"
                                     style="background-color: #e3e1e1; color: black; border-color: black"/>
                     </div>
-
                 </div>
-
 
                 <div class="row justify-content-center mt-5">
                     <button type="submit" class="btn btn-warning mb-4" style="border-color: black; border-style: double">
